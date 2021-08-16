@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import './HomePage.css'
 import fillForm from '../../assets/images/fill-in-form.png';
 import dinoForm from '../../assets/images/wufoo-online-form-builder.png';
@@ -32,6 +34,25 @@ export default function HomePage() {
                         Our form builder gives you an award-winning interface, easy customization, galleries, templates and reporting. Check out some of our popular features.
                         </div>
                     </div>
+                </div>
+                <div className="homepage-scene">
+                    <div className="homepage-scene-text">
+                        <div className="homepage-scene-header">
+                            Ready to Get Started?
+                        </div>
+                        <div className="homepage-scene-subtext">
+                            Sign up for a FREE account and start building forms now.
+                        </div>
+                        <div className="homepage-scene-signup">
+                            <NavLink to="/signup" className="homepage-scene-signup-button">
+                                <span className="homepage-scene-signup-text">Sign Up Now</span>
+                            </NavLink>
+                        </div>
+                    </div>
+                    <img className="homepage-scene-raptor" src="https://www.wufoo.com/wp-content/themes/wufoo-site/img/dino6.svg" alt="\A"/>
+                    <img className="homepage-scene-cloud1" src="https://www.wufoo.com/wp-content/themes/wufoo-site/img/cloud-10.svg" alt="\A"/>
+                    <img className="homepage-scene-cloud2" src="https://www.wufoo.com/wp-content/themes/wufoo-site/img/cloud-08.svg" alt="\A"/>
+                    <img className="homepage-scene-dino" src="https://www.wufoo.com/wp-content/themes/wufoo-site/img/dino8.svg" alt="\A"/>
                 </div>
             </div>
         </div>
