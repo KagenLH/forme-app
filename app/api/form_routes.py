@@ -5,4 +5,7 @@ form_routes = Blueprint("forms", __name__)
 
 @form_routes.route('/')
 def forms():
-    return "Routing Works"
+    return { 
+        'id': 1,
+       'message': "Routing Works" 
+        }

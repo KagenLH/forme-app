@@ -24,7 +24,7 @@ export const getForms = () => async dispatch => {
 
     if (res.ok) {
         const forms = await res.json()
-        console.log(forms)
+        console.log('jsoned returned', forms)
         dispatch(load(forms))
     }
 }
@@ -34,7 +34,10 @@ const formsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
             const allForms = {}
-            action.form.forEach(form => allForms[form.id] = form)
+            // action.form.forEach(form => allForms[form.id] = form)
+            for (let form in action.form) {
+                allForms[form] = form
+            }
             return {
                 ...allForms,
                 ...state

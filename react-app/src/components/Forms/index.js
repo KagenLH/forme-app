@@ -4,15 +4,17 @@ import { getForms } from '../../store/forms.js'
 
 function Forms() {
     const dispatch = useDispatch()
-    const forms = Array.from(useSelector(state => state.forms))
+    const forms = useSelector(state => state.forms)
     useEffect(() => {
         dispatch(getForms())
     }, [dispatch])
 
+    console.log('forms array', forms)
+
     return (
         <>
             <h1>Build Form Test</h1>
-            <p>{forms}</p>
+            <p>{forms?.message}</p>
             <button>New Form</button>
         </>
     )
