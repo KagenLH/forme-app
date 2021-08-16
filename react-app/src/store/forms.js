@@ -19,7 +19,11 @@ const add = (form) => ({
 
 // get all forms
 export const getForms = () => async dispatch => {
-    const res = await fetch(`/api/forms`)
+    const res = await fetch(`/api/forms`, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
     console.log('*****RES*****', res)
 
     if (res.ok) {

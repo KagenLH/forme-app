@@ -11,3 +11,14 @@ class Form(db.Model):
     label_align = db.Column(db.String(10))
     description_align = db.Column(db.String(10))
     title_align = db.Column(db.String(10))
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'owner_id': self.owner_id,
+            'description': self.description,
+            'label_align': self.label_align,
+            'description_align': self.description_align,
+            'title_align': self.title_align
+        }

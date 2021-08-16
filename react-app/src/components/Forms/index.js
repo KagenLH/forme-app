@@ -14,7 +14,7 @@ function Forms() {
     return (
         <>
             <h1>Build Form Test</h1>
-            <p>{forms?.message}</p>
+            {/* <p>{forms}</p> */}
             <button>New Form</button>
         </>
     )
