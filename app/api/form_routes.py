@@ -9,4 +9,4 @@ form_routes = Blueprint("forms", __name__)
 # @login_required
 def forms():
     forms = Form.query.all()
-    return {forms: forms}
+    return {'forms': [form.to_dict() for form in forms]}
