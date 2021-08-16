@@ -1,0 +1,14 @@
+.auth-logout-button {
+    display: inline;
+    background-color: transparent;
+    border: none;
+    font: 17px National, Helvetica, sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #3A3A3A;
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+}
