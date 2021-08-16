@@ -22,10 +22,10 @@ export default function Footer() {
                     <div className="footer-name-text">
                         Mark Vasquez
                     </div>
-                    <a className="footer-github-container" href="https://github.com/KagenLH">
+                    <a className="footer-github-container" href="https://github.com/Mark-Vasquez">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a className="footer-linkedin-container" href="https://www.linkedin.com/in/kagen-hearn-228b96130/">
+                    <a className="footer-linkedin-container" href="https://www.linkedin.com/in/mark-vasquez-439858212/">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
@@ -33,10 +33,10 @@ export default function Footer() {
                     <div className="footer-name-text">
                         Noah Medoff
                     </div>
-                    <a className="footer-github-container" href="https://github.com/KagenLH">
+                    <a className="footer-github-container" href="https://github.com/NoahNim">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a className="footer-linkedin-container" href="https://www.linkedin.com/in/kagen-hearn-228b96130/">
+                    <a className="footer-linkedin-container" href="https://www.linkedin.com/in/noah-medoff-6a5490116/">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
@@ -44,10 +44,10 @@ export default function Footer() {
                     <div className="footer-name-text">
                         Dechon Ryan
                     </div>
-                    <a className="footer-github-container" href="https://github.com/KagenLH">
+                    <a className="footer-github-container" href="https://github.com/dech0n">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a className="footer-linkedin-container" href="https://www.linkedin.com/in/kagen-hearn-228b96130/">
+                    <a className="footer-linkedin-container" href="https://www.linkedin.com/in/dechon-r-1230097b/">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
