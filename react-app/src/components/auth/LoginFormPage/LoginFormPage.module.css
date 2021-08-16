@@ -1,3 +1,115 @@
 .email_test {
 	border: 4px solid chartreuse;
 }
+
+.page_container {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.middle_container {
+	width: 100%;
+	font-family: "Lato", sans-serif;
+	height: 612px;
+	padding: 1.111em 3em;
+	border: 5px solid chartreuse;
+}
+
+.footer_container {
+	width: 100%;
+	height: 750px;
+	border: 5px solid chartreuse;
+}
+
+.welcome_block {
+	margin: 0em auto 1.5em;
+	text-align: center;
+	position: relative;
+}
+
+.welcome {
+	font-size: 1.474em;
+	font-weight: 400;
+	color: #3f3f3f;
+	margin: 0.67em 0;
+	display: block;
+}
+
+.create_login {
+	margin-bottom: 0;
+	font-size: 0.99em;
+	line-height: 24px;
+	color: #6d696e;
+}
+
+.form_container {
+	height: 460px;
+	text-align: center;
+}
+
+.form_block {
+	margin-top: 1em;
+	display: inline-block;
+	float: none;
+	width: 66.66667%;
+	margin: 0 0%;
+	position: relative;
+	height: 447px;
+}
+
+.form {
+	margin: 0;
+	border: 1px solid #ede8e8;
+	border-radius: 5px;
+	padding: 3em 2em;
+	background: #f8fafb;
+	height: 445px;
+}
+
+.email {
+	width: 100%;
+	display: block;
+	padding: 0 0.5em;
+	height: 3.4em;
+	outline: 0;
+	border: 1px solid #ede8e8;
+	color: #3a3a3a;
+	position: relative;
+	background: #fff;
+	font-weight: 400;
+	margin-bottom: 2em;
+}
+
+.password {
+	width: 100%;
+	display: block;
+	padding: 0 0.5em;
+	height: 3.4em;
+	outline: 0;
+	border: 1px solid #ede8e8;
+	color: #3a3a3a;
+	position: relative;
+	background: #fff;
+	font-weight: 400;
+	margin-bottom: 2em;
+}
+
+.submit_button {
+	background-color: #61e064;
+	color: #fff;
+	width: 100%;
+	height: 3.4em;
+	position: relative;
+	box-shadow: none;
+	border: 0;
+	font-weight: 400;
+	margin-bottom: 2em;
+	font-size: 1em;
+}
+
+.first_time_message {
+	color: #3f3f3f;
+	margin-bottom: 1.5em;
+}
