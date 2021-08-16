@@ -14,7 +14,6 @@
 	font-family: "Lato", sans-serif;
 	height: 612px;
 	padding: 1.111em 3em;
-	border: 5px solid chartreuse;
 }
 
 .footer_container {
@@ -111,5 +110,30 @@
 
 .first_time_message {
 	color: #3f3f3f;
-	margin-bottom: 1.5em;
+	margin-bottom: 1.2em;
+}
+
+.create {
+	color: #28acd8;
+	text-decoration: none;
+}
+
+.create:hover {
+	text-decoration: underline;
+}
+
+.or {
+	color: #3f3f3f;
+	margin-top: 0.7em;
+	font-size: 0.85em;
+	margin-bottom: 0.7em;
+}
+
+.demo {
+	color: #28acd8;
+	text-decoration: none;
+}
+
+.demo:hover {
+	text-decoration: underline;
 }

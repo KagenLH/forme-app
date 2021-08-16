@@ -79,7 +79,15 @@ const LoginFormPage = () => {
 									<p className={styles.first_time_message}>
 										First time on FORMe?
 									</p>
-									<Link></Link>
+									<Link
+										className={styles.create}
+										to="/sign-up">
+										<div>Create an account</div>
+									</Link>
+									<p className={styles.or}>Or</p>
+									<p className={styles.demo}>
+										Login as Demo User
+									</p>
 								</div>
 							</form>
 						</div>
