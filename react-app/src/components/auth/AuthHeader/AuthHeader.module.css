@@ -1,0 +1,12 @@
+.header_wrapper {
+	background-color: #e66760;
+	width: 100%;
+	height: 80px;
+	position: relative;
+}
+
+.logo {
+	font-family: "Acme", sans-serif;
+	color: #fff;
+	font-size: 40px;
+}

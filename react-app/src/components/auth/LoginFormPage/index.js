@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { login } from "../../store/session";
+import { login } from "../../../store/session";
+import AuthHeader from "../AuthHeader";
 import styles from "./LoginFormPage.module.css";
 
 const LoginFormPage = () => {
@@ -38,6 +39,7 @@ const LoginFormPage = () => {
 					<div key={ind}>{error}</div>
 				))}
 			</div>
+			<AuthHeader />
 			<div className={styles.email_test}>
 				<label htmlFor="email">Email</label>
 				<input
