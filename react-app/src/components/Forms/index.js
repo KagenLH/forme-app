@@ -13,12 +13,11 @@ function Forms() {
     console.log('inside forms object', forms?.forms)
 
     let finalForm = forms?.forms
-
     return (
         <>
             <h1>Build Form Test</h1>
             {/* <p>{forms}</p> */}
-            <button>New Form</button>
+            <button>Create Form</button>
             {finalForm?.map(form => {
                 return (  
                 <div>
