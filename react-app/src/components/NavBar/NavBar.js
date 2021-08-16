@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton/LogoutButton';
 import { useSelector } from 'react-redux';
 
+import logo from '../../assets/images/forme-logo.png';
 import './NavBar.css';
 
 const NavBar = () => {
@@ -11,12 +12,10 @@ const NavBar = () => {
 
   return (
     <nav className="navbar-container">
+      <NavLink to='/' exact={true} activeClassName='active' className="navbar-links-home">
+        <img className="navbar-logo" src={logo} alt="\A"/>
+      </NavLink>
       <ul className="navbar-links">
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active' className="navbar-links-home navbar-link">
-            Home
-          </NavLink>
-        </li>
         <li>
           <NavLink to='/users' exact={true} activeClassName='active' className="navbar-link">
             Users
