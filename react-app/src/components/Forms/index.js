@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-function BuildForm() {
+function Forms() {
     return (
         <h1>Build Form Test</h1>
     )
 }
 
-export default BuildForm
+export default Forms
