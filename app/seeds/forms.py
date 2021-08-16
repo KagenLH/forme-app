@@ -10,8 +10,17 @@ def seed_forms():
         # description_align=None
         # title_align=None
     )
+    test2 = Form(
+        title='Another Test Form',
+        owner_id='1',
+        description='This is a another test form.'
+        # label_align=None
+        # description_align=None
+        # title_align=None
+    )
 
     db.session.add(test)
+    db.session.add(test2)
     db.session.commit()
 
 

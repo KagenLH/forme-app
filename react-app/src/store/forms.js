@@ -36,7 +36,7 @@ const formsReducer = (state = initialState, action) => {
             const allForms = {}
             // action.form.forEach(form => allForms[form.id] = form)
             for (let form in action.form) {
-                allForms[form] = form
+                allForms[form] = action.form.forms
             }
             return {
                 ...allForms,
