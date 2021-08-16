@@ -18,12 +18,13 @@ const add = (form) => ({
 // THUNK ACTIONS
 
 // get all forms
-const getForms = () => async (dispatch) => {
+export const getForms = () => async dispatch => {
     const res = await fetch(`/api/forms`)
     console.log('*****RES*****', res)
 
     if (res.ok) {
         const forms = await res.json()
+        console.log(forms)
         dispatch(load(forms))
     }
 }
@@ -38,7 +39,6 @@ const formsReducer = (state = initialState, action) => {
                 ...allForms,
                 ...state
             }
-
         case ADD:
             // adds new forms to state
             if (!state[action.form.id]) {
