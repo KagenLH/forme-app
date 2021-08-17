@@ -24,10 +24,10 @@ function Forms() {
         id: 9,
         owner_id: 1,
         title: "Testing form creation",
-        descrpition: "This form tests form creation.",
-        title_alignment: null,
-        label_alignment: null,
-        descrpition_alignment: null
+        description: "This form tests form creation.",
+        title_align: null,
+        label_align: null,
+        description_align: null
     }
 
     //! testing form creation

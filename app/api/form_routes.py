@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Form, db
 
@@ -20,11 +20,21 @@ def forms():
 @login_required
 # TODO: figure out how to get form data from req body
 def create_form():
-    form = Form()
-    # form.populate_obj()
+    print('REQUEST DATA INFO:*******************************************', request.get_json())
+    
+    data = request.get_json()
+
+    form = Form(
+        title=data["title"],
+        owner_id=data["owner_id"],
+        description=data["description"],
+        label_align=data["label_align"],
+        description_align=data["description_align"],
+        title_align=data["title_align"]
+    )
 
     db.session.add(form)
-    db.sesion.commit()
+    db.session.commit()
 
     return {"confirmation": "Routing SUCCESS"}  # form
 
