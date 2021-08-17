@@ -18,10 +18,10 @@ def forms():
 
 @form_routes.route('/create', methods=['POST'])
 @login_required
-# TODO: figure out how to get form data from req body
 def create_form():
-    print('REQUEST DATA INFO:*******************************************', request.get_json())
-    
+    # print('***** REQUEST DATA INFO *****', request.get_json())
+
+    # pull JSON data from request body
     data = request.get_json()
 
     form = Form(
@@ -36,7 +36,7 @@ def create_form():
     db.session.add(form)
     db.session.commit()
 
-    return {"confirmation": "Routing SUCCESS"}  # form
+    return form
 
 
 # delete a specific form by primary key
