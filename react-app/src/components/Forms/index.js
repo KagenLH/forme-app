@@ -40,20 +40,47 @@ function Forms() {
 
     let finalForm = forms?.forms
     return (
-        <>
-            <h1>Build Form Test</h1>
-            <button>Create Form</button>
-            {finalForm?.map(form => {
-                return (
-                <div>
-                    <ul>
-                        <li key={form?.id}>{form?.title}</li>
-                        <button onClick={() => handleDeleteForm(form?.id)}>Delete</button>
-                    </ul>
+        <div className='form-manager-container'>
+            <div className='form-manager-page-header'>
+                <div className='form-manager-header'>
+                    <h1>Forms</h1>
+                </div>
+                <div className='form-manager-actions'>
+                    <button>Create Form</button>
+                </div>
+            </div>
+            <div className='forms-area'>
+                <div className='utility-bar'>
+                    {/* search bar */}
+                </div>
+                <div className='form-manager-forms'>
+                    <div className='form-table'>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{/* form title */}Form title goes here</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        {finalForm?.map(form => {
+                            return (
+                                <div>
+                                    <ul>
+                                        <li key={form?.id}>{form?.title}</li>
+                                        <button onClick={() => handleDeleteForm(form?.id)}>Delete</button>
+                                    </ul>
+                                </div>
+                            )
+                        })}
                     </div>
-                )
-            })}
-        </>
+                </div>
+            </div>
+        </div>
     )
 }
 
