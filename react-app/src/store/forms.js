@@ -1,31 +1,52 @@
 // TODO: create type constants
 const LOAD = 'forms/load'
 const ADD = 'forms/add'
+const REMOVE = 'forms/remove'
 
 // action creators
-const load = (form) => (
-    {
-        type: LOAD,
-        form
-    }
-)
+// for loading any number of forms
+const load = (form) => ({
+    type: LOAD,
+    form
+})
 
+// for creating and for editing forms
 const add = (form) => ({
     type: ADD,
+    form
+})
+
+// for removing forms
+const remove = (form) => ({
+    type: REMOVE,
     form
 })
 
 // THUNK ACTIONS
 
 // get all forms
-export const getForms = () => async dispatch => {
+export const getForms = () => async (dispatch) => {
     const res = await fetch(`/api/forms/`)
-    console.log('*****RES*****', res)
+    // console.log('*****RES*****', res)
 
     if (res.ok) {
         const forms = await res.json()
-        console.log('jsoned returned', forms)
+        // console.log('jsoned returned', forms)
         dispatch(load(forms))
+        return forms
+    }
+}
+
+// deletes a form
+export const deleteForm = (id) => async (dispatch) => {
+    const res = await fetch(`api/forms/${id}`, {
+        method: 'DELETE'
+    })
+
+    if (res.ok) {
+        const form = await res.json()
+        dispatch(remove(form))
+        return form
     }
 }
 
@@ -53,6 +74,12 @@ const formsReducer = (state = initialState, action) => {
             }
             // TODO: do stuff for edited forms
             break
+
+        case REMOVE:
+            // removes forms from the state
+                const newState = Object.assign({}, state)
+                delete newState[action.form.id]
+                return { ...newState }
         default:
             return state
     }

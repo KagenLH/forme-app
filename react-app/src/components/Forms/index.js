@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getForms } from '../../store/forms.js'
+import { getForms, deleteForm } from '../../store/forms.js'
 
 function Forms() {
     const dispatch = useDispatch()
@@ -9,8 +9,12 @@ function Forms() {
         dispatch(getForms())
     }, [dispatch])
 
-    console.log('forms array', forms)
-    console.log('inside forms object', forms?.forms)
+    // console.log('forms array', forms)
+    // console.log('inside forms object', forms?.forms)
+
+    const handleDeleteForm = async (formId) => {
+        await dispatch(deleteForm(formId))
+    }
 
     let finalForm = forms?.forms
     return (
@@ -19,10 +23,11 @@ function Forms() {
             {/* <p>{forms}</p> */}
             <button>Create Form</button>
             {finalForm?.map(form => {
-                return (  
+                return (
                 <div>
                     <ul>
                         <li key={form?.id}>{form?.title}</li>
+                        <button onClick={() => handleDeleteForm(form?.id)}>Delete</button>
                     </ul>
                     </div>
                 )
