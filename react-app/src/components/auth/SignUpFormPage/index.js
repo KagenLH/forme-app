@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../../store/session";
-import AuthHeader from "../AuthHeader";
 import styles from "./SignUpFormPage.module.css";
 
 const SignUpFormPage = () => {
@@ -46,7 +45,6 @@ const SignUpFormPage = () => {
 
 	return (
 		<>
-			<AuthHeader />
 			<div className={styles.page_container}>
 				<div className={styles.middle_container}>
 					<div className={styles.welcome_block}>
@@ -121,19 +119,18 @@ const SignUpFormPage = () => {
 						<aside className={styles.feature_container}>
 							<h3 className={styles.free}>FREE</h3>
 							<hr />
-							<ul>
-								<li>Forms</li>
-								<li>Shared Forms</li>
-								<li>Multiple Fields</li>
-								<li>1 User</li>
-								<li>Unlimited Previews</li>
-								<li>and more!!!</li>
+							<ul className={styles.free_offers}>
+								<li className={styles.free_offers_item}>Forms</li>
+								<li className={styles.free_offers_item}>Shared Forms</li>
+								<li className={styles.free_offers_item}>Multiple Fields</li>
+								<li className={styles.free_offers_item}>1 User</li>
+								<li className={styles.free_offers_item}>Unlimited Previews</li>
+								<li className={styles.free_offers_item}>and more!!!</li>
 							</ul>
 							<hr />
 						</aside>
 					</div>
 				</div>
-				<div className={styles.footer_container}>yayaya</div>
 			</div>
 		</>
 	);

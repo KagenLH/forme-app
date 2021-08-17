@@ -1,5 +1,5 @@
 .page_container {
-	min-height: 100vh;
+	/* min-height: 67vh; */
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -84,6 +84,11 @@
 	/* margin-bottom: 2em; */
 	font-size: 1.4em;
 	letter-spacing: 3px;
+	cursor: pointer;
+}
+
+.submit_button:hover {
+	background-color: #62da64;
 }
 
 .input_label {
@@ -138,7 +143,7 @@ hr {
 	margin: 2em auto;
 }
 
-ul {
+.free_offers {
 	list-style-type: none;
 	text-align: center;
 	margin: 0;
@@ -146,11 +151,11 @@ ul {
 	display: block;
 }
 
-li {
+.free_offers_item {
 	margin-bottom: 7px;
 	display: list-item;
 	font-weight: 400;
 	color: #858484;
 	letter-spacing: 1px;
 	font-size: 18px;
-}
+} 
