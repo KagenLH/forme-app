@@ -5,11 +5,15 @@ from app.models import Form, db
 form_routes = Blueprint("forms", __name__)
 
 
+# get all forms
 @form_routes.route('/')
 # @login_required
 def forms():
     forms = Form.query.all()
     return {'forms': [form.to_dict() for form in forms]}
+
+
+# TODO: create route for getting a specific form by primary key
 
 
 # delete a specific form by primary key
