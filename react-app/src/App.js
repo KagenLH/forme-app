@@ -10,13 +10,14 @@ import User from './components/User';
 import HomePage from './components/HomePage/HomePage';
 import Footer from './components/Footer';
 import { authenticate } from './store/session';
+import BuildForm from './components/Forms';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -37,16 +38,19 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path="/forms" exact={true}>
+          <BuildForm />
+        </Route>
         <Route path='/' exact={true} >
-          <HomePage/>
+          <HomePage />
         </Route>
       </Switch>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }
