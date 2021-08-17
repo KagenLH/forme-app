@@ -61,22 +61,21 @@ function Forms() {
                                     <th>Name</th>
                                 </tr>
                             </thead>
+                            <>
                             <tbody>
-                                <tr>
-                                    <td>{/* form title */}Form title goes here</td>
-                                </tr>
-                            </tbody>
+                                {finalForm?.map(form => {
+                                    return (
+                                        <>
+                                            <tr>
+                                                <td key={form?.id}>{form?.title}</td>
+                                                <td onClick={() => handleDeleteForm(form?.id)}>Delete</td>
+                                            </tr>
+                                        </>
+                                    )
+                                })}
+                                </tbody>
+                                </>
                         </table>
-                        {finalForm?.map(form => {
-                            return (
-                                <div>
-                                    <ul>
-                                        <li key={form?.id}>{form?.title}</li>
-                                        <button onClick={() => handleDeleteForm(form?.id)}>Delete</button>
-                                    </ul>
-                                </div>
-                            )
-                        })}
                     </div>
                 </div>
             </div>
