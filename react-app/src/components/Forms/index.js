@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getForms, deleteForm, createForm } from '../../store/forms.js'
 
@@ -20,29 +20,29 @@ function Forms() {
     }
 
     //! testing only
-    const formData = {
-        id: 9,
-        owner_id: 1,
-        title: "Testing form creation",
-        description: "This form tests form creation.",
-        title_align: null,
-        label_align: null,
-        description_align: null
-    }
+    // const formData = {
+    //     id: 9,
+    //     owner_id: 1,
+    //     title: "Testing form creation",
+    //     description: "This form tests form creation.",
+    //     title_align: null,
+    //     label_align: null,
+    //     description_align: null
+    // }
 
-    //! testing form creation
-    const handleSubmit = async (formData) => {
-        await dispatch(createForm(formData))
-        await dispatch(getForms())
-    }
+    // new form submission -- this function works properly
+    //! move to another component?
+    // const handleSubmit = async (formData) => {
+    //     await dispatch(createForm(formData))
+    //     await dispatch(getForms())
+    // }
 
 
     let finalForm = forms?.forms
     return (
         <>
             <h1>Build Form Test</h1>
-            {/* <p>{forms}</p> */}
-            <button onClick={() => handleSubmit(formData)}>Create Form</button>
+            <button>Create Form</button>
             {finalForm?.map(form => {
                 return (
                 <div>
