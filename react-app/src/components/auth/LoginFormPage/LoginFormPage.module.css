@@ -1,7 +1,3 @@
-.email_test {
-	border: 4px solid chartreuse;
-}
-
 .page_container {
 	min-height: 100vh;
 	display: flex;
@@ -79,6 +75,12 @@
 	background: #fff;
 	font-weight: 400;
 	margin-bottom: 2em;
+	word-spacing: 2px;
+	letter-spacing: 1px;
+}
+
+.email::placeholder {
+	color: #9c9c9c;
 }
 
 .password {
@@ -93,6 +95,11 @@
 	background: #fff;
 	font-weight: 400;
 	margin-bottom: 2em;
+	letter-spacing: 1px;
+}
+
+.password::placeholder {
+	color: #9c9c9c;
 }
 
 .submit_button {
@@ -106,16 +113,19 @@
 	font-weight: 400;
 	margin-bottom: 2em;
 	font-size: 1em;
+	letter-spacing: 2px;
 }
 
 .first_time_message {
 	margin-bottom: 1.2em;
 	color: #6d696e;
+	letter-spacing: 0.5px;
 }
 
 .create {
 	color: #28acd8;
 	text-decoration: none;
+	letter-spacing: 0.5px;
 }
 
 .create:hover {
@@ -127,11 +137,13 @@
 	margin-top: 0.7em;
 	font-size: 0.85em;
 	margin-bottom: 0.7em;
+	letter-spacing: 0.5px;
 }
 
 .demo {
 	color: #28acd8;
 	text-decoration: none;
+	letter-spacing: 0.5px;
 }
 
 .demo:hover {

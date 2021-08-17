@@ -1,0 +1,156 @@
+.page_container {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.middle_container {
+	width: 100%;
+	font-family: "Lato", sans-serif;
+	height: 800px;
+	padding: 1.111em 3em;
+}
+
+.footer_container {
+	width: 100%;
+	height: 750px;
+	border: 5px solid chartreuse;
+}
+
+.welcome_block {
+	margin: 0em auto 1.5em;
+	text-align: center;
+	position: relative;
+}
+
+.welcome {
+	font-size: 1.9em;
+	font-weight: lighter;
+	color: #585858;
+	margin: 0.67em 0;
+	display: block;
+	margin-bottom: 30px;
+	letter-spacing: 1px;
+}
+
+.create_login {
+	margin-bottom: 0;
+	font-size: 0.99em;
+	line-height: 24px;
+	color: #6d696e;
+}
+
+.form_container {
+	height: 647px;
+	width: 100%;
+	text-align: center;
+	display: block;
+	max-width: 1200px;
+	margin: 0 0%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.form_block {
+	margin-top: 1em;
+	display: inline-block;
+	float: none;
+	width: 66.66667%;
+	margin: 0 0%;
+	position: relative;
+	height: 447px;
+}
+
+.form {
+	margin: 0;
+	border: 1px solid #ede8e8;
+	border-radius: 5px;
+	padding: 3em 2em;
+	background: #f8fafb;
+	height: 560px;
+}
+
+.submit_button {
+	background-color: #61e064;
+	color: #fff;
+	width: 100%;
+	height: 2.7em;
+	position: relative;
+	box-shadow: none;
+	border: 0;
+	font-weight: 400;
+	margin-top: 0.1em;
+	/* margin-bottom: 2em; */
+	font-size: 1.4em;
+	letter-spacing: 3px;
+}
+
+.input_label {
+	text-align: left;
+	display: block;
+	color: #888888;
+	margin-bottom: 7px;
+}
+
+.input_fields {
+	width: 100%;
+	display: block;
+	padding: 0 0.5em;
+	height: 3.2em;
+	outline: 0;
+	border: 1px solid #ede8e8;
+	color: #3a3a3a;
+	position: relative;
+	background: #fff;
+	font-weight: 400;
+	margin-bottom: 2em;
+	font-size: 0.95em;
+}
+
+.input_fields::placeholder {
+	color: #9c9c9c;
+}
+
+.feature_container {
+	text-align: center;
+	display: inline;
+	float: right;
+	width: 25%;
+	margin: 0 0%;
+	position: relative;
+	height: 414px;
+}
+
+.free {
+	color: #69c5e4;
+	text-align: center;
+	font-weight: 600;
+	font-size: 36px;
+	margin-bottom: 0.97762rem;
+}
+
+hr {
+	background-color: #f8fafb;
+	height: 5px;
+	border: 0;
+	width: 75%;
+	margin: 2em auto;
+}
+
+ul {
+	list-style-type: none;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+li {
+	margin-bottom: 7px;
+	display: list-item;
+	font-weight: 400;
+	color: #858484;
+	letter-spacing: 1px;
+	font-size: 18px;
+}
