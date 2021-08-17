@@ -100,7 +100,7 @@ const SignUpFormPage = () => {
 								</div>
 								<div>
 									<label className={styles.input_label}>
-										* Confirm Password
+										* CONFIRM PASSWORD
 									</label>
 									<input
 										className={styles.input_fields}
