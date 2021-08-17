@@ -55,5 +55,82 @@
 	bottom: 2px;
 }
 
-.option_text {
+.form_preview {
+	padding: 35px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.form_preview_title {
+	border-bottom: 1px dotted #ccc;
+	padding-bottom: 15px;
+}
+
+.actual_title {
+	font-size: 21px;
+	letter-spacing: 1px;
+}
+
+.form_description {
+	font-size: 12px;
+	letter-spacing: 0.75px;
+	color: #555555;
+	margin-top: 5px;
+}
+
+.add_field_tab {
+	padding: 15px;
+}
+
+.field_settings_tab {
+	padding: 15px;
+}
+
+.form_settings_tab {
+	padding: 15px;
+}
+
+.form_settings_label {
+	color: #333;
+	font-size: 13px;
+	letter-spacing: 0.5px;
+	text-align: left;
+	font-weight: bold;
+	padding: 0 0 3px 0;
+	width: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-bottom: 4px;
+	display: inline-block;
+}
+
+.input_boxes {
+	border-radius: 5px;
+	border: 1px solid #a1a1a1;
+	padding: 3px;
+	margin-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+.form_title_container {
+	position: relative;
+	width: 100%;
+}
+
+.form_settings_title {
+	width: 100%;
+}
+
+.form_settings_description {
+	width: 100%;
+	height: 60px;
+	resize: none;
+}
+
+.dropdown_boxes {
+	border-radius: 5px;
+	border: 1px solid #a1a1a1;
+	padding: 3px;
+	margin-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
 }
