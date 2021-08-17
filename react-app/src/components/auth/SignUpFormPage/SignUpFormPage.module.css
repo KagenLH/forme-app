@@ -138,7 +138,7 @@ hr {
 	margin: 2em auto;
 }
 
-ul {
+.free_offers {
 	list-style-type: none;
 	text-align: center;
 	margin: 0;
@@ -146,11 +146,11 @@ ul {
 	display: block;
 }
 
-li {
+.free_offers_item {
 	margin-bottom: 7px;
 	display: list-item;
 	font-weight: 400;
 	color: #858484;
 	letter-spacing: 1px;
 	font-size: 18px;
-}
+} 

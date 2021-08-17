@@ -121,13 +121,13 @@ const SignUpFormPage = () => {
 						<aside className={styles.feature_container}>
 							<h3 className={styles.free}>FREE</h3>
 							<hr />
-							<ul>
-								<li>Forms</li>
-								<li>Shared Forms</li>
-								<li>Multiple Fields</li>
-								<li>1 User</li>
-								<li>Unlimited Previews</li>
-								<li>and more!!!</li>
+							<ul className={styles.free_offers}>
+								<li className={styles.free_offers_item}>Forms</li>
+								<li className={styles.free_offers_item}>Shared Forms</li>
+								<li className={styles.free_offers_item}>Multiple Fields</li>
+								<li className={styles.free_offers_item}>1 User</li>
+								<li className={styles.free_offers_item}>Unlimited Previews</li>
+								<li className={styles.free_offers_item}>and more!!!</li>
 							</ul>
 							<hr />
 						</aside>
