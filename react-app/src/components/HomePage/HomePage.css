@@ -1,0 +1,180 @@
+.homepage-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.homepage-content {
+    position: relative;
+    padding-left: 25px;
+    width: 1200px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.homepage-banner {
+    position: relative;
+    display: flex;
+    top: 125px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 25px;
+}
+
+.homepage-banner-text {
+    width: 690px;
+    padding: 0px 78px 128px 0px;
+}
+
+.homepage-banner-header {
+    color: #3a3a3a;
+    line-height: 80%;
+    letter-spacing: 1.25px;
+    font: 52px National, Helvetica, sans-serif;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.homepage-banner-subtext {
+    font: 22px National, Helvetica, sans-serif;
+    color: #3a3a3a;
+    letter-spacing: 2.05px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.homepage-banner-footer {
+    font: 16px National, Helvetica, sans-serif;
+    color: #3a3a3a;
+    letter-spacing: 1.2px;
+    line-height: 1.5;
+}
+
+.homepage-dino {
+    position: relative;
+    top: 225px;
+}
+
+.homepage-dino-image {
+    position: relative;
+    width: 480px;
+    height: 288px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.homepage-dino-text {
+    position: relative;
+    margin-top: 20px;
+    width: 585px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #6E6C6C;
+}
+
+.homepage-dino-header {
+    font: 26px National, Helvetica, sans-serif;
+    letter-spacing: 1.25px;
+}
+
+.homepage-dino-footer {
+    margin-top: 15px;
+    letter-spacing: 1.1px;
+}
+
+.homepage-scene {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 400px;
+    background-color: #5bc1e0;
+    right: 50%;
+    transform: translateX(-16%);
+    height: 290px;
+    width: 300%;
+    overflow: hidden;
+}
+
+.homepage-scene-text {
+    position: relative;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.homepage-scene-header {
+    font: 44px National, Helvetica, sans-serif;
+    margin-bottom: 25px;
+}
+
+.homepage-scene-subtext {
+    font: 24px National, Helvetica, Arial, sans-serif;
+    margin-bottom: 35px;
+}
+
+.homepage-scene-signup-button {
+    position: relative;
+    display: block;
+    color: white;
+    text-decoration: none;
+    background-color: #25D670;
+    border: 1px solid #6AF26E;
+    width: 250px;
+    height: 45px;
+    transition: 0.2s ease-in-out;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.homepage-scene-signup-button:hover {
+    background-color: #6AF26E;
+}
+
+.homepage-scene-signup-text {
+    position: absolute;
+    width: 100%;
+    left: 75%;
+    top: 50%;
+    font: 19px National, Helvetica, Arial, sans-serif;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+}
+
+.homepage-scene-raptor {
+    position: absolute;
+    left: 30%;
+    top: 25px;
+}
+
+.homepage-scene-cloud1 {
+    position: absolute;
+    width: 110px;
+    left: 33%;
+    bottom: 25px;
+    opacity: 0.25;
+}
+
+.homepage-scene-cloud2 {
+    position: absolute;
+    width: 110px;
+    right: 30%;
+    top: 25px;
+    opacity: 0.25;
+}
+
+.homepage-scene-dino {
+    position: absolute;
+    right: 30%;
+    bottom: -10px;
+}
+ 
+.fill-form-image {
+    position: relative;
+    width: 105%;
+    bottom: 10%;
+}
+
