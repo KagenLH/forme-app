@@ -37,6 +37,22 @@ export const getForms = () => async (dispatch) => {
     }
 }
 
+// create a single form
+export const createForm = (formData) => async (dispatch) => {
+    const res = await fetch(`api/forms/create`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    })
+
+    if (res.ok) {
+        const form = res.json()
+        dispatch(add(form))
+    }
+}
+
 // deletes a form
 export const deleteForm = (id) => async (dispatch) => {
     const res = await fetch(`api/forms/${id}`, {
