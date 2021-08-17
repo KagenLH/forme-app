@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getForms, deleteForm, createForm } from '../../store/forms.js'
+import './Forms.css'
 
 function Forms() {
     const dispatch = useDispatch()
@@ -43,7 +44,7 @@ function Forms() {
         <div className='form-manager-container'>
             <div className='form-manager-page-header'>
                 <div className='form-manager-header'>
-                    <h1>Forms</h1>
+                    <h1 id='form-manager-title'>Forms</h1>
                 </div>
                 <div className='form-manager-actions'>
                     <button>Create Form</button>
@@ -55,7 +56,7 @@ function Forms() {
                 </div>
                 <div className='form-manager-forms'>
                     <div className='form-table'>
-                        <table>
+                        <table className='TBD'>
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -66,9 +67,9 @@ function Forms() {
                                 {finalForm?.map(form => {
                                     return (
                                         <>
-                                            <tr>
-                                                <td key={form?.id}>{form?.title}</td>
-                                                <td onClick={() => handleDeleteForm(form?.id)}>Delete</td>
+                                            <tr className='form-table-rows'>
+                                                <td className='form-table-data' key={form?.id}>{form?.title}</td>
+                                                <td className='delete-buttons form-table-data' onClick={() => handleDeleteForm(form?.id)}>Delete</td>
                                             </tr>
                                         </>
                                     )
