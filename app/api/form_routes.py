@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-# from flask_login import login_required
+from flask_login import login_required
 from app.models import Form, db
 
 form_routes = Blueprint("forms", __name__)
@@ -14,6 +14,19 @@ def forms():
 
 
 # TODO: create route for getting a specific form by primary key
+
+
+@form_routes.route('/create', methods=['POST'])
+@login_required
+# TODO: figure out how to get form data from req body
+def create_form():
+    form = Form()
+    # form.populate_obj()
+
+    db.session.add(form)
+    db.sesion.commit()
+
+    return {"confirmation": "Routing SUCCESS"}  # form
 
 
 # delete a specific form by primary key
