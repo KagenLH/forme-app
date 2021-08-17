@@ -1,0 +1,50 @@
+.engine_container {
+	display: flex;
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.settings_panel {
+	height: calc(100% - 80px);
+	width: 370px;
+	border-right: 1px solid rgb(164, 202, 239);
+	background-color: rgb(235, 244, 251);
+}
+
+.form_preview {
+	height: 100%;
+	width: 630px;
+}
+
+.tabs {
+	background-color: #cfe7ff;
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+	text-align: left;
+}
+
+.field_settings {
+	color: #666666;
+	font-size: 13px;
+	margin: 4px 0px 0px;
+	padding: 4px 6px 4px 25px;
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	/* align-items: center; */
+	cursor: pointer;
+}
+
+.field_settings:hover {
+	color: black;
+}
+
+.field_settings:hover > .caret {
+	color: rgb(103, 175, 26);
+}
+
+.caret {
+	margin-right: 6px;
+	font-size: 16px;
+}

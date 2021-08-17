@@ -1,7 +1,7 @@
 import styles from "./TopBar.module.css";
 
 const TopBar = () => {
-	return <h1>TopBar</h1>;
+	return <div className={styles.topbar}>Top</div>;
 };
 
 export default TopBar;
