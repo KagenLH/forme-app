@@ -56,10 +56,10 @@ function Forms() {
                 </div>
                 <div className='form-manager-forms'>
                     <div className='form-table'>
-                        <table className='TBD'>
-                            <thead>
+                        <table>
+                            <thead className="table-head">
                                 <tr>
-                                    <th>Name</th>
+                                    <th className="column-title-name">Name</th>
                                 </tr>
                             </thead>
                             <>
