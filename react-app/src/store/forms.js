@@ -1,7 +1,7 @@
 // TODO: create type constants
-const LOAD = 'forms/load'
-const ADD = 'forms/add'
-const REMOVE = 'forms/remove'
+const LOAD = 'forms/LOAD'
+const ADD = 'forms/ADD'
+const REMOVE = 'forms/REMOVE'
 
 // action creators
 // for loading any number of forms
@@ -62,7 +62,7 @@ export const deleteForm = (id) => async (dispatch) => {
     if (res.ok) {
         const form = await res.json()
         dispatch(remove(form))
-        return form
+        // return form
     }
 }
 
@@ -93,9 +93,9 @@ const formsReducer = (state = initialState, action) => {
 
         case REMOVE:
             // removes forms from the state
-                const newState = Object.assign({}, state)
-                delete newState[action.form.id]
-                return { ...newState }
+            const newState = Object.assign({}, state)
+            delete newState[action.form.id]
+            return newState
         default:
             return state
     }
