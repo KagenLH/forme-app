@@ -24,11 +24,17 @@ const NavBar = () => {
       </ul>
       <ul className="navbar-auth-links">
       <li>
+          {user === null ?
+          (
           <NavLink to='/sign-up' exact={true} className="navbar-auth-links-signup">
             <span className="navbar-signup-text">
               Sign Up
             </span>
           </NavLink>
+          )
+          :
+          null
+          }
       </li>
       {user === null ?
       (<li>

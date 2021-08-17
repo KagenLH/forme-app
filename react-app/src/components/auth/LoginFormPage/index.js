@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../../store/session";
-import AuthHeader from "../AuthHeader";
 import styles from "./LoginFormPage.module.css";
 
 const LoginFormPage = () => {
@@ -29,13 +28,16 @@ const LoginFormPage = () => {
 		setPassword(e.target.value);
 	};
 
+	const loginDemo = async () => {
+		await dispatch(login('demo@aa.io', 'password'));
+	};
+
 	if (user) {
 		return <Redirect to="/" />;
 	}
 
 	return (
 		<>
-			<AuthHeader />
 			<div className={styles.page_container}>
 				<div className={styles.middle_container}>
 					<div className={styles.welcome_block}>
@@ -85,7 +87,7 @@ const LoginFormPage = () => {
 										<div>Create an account</div>
 									</Link>
 									<p className={styles.or}>Or</p>
-									<p className={styles.demo}>
+									<p className={styles.demo} onClick={loginDemo}>
 										Login as Demo User
 									</p>
 								</div>
@@ -93,7 +95,6 @@ const LoginFormPage = () => {
 						</div>
 					</div>
 				</div>
-				<div className={styles.footer_container}>yayaya</div>
 			</div>
 		</>
 	);

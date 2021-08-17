@@ -1,5 +1,5 @@
 .page_container {
-	min-height: 100vh;
+	/* min-height: 67vh; */
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -84,6 +84,11 @@
 	/* margin-bottom: 2em; */
 	font-size: 1.4em;
 	letter-spacing: 3px;
+	cursor: pointer;
+}
+
+.submit_button:hover {
+	background-color: #62da64;
 }
 
 .input_label {

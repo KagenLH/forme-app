@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../../store/session";
-import AuthHeader from "../AuthHeader";
 import styles from "./SignUpFormPage.module.css";
 
 const SignUpFormPage = () => {
@@ -46,7 +45,6 @@ const SignUpFormPage = () => {
 
 	return (
 		<>
-			<AuthHeader />
 			<div className={styles.page_container}>
 				<div className={styles.middle_container}>
 					<div className={styles.welcome_block}>
@@ -133,7 +131,6 @@ const SignUpFormPage = () => {
 						</aside>
 					</div>
 				</div>
-				<div className={styles.footer_container}>yayaya</div>
 			</div>
 		</>
 	);
