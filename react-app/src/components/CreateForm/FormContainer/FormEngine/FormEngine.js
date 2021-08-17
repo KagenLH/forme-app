@@ -34,7 +34,7 @@ const FormEngine = () => {
 								<i className={"fas fa-caret-right"}></i>
 							</span>
 						)}
-						<span>Add a Field</span>
+						<span className={styles.option_text}>Add a Field</span>
 					</li>
 					<li
 						onClick={() => {
@@ -50,7 +50,9 @@ const FormEngine = () => {
 								<i className={"fas fa-caret-right"}></i>
 							</span>
 						)}
-						<span>Field Settings</span>
+						<span className={styles.option_text}>
+							Field Settings
+						</span>
 					</li>
 					<li
 						onClick={() => {
@@ -66,7 +68,9 @@ const FormEngine = () => {
 								<i className={"fas fa-caret-right"}></i>
 							</span>
 						)}
-						<span>Form Settings</span>
+						<span className={styles.option_text}>
+							Form Settings
+						</span>
 					</li>
 				</ul>
 			</div>

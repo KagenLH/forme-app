@@ -20,20 +20,22 @@
 .tabs {
 	background-color: #cfe7ff;
 	display: flex;
-	justify-content: space-around;
 	list-style: none;
 	text-align: left;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .field_settings {
 	color: #666666;
-	font-size: 13px;
+	font-size: 12px;
 	margin: 4px 0px 0px;
 	padding: 4px 6px 4px 25px;
 	font-family: Arial, Helvetica, sans-serif;
 	display: flex;
 	/* align-items: center; */
 	cursor: pointer;
+	position: relative;
 }
 
 .field_settings:hover {
@@ -45,6 +47,13 @@
 }
 
 .caret {
-	margin-right: 6px;
+	margin-right: 9px;
 	font-size: 16px;
+	max-width: 6px;
+	overflow: visible;
+	position: relative;
+	bottom: 2px;
+}
+
+.option_text {
 }
