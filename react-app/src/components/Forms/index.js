@@ -4,7 +4,7 @@ import { getForms, deleteForm, createForm } from '../../store/forms.js'
 
 function Forms() {
     const dispatch = useDispatch()
-    const forms = useSelector(state => state.form)
+    const forms = useSelector(state => state.forms)
 
     useEffect(() => {
         dispatch(getForms())
