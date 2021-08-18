@@ -30,10 +30,11 @@ export const getForms = () => async (dispatch) => {
     // console.log('*****RES*****', res)
 
     if (res.ok) {
-        const forms = await res.json()
-        // console.log('jsoned returned', forms)
+        const data = await res.json()
+        const { forms } = data
+        console.log('*** GET THUNK ***', forms)
         dispatch(load(forms))
-        return forms
+        // return forms
     }
 }
 
@@ -61,6 +62,7 @@ export const deleteForm = (id) => async (dispatch) => {
 
     if (res.ok) {
         const form = await res.json()
+        console.log(' *** THUNK FORM ITEM ***', form)
         dispatch(remove(form))
         // return form
     }
@@ -71,10 +73,11 @@ const formsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
             const allForms = {}
-            // action.form.forEach(form => allForms[form.id] = form)
-            for (let form in action.form) {
-                allForms[form] = action.form.forms
-            }
+            action.form.forEach(form => allForms[form.id] = form)
+                console.log(' *** LOAD REDUCER ***', allForms)
+            // for (let form in action.form) {
+            //     allForms[form] = action.form.forms
+            // }
             return {
                 ...allForms,
                 ...state
@@ -86,16 +89,20 @@ const formsReducer = (state = initialState, action) => {
                     ...state,
                     [action.form.id]: action.form
                 }
+                console.log('*** REDUCER ADD ***', action.form.id)
                 return newState
             }
-            // TODO: do stuff for edited forms
+            // TODO: do stuff for edited forms?
             break
 
         case REMOVE:
             // removes forms from the state
-            const newState = Object.assign({}, state)
+            const newState = { ...state } // Object.assign({}, state)
+
+            console.log('*** DELETED FORM STATE ITEM ***', newState.forms[action.form.id])
             delete newState[action.form.id]
-            return {...newState}
+            return newState
+
         default:
             return state
     }
