@@ -341,6 +341,97 @@ const FormEngine = () => {
 						{formDescription}
 					</div>
 				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{formDescription}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{formDescription}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{formDescription}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{formDescription}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{formDescription}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{formDescription}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{formDescription}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{formDescription}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{"hshfsudfhsadhfakdfj"}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{"hshfsudfhsadhfakdfj"}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{"hshfsudfhsadhfakdfj"}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{"hshfsudfhsadhfakdfj"}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{"hshfsudfhsadhfakdfj"}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{"hshfsudfhsadhfakdfj"}
+					</div>
+				</div>
+				<div className={styles.form_preview_title}>
+					<div className={styles.actual_title}>{formTitle}</div>
+					<div className={styles.form_description}>
+						{"hshfsudfhsadhfakdfj"}
+					</div>
+				</div>
+				<div className={styles.share_save_footer}></div>
 			</div>
 		</div>
 	);
