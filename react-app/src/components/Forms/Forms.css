@@ -1,3 +1,4 @@
+
 .form-manager-container {
     margin: auto;
 }
@@ -42,21 +43,41 @@ tr.form-table-rows {
     margin-left: 80px;
 }
 
+td.form-actions {
+    display: flex;
+    /* align-content: center; */
+    justify-items: space-between;
+    /* height: 20px; */
+    /* margin: 0 50px; */
+}
+
 td.delete-buttons  {
-    justify-content: center;
+    justify-content: space-between;
+    justify-self: center;
+    align-self: center;
     margin-right: 50px;
     background-color: rgb(243, 83, 83);
     border-radius: 5% / 10%;
-    padding: 10px 15px 25px;
+    /* padding: 10px 15px 25px; */
+    padding: 10px;
     /* border: none; */
     font-size: 12px;
     color: #fff;
-    height: 30px;
-    width: 65px;
+    /* height: 10px; */
+    /* width: 65px; */
 }
 
-td.delete-buttons:hover {
+td.delete-buttons:hover, i.fa-share-alt-square:hover {
     cursor: pointer;
+}
+
+
+i.fa-share-alt-square {
+    font-size: 38px;
+    /* padding: 10px 15px; */
+    margin-right: 15px;
+    color: #2685c6;
+
 }
 
 td.form-table-data {
