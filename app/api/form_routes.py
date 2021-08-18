@@ -5,6 +5,7 @@ from app.models import Form, db
 form_routes = Blueprint("forms", __name__)
 
 
+# TODO: refactor (or create new route) to get forms by owner_id
 # get all forms
 @form_routes.route('/')
 # @login_required
@@ -13,7 +14,7 @@ def forms():
     return {'forms': [form.to_dict() for form in forms]}
 
 
-# TODO: create route for getting a specific form by primary key
+# TODO: create route for getting a specific form by primary key (if needed)
 
 
 @form_routes.route('/create', methods=['POST'])
@@ -36,7 +37,7 @@ def create_form():
     db.session.add(form)
     db.session.commit()
 
-    return form
+    return form.to_dict()
 
 
 # delete a specific form by primary key
@@ -46,4 +47,4 @@ def delete(id):
 
     db.session.delete(form)
     db.session.commit()
-    return form
+    return form.to_dict()

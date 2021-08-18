@@ -1,27 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getForms, deleteForm, createForm } from '../../store/forms.js'
+import './Forms.css'
 
 function Forms() {
     const dispatch = useDispatch()
-    const forms = useSelector(state => state.form)
+    const forms = useSelector(state => state.forms)
+
 
     useEffect(() => {
         dispatch(getForms())
     }, [dispatch])
 
-    // console.log('forms array', forms)
-    // console.log('inside forms object', forms?.forms)
+    // console.log('*** COMPONENT FORM DATA ***', Object.values(forms))
 
     // TODO: make it so forms delete immediately without a refresh
     const handleDeleteForm = async (formId) => {
         await dispatch(deleteForm(formId))
-        await dispatch(getForms())
     }
 
     //! testing only
     const formData = {
-        id: 9,
         owner_id: 1,
         title: "Testing form creation",
         description: "This form tests form creation.",
@@ -30,30 +29,56 @@ function Forms() {
         description_align: null
     }
 
-    //! testing form creation
+    // used for testing new form creation
+    //! move to another component?
     const handleSubmit = async (formData) => {
         await dispatch(createForm(formData))
         await dispatch(getForms())
     }
 
 
-    let finalForm = forms?.forms
+    // let finalForm = forms?.forms
     return (
-        <>
-            <h1>Build Form Test</h1>
-            {/* <p>{forms}</p> */}
-            <button onClick={() => handleSubmit(formData)}>Create Form</button>
-            {finalForm?.map(form => {
-                return (
-                <div>
-                    <ul>
-                        <li key={form?.id}>{form?.title}</li>
-                        <button onClick={() => handleDeleteForm(form?.id)}>Delete</button>
-                    </ul>
+        <div className='form-manager-container'>
+            <div className='form-manager-page-header'>
+                <div className='form-manager-header'>
+                    <h1 id='form-manager-title'>Forms</h1>
+                </div>
+                <div className='form-manager-actions'>
+                    <button className="form-create-button"> + Create New Form</button>
+                </div>
+            </div>
+            <div className='forms-area'>
+                <div className='utility-bar'>
+                    {/* search bar */}
+                </div>
+                <div className='form-manager-forms'>
+                    <div className='form-table'>
+                        <table>
+                            <thead className="table-head">
+                                <tr>
+                                    <th className="column-title-name">Name</th>
+                                </tr>
+                            </thead>
+                            <>
+                            <tbody>
+                                    {Object.values(forms)?.map(form => {
+                                    return (
+                                        <>
+                                            <tr className='form-table-rows'>
+                                                <td className='form-table-data' key={form?.id}>{form?.title}</td>
+                                                <td className='delete-buttons' onClick={(e) => handleDeleteForm(form?.id)}> - Delete Form</td>
+                                            </tr>
+                                        </>
+                                    )
+                                })}
+                                </tbody>
+                                </>
+                        </table>
                     </div>
-                )
-            })}
-        </>
+                </div>
+            </div>
+        </div>
     )
 }
 

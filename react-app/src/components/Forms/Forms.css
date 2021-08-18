@@ -1,0 +1,106 @@
+.form-manager-page-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 96px;
+    padding: 0px 32px;
+}
+
+h1#form-manager-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin: 20.1px 0;
+    font-weight: 100;
+}
+
+.forms-area {
+    background-color: #f6f7fb;
+    padding-bottom: 64px;
+    border-top: 1px solid #E6E9EE;
+}
+
+/* 
+.form-manager-actions {
+    /* margin: 0px -12px;
+} 
+*/
+
+tr.form-table-rows {
+    display: flex;
+    background-color: white;
+    border: solid 1px rgba(128, 128, 128, .8);
+    width: 702px;
+    height: 92px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    margin-left: 80px;
+}
+
+td.delete-buttons  {
+    justify-content: center;    
+    margin-right: 50px;
+    background-color: rgb(243, 83, 83);
+    padding: 3px;
+    border: none;
+    font-size: 10px;        
+    color: #fff;
+    height: 15px;
+    width: 45px;
+}
+
+td.delete-buttons:hover {
+    cursor: pointer;
+}
+
+td.form-table-data {
+    margin-left: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 200;
+}
+
+table {
+    width: 702px;
+}
+
+/* td.form-table-data {
+    background-color: white;
+    border: solid 1px rgba(128, 128, 128, .3);
+    size: 702px 92px;
+} */
+
+.form-table {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    border-color: gray;
+    display: flex;
+    justify-content: center;
+}
+
+button.form-create-button {
+    justify-content: center;
+    background-color: #2685c6;
+    font-weight: 500;
+    color: #fff;
+    padding: 0 20px;
+    height: 30px;
+    border: none;
+}
+
+th.column-title-name {
+    padding-left: 15px;
+}
+
+thead.table-head {
+    background-color: #d0d2d3;
+    display: flex;
+    justify-self: left;
+    margin-left: 80px;
+    font-size: 12px;
+    margin-bottom: -5px;
+    margin-top: 15px;
+    height: 25px;
+    align-content: center;
+    padding-top: 3px;
+}
