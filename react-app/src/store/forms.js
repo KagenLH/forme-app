@@ -24,6 +24,7 @@ const remove = (form) => ({
 
 // THUNK ACTIONS
 
+// TODO: refactor to get forms associated with a user (i.e. by owner_id)
 // get all forms
 export const getForms = () => async (dispatch) => {
     const res = await fetch(`/api/forms/`)
@@ -31,8 +32,9 @@ export const getForms = () => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json()
+        // reduce nesting of data, pull out the array
         const { forms } = data
-        console.log('*** GET THUNK ***', forms)
+        // console.log('*** GET THUNK ***', forms)
         dispatch(load(forms))
         // return forms
     }
@@ -49,7 +51,7 @@ export const createForm = (formData) => async (dispatch) => {
     })
 
     if (res.ok) {
-        const form = res.json()
+        const form = await res.json()
         dispatch(add(form))
     }
 }
@@ -62,7 +64,6 @@ export const deleteForm = (id) => async (dispatch) => {
 
     if (res.ok) {
         const form = await res.json()
-        console.log(' *** THUNK FORM ITEM ***', form)
         dispatch(remove(form))
         // return form
     }
@@ -74,22 +75,21 @@ const formsReducer = (state = initialState, action) => {
         case LOAD:
             const allForms = {}
             action.form.forEach(form => allForms[form.id] = form)
-                console.log(' *** LOAD REDUCER ***', allForms)
-            // for (let form in action.form) {
-            //     allForms[form] = action.form.forms
-            // }
+            // console.log(' *** LOAD REDUCER ***', allForms)
+
             return {
                 ...allForms,
                 ...state
             }
         case ADD:
             // adds new forms to state
+            console.log('*** ACTION.FORM ***', action.form)
             if (!state[action.form.id]) {
                 const newState = {
                     ...state,
                     [action.form.id]: action.form
                 }
-                console.log('*** REDUCER ADD ***', action.form.id)
+                console.log('*** REDUCER ADD ***', newState[action.form.id])
                 return newState
             }
             // TODO: do stuff for edited forms?
@@ -97,11 +97,11 @@ const formsReducer = (state = initialState, action) => {
 
         case REMOVE:
             // removes forms from the state
-            const newState = { ...state } // Object.assign({}, state)
+            const newState = { ...state } // Object.assign({}, state) <-- same thing
 
-            console.log('*** DELETED FORM STATE ITEM ***', newState.forms[action.form.id])
+            // console.log('*** DELETED FORM STATE ITEM ***', newState.[action.form.id])
             delete newState[action.form.id]
-            return newState
+            return {...newState}
 
         default:
             return state

@@ -7,17 +7,16 @@ function Forms() {
     const dispatch = useDispatch()
     const forms = useSelector(state => state.forms)
 
+
     useEffect(() => {
         dispatch(getForms())
     }, [dispatch])
 
-    // console.log('forms array', forms)
-    // console.log('inside forms object', forms?.forms)
+    // console.log('*** COMPONENT FORM DATA ***', Object.values(forms))
 
     // TODO: make it so forms delete immediately without a refresh
     const handleDeleteForm = async (formId) => {
         await dispatch(deleteForm(formId))
-        // await dispatch(getForms())
     }
 
     //! testing only
@@ -30,7 +29,7 @@ function Forms() {
         description_align: null
     }
 
-    // new form submission -- this function works properly
+    // used for testing new form creation
     //! move to another component?
     const handleSubmit = async (formData) => {
         await dispatch(createForm(formData))
@@ -46,7 +45,7 @@ function Forms() {
                     <h1 id='form-manager-title'>Forms</h1>
                 </div>
                 <div className='form-manager-actions'>
-                    <button className="form-create-button" onClick={() => handleSubmit(formData)}> + Create New Form</button>
+                    <button className="form-create-button"> + Create New Form</button>
                 </div>
             </div>
             <div className='forms-area'>
@@ -63,7 +62,7 @@ function Forms() {
                             </thead>
                             <>
                             <tbody>
-                                    {forms?.forms?.map(form => {
+                                    {Object.values(forms)?.map(form => {
                                     return (
                                         <>
                                             <tr className='form-table-rows'>
