@@ -57,20 +57,26 @@ td.delete-buttons  {
     align-self: center;
     margin-right: 50px;
     background-color: rgb(243, 83, 83);
-    border-radius: 5% / 10%;
+    /* border-radius: 6% / 12%; */
+    border-radius: 12%;
     /* padding: 10px 15px 25px; */
-    padding: 10px;
+    /* padding: 10px; */
     /* border: none; */
     font-size: 12px;
     color: #fff;
-    /* height: 10px; */
-    /* width: 65px; */
+    /* height: 38px;
+    width: 33.25px; */
 }
 
-td.delete-buttons:hover, i.fa-share-alt-square:hover {
+i.fa-trash:hover, i.fa-share-alt-square:hover, button.form-create-button:hover {
     cursor: pointer;
 }
 
+
+i.fa-trash {
+    font-size: 21px;
+    padding: 7px 7px 6px 7px;
+}
 
 i.fa-share-alt-square {
     font-size: 38px;
@@ -98,7 +104,7 @@ table {
 
 .form-table {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     border-color: gray;
     display: flex;
     justify-content: center;
@@ -126,7 +132,7 @@ thead.table-head {
     display: flex;
     justify-self: left;
     margin-left: 80px;
-    font-size: 12px;
+    font-size: 16px;
     margin-bottom: -5px;
     margin-top: 15px;
     height: 25px;

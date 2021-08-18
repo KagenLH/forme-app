@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserForms, deleteForm, createForm } from '../../store/forms.js'
 import './Forms.css'
 
+// TODO: Make SHARE button functional
 function Forms() {
     //! SUCCESSFULLY ONLY LOADS FORMS OWNED BY CURRENT USER
     //! BUT LOADS NEWLY CREATED FORMS WITH ANY owner_id
@@ -46,7 +47,7 @@ function Forms() {
 
     //! testing only
     // const formData3 = {
-    //     owner_id: 2, // should only show up if you are logged in as bobbie@aa.io
+    //     owner_id: 3, // should only show up if you are logged in as bobbie@aa.io
     //     title: "Testing form ownership",
     //     description: "This form tests form ownership for Bobbie.",
     //     title_align: null,
@@ -92,8 +93,8 @@ function Forms() {
                                                 <tr className='form-table-rows'>
                                                     <td className='form-table-data' key={form?.id}>{form?.title}</td>
                                                     <td className='form-actions'>
-                                                        <td className='share-buttons' key={form?.id}><i className="fa fa-share-alt-square" aria-hidden="true"/></td>
-                                                        <td className='delete-buttons' onClick={(e) => handleDeleteForm(form?.id)}> Delete</td>
+                                                        <td className='share-buttons' key={form?.id}><i className="fa fa-share-alt-square" title='Share' aria-hidden="true"/></td>
+                                                        <td className='delete-buttons' onClick={(e) => handleDeleteForm(form?.id)}><i className="fa fa-trash" title='Delete' aria-hidden="true"/></td>
                                                     </td>
                                                 </tr>
                                             </>
