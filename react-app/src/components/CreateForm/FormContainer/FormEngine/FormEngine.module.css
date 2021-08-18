@@ -17,6 +17,56 @@
 	width: 630px;
 }
 
+.add_field_constructor {
+	padding: 15px 12px 15px 19px;
+	clear: both;
+	height: 430px;
+	width: 369px;
+}
+
+.button_container {
+	width: 338px;
+	height: 400px;
+	position: relative;
+	font-family: Helvetica;
+}
+
+.standard_text {
+	font-size: 13px;
+	font-weight: 600;
+	padding: 4px 0px;
+	color: #236abf;
+}
+
+.left_col_stand {
+	list-style: none;
+	float: left;
+	width: 165px;
+	height: 128px;
+	margin: 5px 0 7px 0;
+}
+
+.right_col_stand {
+	list-style: none;
+	float: right;
+	width: 165px;
+	height: 128px;
+	margin: 5px 0 7px 0;
+}
+
+.standard_button_container {
+	margin-bottom: 6px;
+	position: relative;
+}
+
+.field_settings_constructor {
+	padding: 15px;
+}
+
+.form_settings_constructor {
+	padding: 15px;
+}
+
 .tabs {
 	background-color: #cfe7ff;
 	display: flex;
@@ -27,32 +77,61 @@
 }
 
 .field_settings {
-	color: #666666;
+	color: #666;
 	font-size: 12px;
 	margin: 4px 0px 0px;
 	padding: 4px 6px 4px 25px;
 	font-family: Arial, Helvetica, sans-serif;
-	display: flex;
+	/* display: flex; */
 	/* align-items: center; */
 	cursor: pointer;
 	position: relative;
+	border: 1px solid rgb(164, 202, 239);
+	border-bottom: none;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 12px;
+	text-align: left;
 }
 
 .field_settings:hover {
-	color: black;
+	color: rgb(44, 44, 44);
 }
 
-.field_settings:hover > .caret {
-	color: rgb(103, 175, 26);
+.field_settings:hover > .caret_right {
+	/* color: rgb(103, 175, 26); */
+	color: #e9c14a;
 }
 
-.caret {
+.caret_right {
 	margin-right: 9px;
-	font-size: 16px;
+	font-size: 18px;
 	max-width: 6px;
 	overflow: visible;
 	position: relative;
-	bottom: 2px;
+	/* bottom: 2px; */
+	right: 10px;
+	top: 2px;
+}
+
+.caret_down {
+	margin-right: 9px;
+	font-size: 18px;
+	max-width: 6px;
+	overflow: visible;
+	position: relative;
+	/* bottom: 2px; */
+	right: 10px;
+	top: 1px;
+	/* color: #e9c14a; */
+	color: rgb(103, 175, 26);
+}
+
+.option_text {
+	position: relative;
+	right: 15px;
+	font-weight: 400;
 }
 
 .form_preview {
@@ -85,10 +164,6 @@
 	padding: 15px;
 }
 
-.form_settings_tab {
-	padding: 15px;
-}
-
 .form_settings_label {
 	color: #333;
 	font-size: 13px;
@@ -104,7 +179,7 @@
 
 .input_boxes {
 	border-radius: 5px;
-	border: 1px solid #a1a1a1;
+	border: 1px solid #ccc;
 	padding: 3px;
 	margin-bottom: 5px;
 	font-family: Arial, Helvetica, sans-serif;
@@ -128,7 +203,7 @@
 
 .dropdown_boxes {
 	border-radius: 5px;
-	border: 1px solid #a1a1a1;
+	border: 1px solid #ccc;
 	padding: 3px;
 	margin-bottom: 5px;
 	font-family: Arial, Helvetica, sans-serif;

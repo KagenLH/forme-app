@@ -35,11 +35,11 @@ const FormEngine = () => {
 						}}
 						className={styles.field_settings}>
 						{activeTab === "add" ? (
-							<span className={styles.caret}>
+							<span className={styles.caret_down}>
 								<i class="fas fa-caret-down"></i>
 							</span>
 						) : (
-							<span className={styles.caret}>
+							<span className={styles.caret_right}>
 								<i className={"fas fa-caret-right"}></i>
 							</span>
 						)}
@@ -51,11 +51,11 @@ const FormEngine = () => {
 						}}
 						className={styles.field_settings}>
 						{activeTab === "field" ? (
-							<span className={styles.caret}>
+							<span className={styles.caret_down}>
 								<i class="fas fa-caret-down"></i>
 							</span>
 						) : (
-							<span className={styles.caret}>
+							<span className={styles.caret_right}>
 								<i className={"fas fa-caret-right"}></i>
 							</span>
 						)}
@@ -69,11 +69,11 @@ const FormEngine = () => {
 						}}
 						className={styles.field_settings}>
 						{activeTab === "form" ? (
-							<span className={styles.caret}>
+							<span className={styles.caret_down}>
 								<i class="fas fa-caret-down"></i>
 							</span>
 						) : (
-							<span className={styles.caret}>
+							<span className={styles.caret_right}>
 								<i className={"fas fa-caret-right"}></i>
 							</span>
 						)}
@@ -83,17 +83,111 @@ const FormEngine = () => {
 					</li>
 				</ul>
 				{activeTab === "add" ? (
-					<div className={styles.add_field_tab}>
-						<h1>Yeet1</h1>
+					<div className={styles.add_field_constructor}>
+						<div className={styles.button_container}>
+							<h3 className={styles.standard_text}>Standard</h3>
+							<ul className={styles.left_col_stand}>
+								<li
+									className={
+										styles.standard_button_container
+									}>
+									<a
+										className={`${styles.standard_button}`}
+										href="#">
+										<b></b>
+										Single Line Text
+									</a>
+								</li>
+								<li
+									className={
+										styles.standard_button_container
+									}>
+									<a
+										className={`${styles.standard_button}`}
+										href="#">
+										<b></b>
+										Paragraph Text
+									</a>
+								</li>
+								<li
+									className={
+										styles.standard_button_container
+									}>
+									<a
+										className={`${styles.standard_button}`}
+										href="#">
+										<b></b>
+										Multiple Choice
+									</a>
+								</li>
+								<li
+									className={
+										styles.standard_button_container
+									}>
+									<a
+										className={`${styles.standard_button}`}
+										href="#">
+										<b></b>
+										Section Break
+									</a>
+								</li>
+							</ul>
+							<ul className={styles.right_col_stand}>
+								<li
+									className={
+										styles.standard_button_container
+									}>
+									<a
+										className={`${styles.standard_button}`}
+										href="#">
+										<b></b>
+										Number
+									</a>
+								</li>
+								<li
+									className={
+										styles.standard_button_container
+									}>
+									<a
+										className={`${styles.standard_button}`}
+										href="#">
+										<b></b>
+										Checkboxes
+									</a>
+								</li>
+								<li
+									className={
+										styles.standard_button_container
+									}>
+									<a
+										className={`${styles.standard_button}`}
+										href="#">
+										<b></b>
+										Dropdown
+									</a>
+								</li>
+								<li
+									className={
+										styles.standard_button_container
+									}>
+									<a
+										className={`${styles.standard_button}`}
+										href="#">
+										<b></b>
+										Pagebreak
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
 				) : null}
 				{activeTab === "field" ? (
-					<div className={styles.field_settings_tab}>
+					<div className={styles.field_settings_constructor}>
 						<h1>Yeet2</h1>
 					</div>
 				) : null}
 				{activeTab === "form" ? (
-					<div className={styles.form_settings_tab}>
+					<div className={styles.form_settings_constructor}>
 						<form>
 							<label className={styles.form_settings_label}>
 								Form Title
