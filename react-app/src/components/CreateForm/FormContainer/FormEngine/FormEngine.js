@@ -91,45 +91,74 @@ const FormEngine = () => {
 									className={
 										styles.standard_button_container
 									}>
-									<a
+									<button
 										className={`${styles.standard_button}`}
 										href="#">
-										<b></b>
-										Single Line Text
-									</a>
+										<b
+											className={
+												styles.single_line_text_icon
+											}></b>
+										<span
+											className={
+												styles.single_line_text_text
+											}>
+											Single Line Text
+										</span>
+									</button>
 								</li>
 								<li
 									className={
 										styles.standard_button_container
 									}>
-									<a
+									<button
 										className={`${styles.standard_button}`}
 										href="#">
-										<b></b>
-										Paragraph Text
-									</a>
+										<b
+											className={
+												styles.paragraph_text_icon
+											}></b>
+										<span
+											className={
+												styles.paragraph_text_text
+											}>
+											Paragraph Text
+										</span>
+									</button>
 								</li>
 								<li
 									className={
 										styles.standard_button_container
 									}>
-									<a
+									<button
 										className={`${styles.standard_button}`}
 										href="#">
-										<b></b>
-										Multiple Choice
-									</a>
+										<b
+											className={
+												styles.multiple_choice_icon
+											}></b>
+										<span
+											className={
+												styles.multiple_choice_text
+											}>
+											Multiple Choice
+										</span>
+									</button>
 								</li>
 								<li
 									className={
 										styles.standard_button_container
 									}>
-									<a
-										className={`${styles.standard_button}`}
+									<button
+										className={`${styles.standard_button} ${styles.section_break_button}`}
 										href="#">
 										<b></b>
-										Section Break
-									</a>
+										<span
+											className={
+												styles.section_break_text
+											}>
+											Section Break
+										</span>
+									</button>
 								</li>
 							</ul>
 							<ul className={styles.right_col_stand}>
@@ -137,45 +166,54 @@ const FormEngine = () => {
 									className={
 										styles.standard_button_container
 									}>
-									<a
+									<button
 										className={`${styles.standard_button}`}
 										href="#">
-										<b></b>
-										Number
-									</a>
+										<b className={styles.number_icon}></b>
+										<span className={styles.number_text}>
+											Number
+										</span>
+									</button>
 								</li>
 								<li
 									className={
 										styles.standard_button_container
 									}>
-									<a
+									<button
 										className={`${styles.standard_button}`}
 										href="#">
-										<b></b>
-										Checkboxes
-									</a>
+										<b className={styles.checkbox_icon}></b>
+										<span
+											className={styles.checkboxes_text}>
+											Checkboxes
+										</span>
+									</button>
 								</li>
 								<li
 									className={
 										styles.standard_button_container
 									}>
-									<a
+									<button
 										className={`${styles.standard_button}`}
 										href="#">
-										<b></b>
-										Dropdown
-									</a>
+										<b className={styles.dropdown_icon}></b>
+										<span className={styles.dropdown_text}>
+											Dropdown
+										</span>
+									</button>
 								</li>
 								<li
 									className={
 										styles.standard_button_container
 									}>
-									<a
-										className={`${styles.standard_button}`}
+									<button
+										className={`${styles.standard_button} ${styles.page_break_button}`}
 										href="#">
 										<b></b>
-										Pagebreak
-									</a>
+										<span className={styles.pagebreak_text}>
+											Pagebreak
+										</span>
+									</button>
 								</li>
 							</ul>
 						</div>

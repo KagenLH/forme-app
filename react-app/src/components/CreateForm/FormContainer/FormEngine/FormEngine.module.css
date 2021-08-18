@@ -55,8 +55,169 @@
 }
 
 .standard_button_container {
-	margin-bottom: 6px;
+	margin-bottom: 10px;
 	position: relative;
+	width: 165px;
+	height: 26px;
+}
+
+.standard_button {
+	padding: 4px 0 4px 34px;
+	position: relative;
+	border: 1px solid #eee;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%);
+	border-radius: 9px;
+	margin: 0 0.7em 0 0;
+	background-color: #f8fafb;
+	color: #464646;
+	cursor: pointer;
+	text-decoration: none;
+	line-height: 130%;
+	background-clip: padding-box;
+	width: 157px;
+	height: 26px;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: 1px;
+}
+
+.section_break_button {
+	border: 1px solid #c2e1ef;
+	background-color: #dff4ff;
+	color: #336699;
+}
+
+.page_break_button {
+	border: 1px solid #efd1d1;
+	background: #ffe5e3;
+	color: #af2b2b;
+}
+
+.single_line_text_icon {
+	line-height: 24px;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	position: absolute;
+	left: 8px;
+	bottom: 1px;
+	background-image: url(../../../../../src/assets/images/icons8-abc-30.png);
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.single_line_text_text {
+	float: left;
+	padding-left: 4px;
+}
+
+.paragraph_text_icon {
+	line-height: 24px;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	position: absolute;
+	left: 8px;
+	bottom: 1px;
+	background-image: url(../../../../../src/assets/images/icons8-paragraph-48.png);
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.paragraph_text_text {
+	float: left;
+	padding-left: 4px;
+}
+
+.multiple_choice_icon {
+	line-height: 24px;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	position: absolute;
+	left: 8px;
+	bottom: 1px;
+	background-image: url(../../../../../src/assets/images/icons8-single-choice-24.png);
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.multiple_choice_text {
+	float: left;
+	padding-left: 4px;
+}
+
+.number_icon {
+	line-height: 24px;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	position: absolute;
+	left: 8px;
+	bottom: 1px;
+	background-image: url(../../../../../src/assets/images/icons8-numbers-48.png);
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.number_text {
+	float: left;
+	padding-left: 4px;
+}
+
+.checkbox_icon {
+	line-height: 24px;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	position: absolute;
+	left: 8px;
+	bottom: 1px;
+	background-image: url(../../../../../src/assets/images/icons8-checked-checkbox-48.png);
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.checkboxes_text {
+	float: left;
+	padding-left: 4px;
+}
+
+.dropdown_icon {
+	line-height: 24px;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	position: absolute;
+	left: 8px;
+	bottom: 1px;
+	background-image: url(../../../../../src/assets/images/icons8-dropdown-field-24.png);
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.dropdown_text {
+	float: left;
+	padding-left: 4px;
+}
+
+.pagebreak_text {
+	float: left;
+	padding-left: 8px;
+}
+
+.section_break_text {
+	position: relative;
+	right: 15px;
 }
 
 .field_settings_constructor {
