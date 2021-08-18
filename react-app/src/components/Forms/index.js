@@ -91,7 +91,7 @@ function Forms() {
                                             <>
                                                 <tr className='form-table-rows'>
                                                     <td className='form-table-data' key={form?.id}>{form?.title}</td>
-                                                    <td className='delete-buttons' onClick={(e) => handleDeleteForm(form?.id)}> - Delete Form</td>
+                                                    <td className='delete-buttons' onClick={(e) => handleDeleteForm(form?.id)}> Delete</td>
                                                 </tr>
                                             </>
                                         )

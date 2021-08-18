@@ -74,7 +74,7 @@ export const createForm = (formData) => async (dispatch) => {
 
 // deletes a form
 export const deleteForm = (id) => async (dispatch) => {
-    const res = await fetch(`/api/forms/${id}/`, {
+    const res = await fetch(`/api/forms/${id}`, {
         method: 'DELETE'
     })
 

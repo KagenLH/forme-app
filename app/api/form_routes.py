@@ -14,12 +14,20 @@ def get_forms():
 
 
 # get forms by owner_id (i.e. all forms owned by a specific user)
-@form_routes.route('/<int:id>')
+@form_routes.route('/<int:id>', methods=['GET', 'DELETE'])
 @login_required
-def get_user_forms(id):
-    forms = Form.query.filter_by(owner_id=id).all()
-    print('*** BACKEND USER FORMS ***', forms)
-    return {'forms': [form.to_dict() for form in forms]}
+def user_forms(id):
+    # get forms by owner_id (i.e. all forms owned by a specific user)
+    if request.method == 'GET':
+        forms = Form.query.filter_by(owner_id=id).all()  # takes a user's id
+        return {'forms': [form.to_dict() for form in forms]}
+    # delete a specific form by primary key
+    elif request.method == 'DELETE':
+        form = Form.query.get(id)  # takes a form's id
+
+        db.session.delete(form)
+        db.session.commit()
+        return form.to_dict()
 
 
 # TODO: create route for getting a specific form by primary key (if needed)
@@ -48,11 +56,14 @@ def create_form():
     return form.to_dict()
 
 
+#! currently causes error "405 method not allowed"
+#! when not bundled with `user_forms(id)` above
 # delete a specific form by primary key
-@form_routes.route('/<int:id>', methods=['DELETE'])
-def delete_form(id):
-    form = Form.query.get(id)
+# @form_routes.route('/<int:id>', methods=['DELETE'])
+# def delete_form(id):
+#     if request.method == 'DELETE':
+#         form = Form.query.get(id)
 
-    db.session.delete(form)
-    db.session.commit()
-    return form.to_dict()
+#         db.session.delete(form)
+#         db.session.commit()
+#         return form.to_dict()
