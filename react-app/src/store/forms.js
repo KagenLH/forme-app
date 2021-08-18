@@ -24,8 +24,8 @@ const remove = (form) => ({
 
 // THUNK ACTIONS
 
-// TODO: refactor to get forms associated with a user (i.e. by owner_id)
-// get all forms
+// TODO: refactor (or create new thunk) to get forms associated with a user (i.e. by owner_id)
+// get ALL forms
 export const getForms = () => async (dispatch) => {
     const res = await fetch(`/api/forms/`)
     // console.log('*****RES*****', res)
@@ -40,9 +40,25 @@ export const getForms = () => async (dispatch) => {
     }
 }
 
+
+// get all forms that belong to a specific user
+export const getUserForms = (userId) => async (dispatch) => {
+    const res = await fetch(`api/forms/${userId}`)
+    // console.log('*** GET USER FORMS THUNK - RES ***', res)
+
+    if (res.ok) {
+        const data = await res.json()
+        // console.log('*** GET USER FORMS THUNK - DATA ***', data)
+        const { forms } = data
+        // console.log('*** GET USER FORMS THUNK - FORMS ***', forms)
+        dispatch(load(forms))
+    }
+}
+
+
 // create a single form
 export const createForm = (formData) => async (dispatch) => {
-    const res = await fetch(`api/forms/create`, {
+    const res = await fetch(`/api/forms/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -58,7 +74,7 @@ export const createForm = (formData) => async (dispatch) => {
 
 // deletes a form
 export const deleteForm = (id) => async (dispatch) => {
-    const res = await fetch(`api/forms/${id}`, {
+    const res = await fetch(`/api/forms/${id}/`, {
         method: 'DELETE'
     })
 
@@ -83,13 +99,13 @@ const formsReducer = (state = initialState, action) => {
             }
         case ADD:
             // adds new forms to state
-            console.log('*** ACTION.FORM ***', action.form)
+            // console.log('*** ACTION.FORM ***', action.form)
             if (!state[action.form.id]) {
                 const newState = {
                     ...state,
                     [action.form.id]: action.form
                 }
-                console.log('*** REDUCER ADD ***', newState[action.form.id])
+                // console.log('*** REDUCER ADD ***', newState[action.form.id])
                 return newState
             }
             // TODO: do stuff for edited forms?
@@ -99,9 +115,9 @@ const formsReducer = (state = initialState, action) => {
             // removes forms from the state
             const newState = { ...state } // Object.assign({}, state) <-- same thing
 
-            // console.log('*** DELETED FORM STATE ITEM ***', newState.[action.form.id])
+            // console.log('*** DELETED FORM STATE ITEM ***', newState[action.form.id])
             delete newState[action.form.id]
-            return {...newState}
+            return { ...newState }
 
         default:
             return state

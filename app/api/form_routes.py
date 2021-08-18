@@ -5,12 +5,20 @@ from app.models import Form, db
 form_routes = Blueprint("forms", __name__)
 
 
-# TODO: refactor (or create new route) to get forms by owner_id
 # get all forms
 @form_routes.route('/')
 # @login_required
-def forms():
-    forms = Form.query.all()
+def get_forms():
+    forms = Form.query.all()  # original query for ALL forms
+    return {'forms': [form.to_dict() for form in forms]}
+
+
+# get forms by owner_id (i.e. all forms owned by a specific user)
+@form_routes.route('/<int:id>')
+@login_required
+def get_user_forms(id):
+    forms = Form.query.filter_by(owner_id=id).all()
+    print('*** BACKEND USER FORMS ***', forms)
     return {'forms': [form.to_dict() for form in forms]}
 
 
@@ -42,7 +50,7 @@ def create_form():
 
 # delete a specific form by primary key
 @form_routes.route('/<int:id>', methods=['DELETE'])
-def delete(id):
+def delete_form(id):
     form = Form.query.get(id)
 
     db.session.delete(form)
