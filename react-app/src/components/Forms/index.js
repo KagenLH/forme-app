@@ -17,7 +17,7 @@ function Forms() {
     // TODO: make it so forms delete immediately without a refresh
     const handleDeleteForm = async (formId) => {
         await dispatch(deleteForm(formId))
-        // await dispatch(getForms())
+        await dispatch(getForms())
     }
 
     //! testing only

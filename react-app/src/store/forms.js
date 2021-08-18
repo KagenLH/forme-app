@@ -95,7 +95,7 @@ const formsReducer = (state = initialState, action) => {
             // removes forms from the state
             const newState = Object.assign({}, state)
             delete newState[action.form.id]
-            return newState
+            return {...newState}
         default:
             return state
     }

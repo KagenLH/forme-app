@@ -36,7 +36,7 @@ def create_form():
     db.session.add(form)
     db.session.commit()
 
-    return form
+    return form.to_dict()
 
 
 # delete a specific form by primary key
@@ -46,4 +46,4 @@ def delete(id):
 
     db.session.delete(form)
     db.session.commit()
-    return form
+    return form.to_dict()
