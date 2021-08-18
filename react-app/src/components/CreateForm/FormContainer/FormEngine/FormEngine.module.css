@@ -10,6 +10,7 @@
 	width: 370px;
 	border-right: 1px solid rgb(164, 202, 239);
 	background-color: rgb(235, 244, 251);
+	border-bottom-left-radius: 6px;
 }
 
 .form_preview {
