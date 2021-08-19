@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getUserForms, deleteForm, createForm } from '../../store/forms.js'
 import FormsTable from './FormsTable.js';
+import {Link} from 'react-router-dom'
 import './Forms.css'
 
 // TODO: Make SHARE button functional
@@ -75,7 +76,7 @@ function FormsManager() {
                     <h1 id='form-manager-title'>Forms</h1>
                 </div>
                 <div className='form-manager-actions'>
-                    <button className="form-create-button"> + Create New Form</button>
+                    <Link to="/forms/build"><button className="form-create-button"> + Create New Form</button></Link>
                 </div>
             </div>
             <div className='forms-area'>
