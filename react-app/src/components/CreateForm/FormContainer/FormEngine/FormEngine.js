@@ -27,9 +27,10 @@ const FormEngine = () => {
 		instructions: "",
 	});
 
-	const [multiLineValue, setMultiLineValue] = useState("")
-
 	const [jsxContent, setJsxContent] = useState([]);
+	const [multiLineValue, setMultiLineValue] = useState("")
+	const [multiChoiceValue, setMultiChoiceValue] = useState("")
+	const [numberValue, setNumberValue] = useState("")
 
 	const toggleTab = (tab) => {
 		if (tab === "add") {
@@ -56,16 +57,16 @@ const FormEngine = () => {
 					activeTab === "add"
 						? `${styles.settings_panel_add}`
 						: activeTab === "field"
-						? `${styles.settings_panel_field}`
-						: `${styles.settings_panel_form}`
+							? `${styles.settings_panel_field}`
+							: `${styles.settings_panel_form}`
 				}>
 				<ul
 					className={
 						activeTab === "add"
 							? `${styles.add_field_tab_container}`
 							: activeTab === "field"
-							? `${styles.field_settings_tab_container}`
-							: `${styles.form_settings_tab_container}`
+								? `${styles.field_settings_tab_container}`
+								: `${styles.form_settings_tab_container}`
 					}>
 					<li
 						onClick={() => {
@@ -186,6 +187,15 @@ const FormEngine = () => {
 										styles.standard_button_container
 									}>
 									<button
+										onClick={() => {
+											const jsx = createMultipleChoice(
+												multiChoiceValue,
+												setMultiChoiceValue
+											);
+											setJsxContent((prevState) => {
+												return [...prevState, jsx];
+											});
+										}}
 										className={`${styles.standard_button}`}
 										href="#">
 										<b
@@ -223,6 +233,15 @@ const FormEngine = () => {
 										styles.standard_button_container
 									}>
 									<button
+										onClick={() => {
+											const jsx = createNumericInput(
+												numberValue,
+												setNumberValue
+											);
+											setJsxContent((prevState) => {
+												return [...prevState, jsx];
+											});
+										}}
 										className={`${styles.standard_button}`}
 										href="#">
 										<b className={styles.number_icon}></b>
