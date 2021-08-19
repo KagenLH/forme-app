@@ -22,12 +22,12 @@ const FormEngine = () => {
 		labelPlacement: "top",
 	});
 
-	const [textValueOption, setTextValueOption] = useState({
-		label: "",
-		instructions: "",
-	});
-
 	const [jsxContent, setJsxContent] = useState([]);
+	const [multiLineValue, setMultiLineValue] = useState("")
+	const [multiChoiceValue, setMultiChoiceValue] = useState("")
+	const [numberValue, setNumberValue] = useState("")
+	const [selectValue, setSelectValue] = useState("")
+	const [checkboxValue, setcheckboxValue] = useState("")
 
 	const toggleTab = (tab) => {
 		if (tab === "add") {
@@ -41,12 +41,6 @@ const FormEngine = () => {
 		}
 	};
 
-	// const insertToPreview = (jsx) => {
-	// 	setJsxContent((prevState) => {
-	// 		return prevState;
-	// 	});
-	// };
-
 	return (
 		<div className={styles.engine_container}>
 			<div
@@ -54,16 +48,16 @@ const FormEngine = () => {
 					activeTab === "add"
 						? `${styles.settings_panel_add}`
 						: activeTab === "field"
-						? `${styles.settings_panel_field}`
-						: `${styles.settings_panel_form}`
+							? `${styles.settings_panel_field}`
+							: `${styles.settings_panel_form}`
 				}>
 				<ul
 					className={
 						activeTab === "add"
 							? `${styles.add_field_tab_container}`
 							: activeTab === "field"
-							? `${styles.field_settings_tab_container}`
-							: `${styles.form_settings_tab_container}`
+								? `${styles.field_settings_tab_container}`
+								: `${styles.form_settings_tab_container}`
 					}>
 					<li
 						onClick={() => {
@@ -156,6 +150,15 @@ const FormEngine = () => {
 										styles.standard_button_container
 									}>
 									<button
+										onClick={() => {
+											const jsx = createMultiLineText(
+												multiLineValue,
+												setMultiLineValue
+											);
+											setJsxContent((prevState) => {
+												return [...prevState, jsx];
+											});
+										}}
 										className={`${styles.standard_button}`}
 										href="#">
 										<b
@@ -175,6 +178,15 @@ const FormEngine = () => {
 										styles.standard_button_container
 									}>
 									<button
+										onClick={() => {
+											const jsx = createMultipleChoice(
+												multiChoiceValue,
+												setMultiChoiceValue
+											);
+											setJsxContent((prevState) => {
+												return [...prevState, jsx];
+											});
+										}}
 										className={`${styles.standard_button}`}
 										href="#">
 										<b
@@ -212,6 +224,15 @@ const FormEngine = () => {
 										styles.standard_button_container
 									}>
 									<button
+										onClick={() => {
+											const jsx = createNumericInput(
+												numberValue,
+												setNumberValue
+											);
+											setJsxContent((prevState) => {
+												return [...prevState, jsx];
+											});
+										}}
 										className={`${styles.standard_button}`}
 										href="#">
 										<b className={styles.number_icon}></b>
@@ -221,6 +242,15 @@ const FormEngine = () => {
 									</button>
 								</li>
 								<li
+									onClick={() => {
+										const jsx = createCheckboxField(
+											checkboxValue,
+											setcheckboxValue
+										);
+										setJsxContent((prevState) => {
+											return [...prevState, jsx];
+										});
+									}}
 									className={
 										styles.standard_button_container
 									}>
@@ -239,6 +269,15 @@ const FormEngine = () => {
 										styles.standard_button_container
 									}>
 									<button
+										onClick={() => {
+											const jsx = createSelectField(
+												selectValue,
+												setSelectValue
+											);
+											setJsxContent((prevState) => {
+												return [...prevState, jsx];
+											});
+										}}
 										className={`${styles.standard_button}`}
 										href="#">
 										<b className={styles.dropdown_icon}></b>
