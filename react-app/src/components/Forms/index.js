@@ -25,6 +25,11 @@ function FormsManager() {
         await dispatch(deleteForm(formId))
     }
 
+    // TODO: create modal and update this function for sharing forms
+    const handleShareForm = (formId) => {
+        const shareLink = `http://www.forme-live.herokuapp.com/forms/${formId}/shared`
+    }
+
     //! testing only
     // const formData = {
     //     owner_id: user.id,

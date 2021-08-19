@@ -1,4 +1,5 @@
 import React from 'react'
+import ShareFormLinkModal from './ShareFormLinkModal.js';
 
 function FormsTableBody({ forms, handleDeleteForm, user }) {
     console.log('PROPS DATA', forms, user)
@@ -18,7 +19,8 @@ function FormsTableBody({ forms, handleDeleteForm, user }) {
                                     <td className='form-table-data' key={form.id}>{form.title}</td>
                                     <td className='form-actions'>
                                         <td className='share-buttons' key={form.id}>
-                                            <i className="fa fa-share-alt-square" title='Share' aria-hidden="true" />
+                                            {/* <i className="fa fa-share-alt-square" title='Share' aria-hidden="true" /> */}
+                                            <ShareFormLinkModal formId={form.id} />
                                         </td>
                                         { // only render delete button if user owns form
                                             user.id === form.owner_id ? (

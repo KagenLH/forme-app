@@ -40,7 +40,8 @@ def shared_form(id):
 @form_routes.route('/users/<int:id>')
 def user_forms(id):  # takes a user's id
     forms = Form.query.filter_by(owner_id=id).all()
-    return {'forms': [form.to_dict() for form in forms]}  # destructure in forms store
+    # destructure in forms store
+    return {'forms': [form.to_dict() for form in forms]}
 
 
 @form_routes.route('/create', methods=['POST'])

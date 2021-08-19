@@ -1,0 +1,23 @@
+div#modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+div#modal-background {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+div#modal-background, div#modal {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+div#modal-content {
+    position: absolute;
+    background-color: white;
+}
