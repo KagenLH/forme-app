@@ -5,4 +5,7 @@
 	margin: 0 auto;
 	/* transform: translateX(-50%); */
 	box-shadow: rgb(0 0 0 / 20%) 0px 0px 5px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	height: 100%;
 }
