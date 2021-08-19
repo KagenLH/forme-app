@@ -2,18 +2,14 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getUserForms, deleteForm, createForm } from '../../store/forms.js'
-import FormsTableBody from './FormsTableBody.js';
+import FormsTable from './FormsTable.js';
 import './Forms.css'
 
 // TODO: Make SHARE button functional
 // TODO: Add form description under form title in form manager list (?)
 //? forme-live.herokuapp.com
 function FormsManager() {
-    //! SUCCESSFULLY ONLY LOADS FORMS OWNED BY CURRENT USER
-    //! BUT LOADS NEWLY CREATED FORMS WITH ANY owner_id
-    //! UNTIL PAGE IS REFRESHED
     const dispatch = useDispatch()
-    // const forms = Object.values(useSelector(state => state.forms))
     const forms = useSelector(state => state.forms)
     const { user } = useSelector(state => state.session) // get the logged in user's info
 
@@ -82,16 +78,7 @@ function FormsManager() {
                     {/* search bar */}
                 </div>
                 <div className='form-manager-forms'>
-                    <div className='form-table'>
-                        <table>
-                            <thead className="table-head">
-                                <tr>
-                                    <th className="column-title-name">Name</th>
-                                </tr>
-                            </thead>
-                            <FormsTableBody forms={forms} handleDeleteForm={handleDeleteForm} user={user} />
-                        </table>
-                    </div>
+                    <FormsTable forms={forms} handleDeleteForm={handleDeleteForm} user={user} />
                 </div>
             </div>
         </div>

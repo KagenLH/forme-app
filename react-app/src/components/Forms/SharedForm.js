@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getSharedForm } from '../../store/forms.js'
 import './Forms.css'
 
+// Do we actually need this component? -DR
+
 function SharedForm() {
     const dispatch = useDispatch()
     const form = useSelector(state => state.forms)
