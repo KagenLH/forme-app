@@ -33,7 +33,7 @@ const FormEngine = () => {
 						onClick={() => {
 							toggleTab("add");
 						}}
-						className={styles.field_settings}>
+						className={`${styles.field_settings} ${styles.add_field_tab}`}>
 						{activeTab === "add" ? (
 							<span className={styles.caret_down}>
 								<i class="fas fa-caret-down"></i>
@@ -49,7 +49,7 @@ const FormEngine = () => {
 						onClick={() => {
 							toggleTab("field");
 						}}
-						className={styles.field_settings}>
+						className={`${styles.field_settings} ${styles.field_settings_tab}`}>
 						{activeTab === "field" ? (
 							<span className={styles.caret_down}>
 								<i class="fas fa-caret-down"></i>
@@ -67,7 +67,7 @@ const FormEngine = () => {
 						onClick={() => {
 							toggleTab("form");
 						}}
-						className={styles.field_settings}>
+						className={`${styles.field_settings} ${styles.form_settings_tabs}`}>
 						{activeTab === "form" ? (
 							<span className={styles.caret_down}>
 								<i class="fas fa-caret-down"></i>
@@ -431,7 +431,24 @@ const FormEngine = () => {
 						{"hshfsudfhsadhfakdfj"}
 					</div>
 				</div>
-				<div className={styles.share_save_footer}></div>
+				<div className={styles.view_share_footer}>
+					<span className={styles.view_button_wrapper}>
+						<button className={styles.view_button}>
+							<b className={styles.view_button_icon}></b>
+							<span className={styles.view_button_text}>
+								View Form
+							</span>
+						</button>
+					</span>
+					<span className={styles.share_button_wrapper}>
+						<button className={styles.share_button}>
+							<b className={styles.share_button_icon}></b>
+							<span className={styles.share_button_text}>
+								Share Form
+							</span>
+						</button>
+					</span>
+				</div>
 			</div>
 		</div>
 	);
