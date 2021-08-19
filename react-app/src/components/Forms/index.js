@@ -4,6 +4,7 @@ import { getUserForms, deleteForm, createForm } from '../../store/forms.js'
 import './Forms.css'
 
 // TODO: Make SHARE button functional
+// TODO: Add form description under form title in form manager list (?)
 function Forms() {
     //! SUCCESSFULLY ONLY LOADS FORMS OWNED BY CURRENT USER
     //! BUT LOADS NEWLY CREATED FORMS WITH ANY owner_id
@@ -93,8 +94,12 @@ function Forms() {
                                                 <tr className='form-table-rows'>
                                                     <td className='form-table-data' key={form?.id}>{form?.title}</td>
                                                     <td className='form-actions'>
-                                                        <td className='share-buttons' key={form?.id}><i className="fa fa-share-alt-square" title='Share' aria-hidden="true"/></td>
-                                                        <td className='delete-buttons' onClick={(e) => handleDeleteForm(form?.id)}><i className="fa fa-trash" title='Delete' aria-hidden="true"/></td>
+                                                        <td className='share-buttons' key={form?.id}>
+                                                            <i className="fa fa-share-alt-square" title='Share' aria-hidden="true" />
+                                                        </td>
+                                                        <td className='delete-buttons' onClick={(e) => handleDeleteForm(form?.id)}>
+                                                            <i className="fa fa-trash" title='Delete' aria-hidden="true" />
+                                                        </td>
                                                     </td>
                                                 </tr>
                                             </>
