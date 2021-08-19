@@ -27,7 +27,6 @@ const FormEngine = () => {
 
 	return (
 		<div className={styles.engine_container}>
-			{/* <div className={styles.settings_panel}> */}
 			<div
 				className={
 					activeTab === "add"
