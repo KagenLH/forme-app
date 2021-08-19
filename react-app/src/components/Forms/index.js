@@ -1,6 +1,8 @@
-import React, { useEffect, useImperativeHandle } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { getUserForms, deleteForm, createForm } from '../../store/forms.js'
+import FormsTableBody from './FormsTableBody.js';
 import './Forms.css'
 
 // TODO: Make SHARE button functional
@@ -65,7 +67,7 @@ function FormsManager() {
     //     await dispatch(createForm(formData))
     // }
 
-    return (
+    return forms && user ? (
         <div className='form-manager-container'>
             <div className='form-manager-page-header'>
                 <div className='form-manager-header'>
@@ -87,32 +89,14 @@ function FormsManager() {
                                     <th className="column-title-name">Name</th>
                                 </tr>
                             </thead>
-                            <>
-                                <tbody>
-                                    {Object.values(forms)?.map(form => {
-                                        return (
-                                            <>
-                                                <tr className='form-table-rows'>
-                                                    <td className='form-table-data' key={form?.id}>{form?.title}</td>
-                                                    <td className='form-actions'>
-                                                        <td className='share-buttons' key={form?.id}>
-                                                            <i className="fa fa-share-alt-square" title='Share' aria-hidden="true" />
-                                                        </td>
-                                                        <td className='delete-buttons' onClick={(e) => handleDeleteForm(form?.id)}>
-                                                            <i className="fa fa-trash" title='Delete' aria-hidden="true" />
-                                                        </td>
-                                                    </td>
-                                                </tr>
-                                            </>
-                                        )
-                                    })}
-                                </tbody>
-                            </>
+                            <FormsTableBody forms={forms} handleDeleteForm={handleDeleteForm} user={user} />
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+    ) : (
+        <h1>Loading...</h1>
     )
 }
 
