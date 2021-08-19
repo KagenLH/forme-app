@@ -31,6 +31,8 @@ const FormEngine = () => {
 	const [multiLineValue, setMultiLineValue] = useState("")
 	const [multiChoiceValue, setMultiChoiceValue] = useState("")
 	const [numberValue, setNumberValue] = useState("")
+	const [selectValue, setSelectValue] = useState("")
+	const [checkboxValue, setcheckboxValue] = useState("")
 
 	const toggleTab = (tab) => {
 		if (tab === "add") {
@@ -251,6 +253,15 @@ const FormEngine = () => {
 									</button>
 								</li>
 								<li
+									onClick={() => {
+										const jsx = createCheckboxField(
+											checkboxValue,
+											setcheckboxValue
+										);
+										setJsxContent((prevState) => {
+											return [...prevState, jsx];
+										});
+									}}
 									className={
 										styles.standard_button_container
 									}>
@@ -269,6 +280,15 @@ const FormEngine = () => {
 										styles.standard_button_container
 									}>
 									<button
+										onClick={() => {
+											const jsx = createSelectField(
+												selectValue,
+												setSelectValue
+											);
+											setJsxContent((prevState) => {
+												return [...prevState, jsx];
+											});
+										}}
 										className={`${styles.standard_button}`}
 										href="#">
 										<b className={styles.dropdown_icon}></b>
