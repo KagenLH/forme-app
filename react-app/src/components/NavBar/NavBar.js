@@ -13,7 +13,7 @@ const NavBar = () => {
   return (
     <nav className="navbar-container">
       <NavLink to='/' exact={true} activeClassName='active' className="navbar-links-home">
-        <img className="navbar-logo" src={logo} alt="\A"/>
+        <img className="navbar-logo" src={logo} alt="\A" />
       </NavLink>
       <ul className="navbar-links">
         <li>
@@ -22,34 +22,46 @@ const NavBar = () => {
           </NavLink>
         </li>
       </ul>
-      <ul className="navbar-auth-links">
-      <li>
-          {user === null ?
-          (
-          <NavLink to='/sign-up' exact={true} className="navbar-auth-links-signup">
-            <span className="navbar-signup-text">
-              Sign Up
-            </span>
+      {/* <ul className="navbar-links">
+        <li>
+        {user !== null ? (
+            <NavLink to="/forms" activeClassName='active' className="navbar-link">
+            Forms
           </NavLink>
           )
-          :
-          null
+            :
+            null
+        }
+        </li>
+      </ul> */}
+      <ul className="navbar-auth-links">
+        <li>
+          {user === null ?
+            (
+              <NavLink to='/sign-up' exact={true} className="navbar-auth-links-signup">
+                <span className="navbar-signup-text">
+                  Sign Up
+                </span>
+              </NavLink>
+            )
+            :
+            null
           }
-      </li>
-      {user === null ?
-      (<li>
-          <NavLink to='/login' exact={true} className="navbar-auth-links-login">
-            <span className="navbar-login-text" onMouseEnter={(e) => e.target.innerText="RAWRR!"} onMouseLeave={(e) => e.target.innerText="Login"}>
-              Login
-            </span>
-          </NavLink>
-      </li>
-      )
-      :
-      (<li>
-        <LogoutButton/>
-      </li>)
-      }
+        </li>
+        {user === null ?
+          (<li>
+            <NavLink to='/login' exact={true} className="navbar-auth-links-login">
+              <span className="navbar-login-text" onMouseEnter={(e) => e.target.innerText = "RAWRR!"} onMouseLeave={(e) => e.target.innerText = "Login"}>
+                Login
+              </span>
+            </NavLink>
+          </li>
+          )
+          :
+          (<li>
+            <LogoutButton />
+          </li>)
+        }
       </ul>
     </nav>
   );
