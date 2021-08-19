@@ -1,6 +1,13 @@
 import styles from "./FormEngine.module.css";
 import { useState } from "react";
-import { createTextInput } from "@kagenlh/jsxfields";
+import {
+	createTextInput,
+	createMultiLineText,
+	createSelectField,
+	createMultipleChoice,
+	createCheckboxField,
+	createNumericInput,
+} from "@kagenlh/jsxfields";
 
 const FormEngine = () => {
 	const [activeTab, setActiveTab] = useState("add");
@@ -8,12 +15,19 @@ const FormEngine = () => {
 	const [formDescription, setFormDescription] = useState(
 		"This is my form. Please fill it out. It's awesome!"
 	);
-	const [word, setWord] = useState("potato");
+	const [textValue, setTextValue] = useState("");
 	const [formSettings, setFormSettings] = useState({
 		titleAlignment: "left",
 		descriptionAlignment: "left",
 		labelPlacement: "top",
 	});
+
+	const [textValueOption, setTextValueOption] = useState({
+		label: "",
+		instructions: "",
+	});
+
+	const [jsxContent, setJsxContent] = useState([]);
 
 	const toggleTab = (tab) => {
 		if (tab === "add") {
@@ -26,6 +40,12 @@ const FormEngine = () => {
 			setActiveTab("form");
 		}
 	};
+
+	// const insertToPreview = (jsx) => {
+	// 	setJsxContent((prevState) => {
+	// 		return prevState;
+	// 	});
+	// };
 
 	return (
 		<div className={styles.engine_container}>
@@ -108,6 +128,15 @@ const FormEngine = () => {
 										styles.standard_button_container
 									}>
 									<button
+										onClick={() => {
+											const jsx = createTextInput(
+												textValue,
+												setTextValue
+											);
+											setJsxContent((prevState) => {
+												return [...prevState, jsx];
+											});
+										}}
 										className={`${styles.standard_button}`}
 										href="#">
 										<b
@@ -358,10 +387,23 @@ const FormEngine = () => {
 					</div>
 				</div>
 				<div>
-					{createTextInput(word, setWord, {
-						label: "TitleTest",
-						instructions: "Put the lime inside the coconut",
-					})}
+					{jsxContent?.map((jsxcontent) => (
+						<div
+							onClick={() => {
+								setJsxContent((prevState) => {
+									const newState = [...prevState];
+									const deletedIdx = newState.findIndex(
+										(ele) => {
+											return ele === jsxcontent;
+										}
+									);
+									delete newState[deletedIdx];
+									return newState;
+								});
+							}}>
+							{jsxcontent}
+						</div>
+					))}
 				</div>
 				<div className={styles.view_share_footer}>
 					<span className={styles.view_button_wrapper}>
