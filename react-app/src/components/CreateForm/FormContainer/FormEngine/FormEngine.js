@@ -27,13 +27,28 @@ const FormEngine = () => {
 
 	return (
 		<div className={styles.engine_container}>
-			<div className={styles.settings_panel}>
-				<ul className={styles.tabs}>
+			{/* <div className={styles.settings_panel}> */}
+			<div
+				className={
+					activeTab === "add"
+						? `${styles.settings_panel_add}`
+						: activeTab === "field"
+						? `${styles.settings_panel_field}`
+						: `${styles.settings_panel_form}`
+				}>
+				<ul
+					className={
+						activeTab === "add"
+							? `${styles.add_field_tab_container}`
+							: activeTab === "field"
+							? `${styles.field_settings_tab_container}`
+							: `${styles.form_settings_tab_container}`
+					}>
 					<li
 						onClick={() => {
 							toggleTab("add");
 						}}
-						className={`${styles.field_settings} ${styles.add_field_tab}`}>
+						className={`${styles.add_field_tab} ${styles.none_add_field_hide}`}>
 						{activeTab === "add" ? (
 							<span className={styles.caret_down}>
 								<i class="fas fa-caret-down"></i>
@@ -49,7 +64,7 @@ const FormEngine = () => {
 						onClick={() => {
 							toggleTab("field");
 						}}
-						className={`${styles.field_settings} ${styles.field_settings_tab}`}>
+						className={` ${styles.field_settings_tab}`}>
 						{activeTab === "field" ? (
 							<span className={styles.caret_down}>
 								<i class="fas fa-caret-down"></i>
@@ -67,7 +82,7 @@ const FormEngine = () => {
 						onClick={() => {
 							toggleTab("form");
 						}}
-						className={`${styles.field_settings} ${styles.form_settings_tabs}`}>
+						className={`${styles.form_settings_tab}`}>
 						{activeTab === "form" ? (
 							<span className={styles.caret_down}>
 								<i class="fas fa-caret-down"></i>
@@ -211,7 +226,7 @@ const FormEngine = () => {
 										href="#">
 										<b></b>
 										<span className={styles.pagebreak_text}>
-											Pagebreak
+											Page Break
 										</span>
 									</button>
 								</li>

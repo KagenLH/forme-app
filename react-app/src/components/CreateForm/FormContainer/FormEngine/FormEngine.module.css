@@ -7,13 +7,27 @@
 	margin-bottom: 200px;
 }
 
-.settings_panel {
-	/* height: calc(100% - 80px); */
-	/* max-height: 900px; */
+.settings_panel_add {
+	max-height: 100%;
+	width: 370px;
+	border-right: 1px solid rgb(240, 223, 163);
+	background-color: rgb(255, 252, 213);
+	border-bottom-left-radius: 6px;
+}
+
+.settings_panel_field {
 	max-height: 100%;
 	width: 370px;
 	border-right: 1px solid rgb(164, 202, 239);
 	background-color: rgb(235, 244, 251);
+	border-bottom-left-radius: 6px;
+}
+
+.settings_panel_form {
+	max-height: 100%;
+	width: 370px;
+	border-right: 1px solid #bfdf8b;
+	background-color: #e2f0d4;
 	border-bottom-left-radius: 6px;
 }
 
@@ -214,12 +228,14 @@
 
 .pagebreak_text {
 	float: left;
-	padding-left: 8px;
+	padding-left: 6px;
+	font-weight: 500;
 }
 
 .section_break_text {
 	position: relative;
 	right: 15px;
+	font-weight: 500;
 }
 
 .field_settings_constructor {
@@ -230,8 +246,8 @@
 	padding: 15px;
 }
 
-.tabs {
-	background-color: #cfe7ff;
+.add_field_tab_container {
+	background-color: rgb(255, 231, 159);
 	display: flex;
 	list-style: none;
 	text-align: left;
@@ -239,14 +255,49 @@
 	align-items: center;
 }
 
-.field_settings {
+.field_settings_tab_container {
+	background-color: rgb(207, 231, 255);
+	display: flex;
+	list-style: none;
+	text-align: left;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.form_settings_tab_container {
+	background-color: rgb(217, 239, 194);
+	display: flex;
+	list-style: none;
+	text-align: left;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.add_field_tab {
 	color: #666;
 	font-size: 12px;
 	margin: 4px 0px 0px;
 	padding: 4px 6px 4px 25px;
 	font-family: Arial, Helvetica, sans-serif;
-	/* display: flex; */
-	/* align-items: center; */
+	cursor: pointer;
+	position: relative;
+	border: 1px solid rgb(211, 183, 85);
+	border-bottom: none;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 12px;
+	text-align: left;
+	display: inline-flex;
+	background-color: rgb(255, 252, 213);
+}
+
+.field_settings_tab {
+	color: #666;
+	font-size: 12px;
+	margin: 4px 0px 0px;
+	padding: 4px 6px 4px 25px;
+	font-family: Arial, Helvetica, sans-serif;
 	cursor: pointer;
 	position: relative;
 	border: 1px solid rgb(164, 202, 239);
@@ -257,6 +308,28 @@
 	border-top-left-radius: 12px;
 	text-align: left;
 	display: inline-flex;
+	background-color: rgb(235, 244, 251);
+}
+.form_settings_tab {
+	color: #666;
+	font-size: 12px;
+	margin: 4px 0px 0px;
+	padding: 4px 6px 4px 25px;
+	font-family: Arial, Helvetica, sans-serif;
+	cursor: pointer;
+	position: relative;
+	border: 1px solid #9ebd6d;
+	border-bottom: none;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 12px;
+	text-align: left;
+	display: inline-flex;
+	background-color: #e2f0d4;
+}
+
+.none_add_field_hide {
 }
 
 .field_settings:hover {
