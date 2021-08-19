@@ -1,5 +1,6 @@
 import styles from "./FormEngine.module.css";
 import { useState } from "react";
+import { createTextInput } from "@kagenlh/jsxfields";
 
 const FormEngine = () => {
 	const [activeTab, setActiveTab] = useState("add");
@@ -7,6 +8,7 @@ const FormEngine = () => {
 	const [formDescription, setFormDescription] = useState(
 		"This is my form. Please fill it out. It's awesome!"
 	);
+	const [word, setWord] = useState("potato");
 	const [formSettings, setFormSettings] = useState({
 		titleAlignment: "left",
 		descriptionAlignment: "left",
@@ -355,95 +357,11 @@ const FormEngine = () => {
 						{formDescription}
 					</div>
 				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{formDescription}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{formDescription}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{formDescription}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{formDescription}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{formDescription}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{formDescription}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{formDescription}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{formDescription}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{"hshfsudfhsadhfakdfj"}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{"hshfsudfhsadhfakdfj"}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{"hshfsudfhsadhfakdfj"}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{"hshfsudfhsadhfakdfj"}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{"hshfsudfhsadhfakdfj"}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{"hshfsudfhsadhfakdfj"}
-					</div>
-				</div>
-				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{"hshfsudfhsadhfakdfj"}
-					</div>
+				<div>
+					{createTextInput(word, setWord, {
+						label: "TitleTest",
+						instructions: "Put the lime inside the coconut",
+					})}
 				</div>
 				<div className={styles.view_share_footer}>
 					<span className={styles.view_button_wrapper}>
