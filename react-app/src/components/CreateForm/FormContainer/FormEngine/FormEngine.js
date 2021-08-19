@@ -27,6 +27,8 @@ const FormEngine = () => {
 		instructions: "",
 	});
 
+	const [multiLineValue, setMultiLineValue] = useState("")
+
 	const [jsxContent, setJsxContent] = useState([]);
 
 	const toggleTab = (tab) => {
@@ -156,6 +158,15 @@ const FormEngine = () => {
 										styles.standard_button_container
 									}>
 									<button
+										onClick={() => {
+											const jsx = createMultiLineText(
+												multiLineValue,
+												setMultiLineValue
+											);
+											setJsxContent((prevState) => {
+												return [...prevState, jsx];
+											});
+										}}
 										className={`${styles.standard_button}`}
 										href="#">
 										<b
