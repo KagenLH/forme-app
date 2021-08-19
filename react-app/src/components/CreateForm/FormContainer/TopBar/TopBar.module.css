@@ -1,0 +1,49 @@
+.topbar {
+	width: 100%;
+	background-color: #e66760;
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.topbar_container {
+	width: 1200px;
+	height: 100%;
+	margin: auto;
+}
+
+.left_container {
+	text-align: left;
+}
+
+.logo {
+	height: 50px;
+	margin: 15px 70px 15px 20px;
+}
+
+.right_container {
+	text-align: right;
+	/* top: 200px; */
+	position: relative;
+	right: 0;
+	list-style: none;
+	margin-right: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.options_list {
+	float: right;
+	color: #ffffcc;
+	padding-top: 2px;
+	/* font-size: 12px; */
+	font-weight: 700;
+}
+
+.options_link {
+	margin: 0 auto;
+	color: #ffda68;
+	text-decoration: none;
+	line-height: 33px;
+	font-size: 19px;
+	margin: 15px 2p;
+}
