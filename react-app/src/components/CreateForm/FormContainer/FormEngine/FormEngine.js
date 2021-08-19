@@ -22,11 +22,6 @@ const FormEngine = () => {
 		labelPlacement: "top",
 	});
 
-	const [textValueOption, setTextValueOption] = useState({
-		label: "",
-		instructions: "",
-	});
-
 	const [jsxContent, setJsxContent] = useState([]);
 	const [multiLineValue, setMultiLineValue] = useState("")
 	const [multiChoiceValue, setMultiChoiceValue] = useState("")
@@ -45,12 +40,6 @@ const FormEngine = () => {
 			setActiveTab("form");
 		}
 	};
-
-	// const insertToPreview = (jsx) => {
-	// 	setJsxContent((prevState) => {
-	// 		return prevState;
-	// 	});
-	// };
 
 	return (
 		<div className={styles.engine_container}>
