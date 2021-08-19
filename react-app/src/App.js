@@ -8,9 +8,10 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import HomePage from './components/HomePage/HomePage';
+import FormsManager from './components/Forms';
+import SharedForm from './components/Forms/SharedForm';
 import Footer from './components/Footer';
 import { authenticate } from './store/session';
-import BuildForm from './components/Forms';
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -44,8 +45,11 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path="/forms" exact={true}>
-          <BuildForm />
+        <ProtectedRoute path="/forms" exact={true}>
+          <FormsManager />
+        </ProtectedRoute>
+        <Route path='/forms/:formId/shared'>
+          <SharedForm/>
         </Route>
         <Route path='/' exact={true} >
           <HomePage />

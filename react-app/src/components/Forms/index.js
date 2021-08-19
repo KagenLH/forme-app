@@ -5,7 +5,8 @@ import './Forms.css'
 
 // TODO: Make SHARE button functional
 // TODO: Add form description under form title in form manager list (?)
-function Forms() {
+//? forme-live.herokuapp.com
+function FormsManager() {
     //! SUCCESSFULLY ONLY LOADS FORMS OWNED BY CURRENT USER
     //! BUT LOADS NEWLY CREATED FORMS WITH ANY owner_id
     //! UNTIL PAGE IS REFRESHED
@@ -115,4 +116,4 @@ function Forms() {
     )
 }
 
-export default Forms
+export default FormsManager

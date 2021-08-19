@@ -23,8 +23,9 @@ const remove = (form) => ({
 })
 
 // THUNK ACTIONS
+// TODO: implement error handling (render an error page?)
 
-// TODO: refactor (or create new thunk) to get forms associated with a user (i.e. by owner_id)
+
 // get ALL forms
 export const getForms = () => async (dispatch) => {
     const res = await fetch(`/api/forms/`)
@@ -43,7 +44,7 @@ export const getForms = () => async (dispatch) => {
 
 // get all forms that belong to a specific user
 export const getUserForms = (userId) => async (dispatch) => {
-    const res = await fetch(`api/forms/${userId}`)
+    const res = await fetch(`api/forms/users/${userId}`)
     // console.log('*** GET USER FORMS THUNK - RES ***', res)
 
     if (res.ok) {
@@ -52,6 +53,17 @@ export const getUserForms = (userId) => async (dispatch) => {
         const { forms } = data
         // console.log('*** GET USER FORMS THUNK - FORMS ***', forms)
         dispatch(load(forms))
+    }
+}
+
+
+// get a form without being logged in (shared forms)
+export const getSharedForm = (id) => async (dispatch) => {
+    const res = await fetch(`/api/forms/${id}/shared`)
+
+    if (res.ok) {
+        const form = await res.json()
+        dispatch(load(form))
     }
 }
 
