@@ -459,8 +459,7 @@
 
 .view_button_wrapper {
 	position: absolute;
-	left: 0;
-	padding-left: 20px;
+	right: 165px;
 	top: 25px;
 }
 
@@ -468,6 +467,13 @@
 	position: absolute;
 	right: 0;
 	padding-right: 20px;
+	top: 25px;
+}
+
+.save_button_wrapper {
+	position: absolute;
+	left: 0;
+	padding-left: 20px;
 	top: 25px;
 }
 
@@ -555,4 +561,39 @@
 .share_button_text {
 	float: left;
 	padding-left: 4px;
+}
+
+.save_button {
+	padding: 4px 0 4px 34px;
+	position: relative;
+	bottom: 10px;
+	border: 1px solid #dad8d8;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%);
+	border-radius: 9px;
+	margin: 0 0.7em 0 1em;
+	background-color: #f8fafb;
+	color: green;
+	cursor: pointer;
+	text-decoration: none;
+	line-height: 130%;
+	background-clip: padding-box;
+	width: 135px;
+	height: 26px;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: 2px;
+}
+
+.save_button_icon {
+	position: relative;
+	right: 20px;
+	color: green;
+}
+
+.save_button_text {
+	position: relative;
+	right: 15px;
 }

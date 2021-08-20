@@ -162,7 +162,7 @@ const FormEngine = () => {
 												setTextValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, [jsx, initialFieldState]];
+												return [...prevState, [jsx, { type: "text", ...initialFieldState }]];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -417,6 +417,7 @@ const FormEngine = () => {
 				<div>
 					{jsxContent?.map((jsxcontent) => (
 						<div
+							key={Math.random()}
 							onClick={() => {
 								setJsxContent((prevState) => {
 									const newState = [...prevState];
@@ -429,7 +430,7 @@ const FormEngine = () => {
 									return newState;
 								});
 							}}>
-							{jsxcontent}
+							{jsxcontent && jsxcontent[0]}
 						</div>
 					))}
 				</div>
@@ -439,6 +440,19 @@ const FormEngine = () => {
 							<b className={styles.view_button_icon}></b>
 							<span className={styles.view_button_text}>
 								View Form
+							</span>
+						</button>
+					</span>
+					<span className={styles.save_button_wrapper}>
+						<button
+							className={styles.save_button}
+							onClick={() => onSave()}
+						>
+							<span className={styles.save_button_icon}>
+								<i className="fas fa-check"></i>
+							</span>
+							<span className={styles.save_button_text}>
+								Save Form
 							</span>
 						</button>
 					</span>
