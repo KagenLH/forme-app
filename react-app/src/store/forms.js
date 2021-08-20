@@ -1,9 +1,9 @@
-// TODO: create type constants
+// TYPE CONSTANTS
 const LOAD = 'forms/LOAD'
 const ADD = 'forms/ADD'
 const REMOVE = 'forms/REMOVE'
 
-// action creators
+// ACTION CREATORS
 // for loading any number of forms
 const load = (form) => ({
     type: LOAD,
@@ -23,7 +23,7 @@ const remove = (form) => ({
 })
 
 // THUNK ACTIONS
-// TODO: implement error handling (render an error page?)
+// TODO: implement error handling if res.ok fails (render an error page?)
 
 
 // get ALL forms

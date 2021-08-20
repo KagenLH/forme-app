@@ -6,7 +6,7 @@ import FormsTable from './FormsTable.js';
 import {Link} from 'react-router-dom'
 import './Forms.css'
 
-// TODO: Make SHARE button functional
+// TODO: Redirect unregistered users to a login page
 // TODO: Add form description under form title in form manager list (?)
 //? forme-live.herokuapp.com
 function FormsManager() {

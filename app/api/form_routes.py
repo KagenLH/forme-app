@@ -56,7 +56,7 @@ def create_form():
         title=data["title"],
         owner_id=data["owner_id"],
         description=data["description"],
-        label_align=data["label_align"],
+        label_placement=data["label_placement"],
         description_align=data["description_align"],
         title_align=data["title_align"]
     )
