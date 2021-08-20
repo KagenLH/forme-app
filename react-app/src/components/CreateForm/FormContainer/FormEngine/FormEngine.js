@@ -9,6 +9,15 @@ import {
 	createNumericInput,
 } from "@kagenlh/jsxfields";
 
+const initialFieldState = {
+	label:  "Untitled",
+	maxLength:  255, // Used with text inputs to determine a maximum number of characters
+	required:  false,
+	placeholder:  "",
+	instructions:  "", // If not empty creates a blurb of grey text to the right of the field
+	choices: ['First Choice', 'Second Choice', 'Third Choice'], // Used to determine the available options with selects, multiple choices, and checkboxes.
+};
+
 const FormEngine = () => {
 	const [activeTab, setActiveTab] = useState("add");
 	const [formTitle, setFormTitle] = useState("Untitled Form");
@@ -20,11 +29,6 @@ const FormEngine = () => {
 		titleAlignment: "left",
 		descriptionAlignment: "left",
 		labelPlacement: "top",
-	});
-
-	const [textValueOption, setTextValueOption] = useState({
-		label: "",
-		instructions: "",
 	});
 
 	const [jsxContent, setJsxContent] = useState([]);
@@ -39,6 +43,30 @@ const FormEngine = () => {
 		if (tab === "form") {
 			setActiveTab("form");
 		}
+	};
+
+	const onSave = async () => {
+		const fieldSettings = jsxContent.map((pair) => pair[1]);
+		const formData = {
+			title: formTitle,
+			description: formDescription,
+			...formSettings,
+			fields: [
+				...fieldSettings
+			]
+		};
+
+		console.log(formData);
+		// const res = await fetch('/api/forms', {
+		// 	method: 'POST',
+		// 	headers: { 'Content-Type': 'application/json' },
+		// 	body: JSON.stringify(formData)
+		// });
+
+		// if(res.ok) {
+		// 	const data = res.json();
+		// 	console.log(data);
+		// }
 	};
 
 	// const insertToPreview = (jsx) => {
@@ -134,7 +162,7 @@ const FormEngine = () => {
 												setTextValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, jsx];
+												return [...prevState, [jsx, initialFieldState]];
 											});
 										}}
 										className={`${styles.standard_button}`}
