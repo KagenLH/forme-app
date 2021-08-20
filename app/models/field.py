@@ -5,7 +5,6 @@ class Field(db.Model):
     __tablename__ = 'fields'
 
     id = db.Column(db.Integer, primary_key=True)
-    form_id = db.Column(db.Integer, db.ForeignKey('forms.id'), nullable=False)
     type = db.Column(db.String(10), nullable=False)
     label = db.Column(db.String(55))
     max_length = db.Column(db.Integer)
@@ -13,8 +12,8 @@ class Field(db.Model):
     placeholder = db.Column(db.String(255))
     instructions = db.Column(db.String(255))
     choices = db.Column(db.Text)
-
-    form = db.relationship("Form", back_populates="fields")
+    form_id = db.Column(db.Integer, db.ForeignKey("forms.id"), nullable=False)
+    forms = db.relationship("Form", back_populates="fields")
 
     def to_dict(self):
         return {
