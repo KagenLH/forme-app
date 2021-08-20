@@ -17,7 +17,7 @@ class Field(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'forms': self.forms,  # due to bidirectional relationship
+            # 'forms': self.forms,  # due to bidirectional relationship
             'form_id': self.form_id,
             'type': self.type,
             'label': self.label,

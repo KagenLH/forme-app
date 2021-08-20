@@ -16,7 +16,7 @@ class Form(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'fields': self.fields,
+            # 'fields': self.fields,
             'title': self.title,
             'owner_id': self.owner_id,
             'description': self.description,
