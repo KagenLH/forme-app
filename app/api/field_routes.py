@@ -7,3 +7,4 @@ field_routes = Blueprint('fields', __name__)
 
 @field_routes.route('/')
 def get_fields():
+    return None
