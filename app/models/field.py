@@ -14,6 +14,8 @@ class Field(db.Model):
     instructions = db.Column(db.String(255))
     choices = db.Column(db.Text)
 
+    form = db.relationship("Form", back_populates="fields")
+
     def to_dict(self):
         return {
             'id': self.id,

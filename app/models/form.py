@@ -5,13 +5,15 @@ class Form(db.Model):
     __tablename__ = 'forms'
 
     id = db.Column(db.Integer, primary_key=True)
-    fields = db.relationship('Field', backref='forms', lazy=True)
+    # fields = db.relationship('Field', backref='forms', lazy=True)
     title = db.Column(db.String(50))
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     description = db.Column(db.Text)
     label_placement = db.Column(db.String(10))
     description_align = db.Column(db.String(10))
     title_align = db.Column(db.String(10))
+
+    fields = db.relationship("Field", back_populates="form")
 
     def to_dict(self):
         return {

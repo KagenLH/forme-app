@@ -66,16 +66,16 @@ const FormEngine = () => {
 					activeTab === "add"
 						? `${styles.settings_panel_add}`
 						: activeTab === "field"
-							? `${styles.settings_panel_field}`
-							: `${styles.settings_panel_form}`
+						? `${styles.settings_panel_field}`
+						: `${styles.settings_panel_form}`
 				}>
 				<ul
 					className={
 						activeTab === "add"
 							? `${styles.add_field_tab_container}`
 							: activeTab === "field"
-								? `${styles.field_settings_tab_container}`
-								: `${styles.form_settings_tab_container}`
+							? `${styles.field_settings_tab_container}`
+							: `${styles.form_settings_tab_container}`
 					}>
 					<li
 						onClick={() => {
