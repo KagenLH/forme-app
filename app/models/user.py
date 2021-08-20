@@ -8,7 +8,7 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     forms = db.relationship('Form', backref='users', lazy=True)
-    username = db.Column(db.String(40), nullable=False, unFalseique=True)
+    username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
