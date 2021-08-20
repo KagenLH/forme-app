@@ -45,7 +45,7 @@ const FormEngine = () => {
 	const [selectValue, setSelectValue] = useState("");
 	const [checkboxValue, setcheckboxValue] = useState("");
 
-	const [fieldLabel, setFieldLabel] = useState("Untitled
+	const [fieldLabel, setFieldLabel] = useState("Untitled");
 
 	const toggleTab = (tab) => {
 		if (tab === "add") {
