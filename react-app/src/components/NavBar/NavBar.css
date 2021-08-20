@@ -1,13 +1,14 @@
 .navbar-container {
     position: relative;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    justify-content: space-between;
-    width: 100%;
+    left: 0;
+    right: 0;
+    /* transform: translateX(-50%); */
+    /* justify-content: space-between; */
+    width: auto;
     height: 70px;
     display: flex;
-    width: 1200px;
+    /* width: 1200px; */
     align-items: center;
     background-color: #e66760;
 }
