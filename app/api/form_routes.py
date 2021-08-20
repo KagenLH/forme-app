@@ -5,7 +5,7 @@ from app.models import Form, db
 form_routes = Blueprint("forms", __name__)
 
 
-# get all forms
+# get all forms --- remove this route?
 @form_routes.route('/')
 # @login_required
 def get_forms():
@@ -13,14 +13,13 @@ def get_forms():
     return {'forms': [form.to_dict() for form in forms]}
 
 
-# get forms by owner_id (i.e. all forms owned by a specific user)
 @form_routes.route('/<int:id>', methods=['GET', 'DELETE'])
 @login_required
-def user_forms(id):
-    # get forms by owner_id (i.e. all forms owned by a specific user)
+def forms(id):
+    # get a specific form by primary key
     if request.method == 'GET':
-        forms = Form.query.filter_by(owner_id=id).all()  # takes a user's id
-        return {'forms': [form.to_dict() for form in forms]}
+        form = Form.query.get(id)
+        return form.to_dict()
     # delete a specific form by primary key
     elif request.method == 'DELETE':
         form = Form.query.get(id)  # takes a form's id
@@ -30,7 +29,19 @@ def user_forms(id):
         return form.to_dict()
 
 
-# TODO: create route for getting a specific form by primary key (if needed)
+# (GET) allow user to access a form without being logged in, i.e. SHARED form
+@form_routes.route('/<int:id>/shared')
+def shared_form(id):
+    form = Form.query.get(id)
+    return form.to_dict()
+
+
+# get forms by owner_id (i.e. all forms owned by a specific user)
+@form_routes.route('/users/<int:id>')
+def user_forms(id):  # takes a user's id
+    forms = Form.query.filter_by(owner_id=id).all()
+    # destructure in forms store
+    return {'forms': [form.to_dict() for form in forms]}
 
 
 @form_routes.route('/create', methods=['POST'])
@@ -45,7 +56,7 @@ def create_form():
         title=data["title"],
         owner_id=data["owner_id"],
         description=data["description"],
-        label_align=data["label_align"],
+        label_placement=data["label_placement"],
         description_align=data["description_align"],
         title_align=data["title_align"]
     )

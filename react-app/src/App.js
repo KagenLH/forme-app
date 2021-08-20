@@ -3,16 +3,18 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginFormPage from "./components/auth/LoginFormPage";
 import SignUpFormPage from "./components/auth/SignUpFormPage";
-import NavBar from "./components/NavBar/NavBar";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
-import HomePage from "./components/HomePage/HomePage";
-import Footer from "./components/Footer";
-import { authenticate } from "./store/session";
-import BuildForm from "./components/Forms";
+import NavBar from './components/NavBar/NavBar';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import UsersList from './components/UsersList';
+import User from './components/User';
+import HomePage from './components/HomePage/HomePage';
+import FormsManager from './components/Forms';
+import SharedForm from './components/Forms/SharedForm';
+import Footer from './components/Footer';
 import CreateForm from "./components/CreateForm";
 import ContentWrap from "./components/ContentWrap";
+import { authenticate } from './store/session';
+
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -28,6 +30,7 @@ function App() {
 	if (!loaded) {
 		return null;
 	}
+
 
 	return (
 		<BrowserRouter>
@@ -46,12 +49,15 @@ function App() {
 					<ProtectedRoute path="/users/:userId" exact={true}>
 						<User />
 					</ProtectedRoute>
-					<Route path="/forms" exact={true}>
-						<BuildForm />
-					</Route>
+					<ProtectedRoute path="/forms" exact={true}>
+            <FormsManager />
+        </ProtectedRoute>
 					<Route path="/forms/build" exact={true}>
 						<CreateForm />
 					</Route>
+          <Route path='/forms/:formId/shared'>
+            <SharedForm/>
+          </Route>
 					<Route path="/" exact={true}>
 						<HomePage />
 					</Route>
