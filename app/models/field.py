@@ -7,12 +7,12 @@ class Field(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     form_id = db.Column(db.Integer, db.ForeignKey('forms.id'), nullable=False)
     type = db.Column(db.String(10), nullable=False)
-    label = db.Column(db.String(55))
-    max_length = db.Column(db.Integer)
-    required = db.Column(db.Boolean, nullable=False)
-    placeholder = db.Column(db.String(255))
-    instructions = db.Column(db.String(255))
-    choices = db.Column(db.Text)
+    label = db.Column(db.String(55), nullable=False)
+    max_length = db.Column(db.Integer, nullable=True)
+    required = db.Column(db.Boolean, nullable=True)
+    placeholder = db.Column(db.String(255), nullable=True)
+    instructions = db.Column(db.String(255), nullable=True)
+    choices = db.Column(db.Text, nullable=True)
 
     def to_dict(self):
         return {

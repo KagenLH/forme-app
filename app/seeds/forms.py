@@ -6,7 +6,7 @@ def seed_forms():
         title='Test Form',
         owner_id='1',
         description='This is a test form.'
-        # label_align=None
+        # label_placement=None
         # description_align=None
         # title_align=None
     )
@@ -14,7 +14,7 @@ def seed_forms():
         title='Another Test Form',
         owner_id='1',
         description='This is a another test form.'
-        # label_align=None
+        # label_placement=None
         # description_align=None
         # title_align=None
     )
