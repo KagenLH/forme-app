@@ -1,0 +1,26 @@
+div#modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#modal-background {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+div#modal-background, div#modal {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+div#modal-content {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 1% / 20%;
+}

@@ -1,4 +1,3 @@
-
 .form-manager-container {
     margin: auto;
 }
@@ -138,4 +137,36 @@ thead.table-head {
     height: 25px;
     align-content: center;
     padding-top: 3px;
+}
+
+/* the modal fields */
+
+.form-link-label {
+    padding: 0px 0px 0px 7px;
+}
+
+.form-link-box {
+    overflow-x: visible;
+    width: 100vh;
+    height: 5vh;
+    border: none;
+    font-size: 12pt;
+}
+
+.form-link-box:focus {
+    outline: none;
+}
+
+.copy-btn {
+    padding-right: 10px;
+}
+
+.copy-confirm {
+    font-size: 10pt;
+    text-align: left;
+}
+
+i.copy-btn:hover {
+    box-shadow: grey;
+    cursor: pointer;
 }

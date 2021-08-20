@@ -12,10 +12,10 @@ export default function Footer() {
                         Kagen Hearn
                     </div>
                     <a className="footer-github-container" href="https://github.com/KagenLH">
-                        <i class="fab fa-github"></i>
+                        <i className="fab fa-github"></i>
                     </a>
                     <a className="footer-linkedin-container" href="https://www.linkedin.com/in/kagen-hearn-228b96130/">
-                        <i class="fab fa-linkedin"></i>
+                        <i className="fab fa-linkedin"></i>
                     </a>
                 </div>
                 <div className="footer-name">
@@ -23,10 +23,10 @@ export default function Footer() {
                         Mark Vasquez
                     </div>
                     <a className="footer-github-container" href="https://github.com/Mark-Vasquez">
-                        <i class="fab fa-github"></i>
+                        <i className="fab fa-github"></i>
                     </a>
                     <a className="footer-linkedin-container" href="https://www.linkedin.com/in/mark-vasquez-439858212/">
-                        <i class="fab fa-linkedin"></i>
+                        <i className="fab fa-linkedin"></i>
                     </a>
                 </div>
                 <div className="footer-name">
@@ -34,10 +34,10 @@ export default function Footer() {
                         Noah Medoff
                     </div>
                     <a className="footer-github-container" href="https://github.com/NoahNim">
-                        <i class="fab fa-github"></i>
+                        <i className="fab fa-github"></i>
                     </a>
                     <a className="footer-linkedin-container" href="https://www.linkedin.com/in/noah-medoff-6a5490116/">
-                        <i class="fab fa-linkedin"></i>
+                        <i className="fab fa-linkedin"></i>
                     </a>
                 </div>
                 <div className="footer-name">
@@ -45,10 +45,10 @@ export default function Footer() {
                         Dechon Ryan
                     </div>
                     <a className="footer-github-container" href="https://github.com/dech0n">
-                        <i class="fab fa-github"></i>
+                        <i className="fab fa-github"></i>
                     </a>
                     <a className="footer-linkedin-container" href="https://www.linkedin.com/in/dechon-r-1230097b/">
-                        <i class="fab fa-linkedin"></i>
+                        <i className="fab fa-linkedin"></i>
                     </a>
                 </div>
                 <div className="footer-repo-info">
@@ -56,7 +56,7 @@ export default function Footer() {
                         Project Code and Documentation:
                     </div>
                     <a className="footer-github-container-repo" href="https://github.com/KagenLH/forme-app">
-                        <i class="fab fa-github"></i>
+                        <i className="fab fa-github"></i>
                     </a>
                 </div>
             </div>
