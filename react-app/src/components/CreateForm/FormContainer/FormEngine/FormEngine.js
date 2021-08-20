@@ -22,12 +22,30 @@ const FormEngine = () => {
 		labelPlacement: "top",
 	});
 
+	const [fieldSettings, setFieldSettings] = useState({
+		fieldType: "single_line_text",
+		fieldSize: "small",
+	});
+	const [isCheckedOne, setIsCheckedOne] = useState(false);
+	const [isCheckedTwo, setIsCheckedTwo] = useState(false);
+	const [isCheckedThree, setIsCheckedThree] = useState(false);
+	const [firstChoice, setFirstChoice] = useState("First Choice");
+	const [secondChoice, setSecondChoice] = useState("Second Choice");
+	const [thirdChoice, setThirdChoice] = useState("Third Choice");
+	const [isCheckedRequired, setIsCheckedRequired] = useState(false);
+	const [maxChar, setMaxChar] = useState(25);
+	const [predefinedValue, setPredefinedValue] = useState("");
+	const [placeholderText, setPlaceholderText] = useState("");
+	const [instructions, setInstructions] = useState("");
+
 	const [jsxContent, setJsxContent] = useState([]);
-	const [multiLineValue, setMultiLineValue] = useState("")
-	const [multiChoiceValue, setMultiChoiceValue] = useState("")
-	const [numberValue, setNumberValue] = useState("")
-	const [selectValue, setSelectValue] = useState("")
-	const [checkboxValue, setcheckboxValue] = useState("")
+	const [multiLineValue, setMultiLineValue] = useState("");
+	const [multiChoiceValue, setMultiChoiceValue] = useState("");
+	const [numberValue, setNumberValue] = useState("");
+	const [selectValue, setSelectValue] = useState("");
+	const [checkboxValue, setcheckboxValue] = useState("");
+
+	const [fieldLabel, setFieldLabel] = useState("Untitled
 
 	const toggleTab = (tab) => {
 		if (tab === "add") {
@@ -304,9 +322,240 @@ const FormEngine = () => {
 					</div>
 				) : null}
 				{activeTab === "field" ? (
-					<div className={styles.field_settings_constructor}>
-						<h1>Yeet2</h1>
-					</div>
+					<ul className={styles.field_settings_constructor}>
+						<form>
+							<label className={styles.field_settings_label}>
+								Field Label
+							</label>
+							<div className={styles.field_label_container}>
+								<textarea
+									className={`${styles.field_settings_field_label} ${styles.input_boxes}`}
+									value={fieldLabel}
+									placeholder={fieldLabel}
+									onChange={(e) => {
+										setFieldLabel(e.target.value);
+									}}
+								/>
+							</div>
+							<li className={styles.field_type_li}>
+								<label className={styles.field_settings_label}>
+									Field Type
+								</label>
+								<div className={styles.field_type_container}>
+									<select
+										className={`${styles.field_settings_field_type} ${styles.dropdown_boxes}`}
+										value={fieldSettings.fieldType}
+										onChange={(e) => {
+											setFieldSettings((prevState) => {
+												return {
+													...prevState,
+													fieldType: e.target.value,
+												};
+											});
+										}}>
+										<option value="single_line_text">
+											Single Line Text
+										</option>
+										<option value="paragraph_text">
+											Paragraph Text
+										</option>
+										<option value="multiple_choice">
+											Multiple Choice
+										</option>
+										<option value="number">Number</option>
+										<option value="checkboxes">
+											Checkboxes
+										</option>
+										<option value="dropdown">
+											Dropdown
+										</option>
+									</select>
+								</div>
+							</li>
+							<li className={styles.field_size_li}>
+								<label className={styles.field_settings_label}>
+									Field Size
+								</label>
+								<div className={styles.field_size_container}>
+									<select
+										className={`${styles.field_settings_field_size} ${styles.dropdown_boxes}`}
+										value={fieldSettings.fieldSize}
+										onChange={(e) => {
+											setFieldSettings((prevState) => {
+												return {
+													...prevState,
+													fieldSize: e.target.value,
+												};
+											});
+										}}>
+										<option value="small">Small</option>
+										<option value="medium">Medium</option>
+										<option value="large">Large</option>
+									</select>
+								</div>
+							</li>
+							<fieldset className={styles.choices_container}>
+								<legend className={`${styles.choices_legend}`}>
+									Choices
+								</legend>
+								<ul>
+									<li className={styles.choices_li}>
+										<input
+											className={styles.choices_bullet}
+											type="checkbox"
+											value={isCheckedOne}
+											onClick={() => {
+												setIsCheckedOne(!isCheckedOne);
+											}}
+										/>
+										<input
+											className={`${styles.field_settings_choices} ${styles.input_boxes}`}
+											type="text"
+											maxLength="150"
+											value={firstChoice}
+											placeholder={firstChoice}
+											onChange={(e) => {
+												setFirstChoice(e.target.value);
+											}}
+										/>
+									</li>
+									<li className={styles.choices_li}>
+										<input
+											className={styles.choices_bullet}
+											type="checkbox"
+											value={isCheckedTwo}
+											onClick={() => {
+												setIsCheckedTwo(!isCheckedTwo);
+											}}
+										/>
+										<input
+											className={`${styles.field_settings_choices} ${styles.input_boxes}`}
+											type="text"
+											maxLength="150"
+											value={secondChoice}
+											placeholder={secondChoice}
+											onChange={(e) => {
+												setSecondChoice(e.target.value);
+											}}
+										/>
+									</li>
+									<li className={styles.choices_li}>
+										<input
+											className={styles.choices_bullet}
+											type="checkbox"
+											value={isCheckedThree}
+											onClick={() => {
+												setIsCheckedThree(
+													!isCheckedThree
+												);
+											}}
+										/>
+										<input
+											className={`${styles.field_settings_choices} ${styles.input_boxes}`}
+											type="text"
+											maxLength="150"
+											value={thirdChoice}
+											placeholder={thirdChoice}
+											onChange={(e) => {
+												setThirdChoice(e.target.value);
+											}}
+										/>
+									</li>
+								</ul>
+							</fieldset>
+							<li className={styles.options_li}>
+								<fieldset className={styles.options_container}>
+									<legend
+										className={`${styles.option_legend}`}>
+										Option
+									</legend>
+									<input
+										className={styles.required_checkbox}
+										type="checkbox"
+										value={isCheckedRequired}
+										onClick={() => {
+											setIsCheckedRequired(
+												!isCheckedRequired
+											);
+										}}
+									/>
+									<label className={styles.required_text}>
+										Required
+									</label>
+								</fieldset>
+							</li>
+							<li className={styles.range_li}>
+								<fieldset className={styles.range_container}>
+									<legend
+										className={` ${styles.range_legend}`}>
+										Range
+									</legend>
+									<div>
+										<span>
+											<label
+												className={
+													styles.max_char_text
+												}>
+												Max Characters
+											</label>
+											<input
+												type="text"
+												className={` ${styles.input_boxes} ${styles.max_char_input}`}
+												placeholder={maxChar}
+												value={maxChar}
+												onChange={(e) => {
+													setMaxChar(e.target.value);
+												}}
+											/>
+										</span>
+									</div>
+								</fieldset>
+							</li>
+							<label className={styles.field_settings_label}>
+								Predefined Value
+							</label>
+							<div className={styles.predefined_value_container}>
+								<input
+									className={`${styles.field_settings_predefined_values}
+										${styles.input_boxes}`}
+									value={predefinedValue}
+									onChange={(e) => {
+										setPredefinedValue(e.target.value);
+									}}
+									type="text"
+									maxlength="50"
+								/>
+							</div>
+							<label className={styles.field_settings_label}>
+								Placeholder Text
+							</label>
+							<div className={styles.placeholder_text_container}>
+								<input
+									className={`${styles.field_settings_placeholder_text}
+										${styles.input_boxes}`}
+									value={placeholderText}
+									onChange={(e) => {
+										setPlaceholderText(e.target.value);
+									}}
+									type="text"
+									maxlength="50"
+								/>
+							</div>
+							<label className={styles.field_settings_label}>
+								Instructions
+							</label>
+							<div className={styles.instructions_container}>
+								<textarea
+									className={`${styles.field_settings_instructions} ${styles.input_boxes}`}
+									value={instructions}
+									placeholder={setInstructions}
+									onChange={(e) => {
+										setFieldLabel(e.target.value);
+									}}
+								/>
+							</div>
+						</form>
+					</ul>
 				) : null}
 				{activeTab === "form" ? (
 					<div className={styles.form_settings_constructor}>
