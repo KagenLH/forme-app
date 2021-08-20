@@ -12,22 +12,22 @@ def fields():
         data = request.get_json()
         form_fields = []
 
-        for info in data:
+        for field_info in data:
             field = Field(
-                form_id=info["form_id"],
-                type=info["type"],
-                label=info["label"],
-                max_length=info["max_length"],
-                required=info["required"],
-                placeholder=info["placeholder"],
-                instructions=info["instructions"],
-                choices=info["choices"]
+                form_id=field_info["form_id"],
+                type=field_info["type"],
+                label=field_info["label"],
+                max_length=field_info["max_length"],
+                required=field_info["required"],
+                placeholder=field_info["placeholder"],
+                instructions=field_info["instructions"],
+                choices=field_info["choices"]
             )
 
             # db.session.add(field)
             form_fields.append(field)
 
-        # adds each instance individually
+        # adds each instance individually, so list format is ok
         db.session.add_all(form_fields)
         db.session.commit()
 

@@ -67,6 +67,21 @@ function fieldsReducer(state = initialState, action) {
                 ...allFields
             }
 
+        case ADD:
+            // won't edit/overwrite existing fields in state,
+            // would need to remove conditional in forEach,
+            // but that creates inefficiency by overwriting the entire slice of state every time anything is added
+            const newState = { ...state }
+            // maybe use for-loop instead to allow returning in the loop?
+            action.fields.forEach(field => {
+                if (!state[action.field.id]) {
+                    newState[action.field.id] = field
+                }
+            })
+            return {
+                ...newState
+            }
+
         default:
             return state
     }
