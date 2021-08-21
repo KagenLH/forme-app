@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     /* transform: translateX(-50%); */
-    /* justify-content: space-between; */
+    justify-content: space-between;
     width: auto;
     height: 70px;
     display: flex;
@@ -16,21 +16,23 @@
 .navbar-links {
     display: flex;
     align-items: center;
-    margin-right: 700px;
+    /* margin-right: 700px; */
     list-style: none;
 }
 
-.navbar-link {
+.navbar-link, .auth-logout-button {
     font: 17px National, Helvetica, sans-serif;
     text-decoration: none;
-    color: #3A3A3A;
+    /* color: #3A3A3A; */
+    color: white;
     text-transform: uppercase;
     font-weight: 400;
     padding-right: 10px;
 }
 
-.navbar-link:hover {
-    color: salmon;
+.navbar-link:hover, .auth-logout-button:hover {
+    /* color: salmon; */
+    color: yellow;
 }
 
 .navbar-auth-links {
@@ -39,6 +41,7 @@
     list-style: none;
     width: 180px;
     font: 17px National, Helvetica, sans-serif;
+    justify-content: flex-end;
 }
 
 .navbar-auth-links-login {

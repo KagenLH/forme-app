@@ -19,29 +19,15 @@ const NavBar = () => {
       </NavLink>
       <ul className="navbar-links">
         <li>
-          <NavLink to='/users' exact={true} activeClassName='active' className="navbar-link">
+          {/* <NavLink to='/users' exact={true} activeClassName='active' className="navbar-link">
             Users
-          </NavLink>
-          {user ? (
+          </NavLink> */}
+          {/* {user ? (
             <NavLink to="/forms" activeClassName='active' className="navbar-link">
               Forms
             </NavLink>
-          ) : (
-            <>
-              <NavLink to='/sign-up' exact={true} className="navbar-auth-links-signup">
-                <span className="navbar-signup-text">
-                  Sign Up
-                </span>
-              </NavLink>
-
-              <NavLink to='/login' exact={true} className="navbar-auth-links-login">
-                <span className="navbar-login-text" onMouseEnter={(e) => e.target.innerText = "RAWRR!"} onMouseLeave={(e) => e.target.innerText = "Login"}>
-                  Login
-                </span>
-              </NavLink>
-            </>
-          )
-          }
+          ) : ( null )
+          } */}
         </li>
       </ul>
       <ul className="navbar-auth-links">
@@ -53,9 +39,7 @@ const NavBar = () => {
                   Sign Up
                 </span>
               </NavLink>
-            )
-            :
-            null
+            ) : null
           }
         </li>
         {user === null ?
@@ -66,9 +50,11 @@ const NavBar = () => {
               </span>
             </NavLink>
           </li>
-          )
-          :
-          (<li>
+          ) : (
+          <li navbar-auth-links-logout>
+            <NavLink to="/forms" activeClassName='active' className="navbar-link">
+              Forms
+            </NavLink>
             <LogoutButton />
           </li>)
         }
