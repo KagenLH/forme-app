@@ -70,7 +70,7 @@ const NavBar = () => {
 						</NavLink>
 					</li>
 				) : (
-					<li navbar-auth-links-logout>
+					<li navbar-auth-links-logout="true">
 						<NavLink
 							to="/forms"
 							activeClassName="active"
