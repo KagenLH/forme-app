@@ -13,20 +13,20 @@ def get_forms():
     return {'forms': [form.to_dict() for form in forms]}
 
 
-# @form_routes.route('/<int:id>', methods=['GET', 'DELETE'])
-# @login_required
-# def forms(id):
-#     # get a specific form by primary key
-#     if request.method == 'GET':
-#         form = Form.query.get(id)
-#         return form.to_dict()
-#     # delete a specific form by primary key
-#     elif request.method == 'DELETE':
-#         form = Form.query.get(id)  # takes a form's id
+@form_routes.route('/<int:id>', methods=['GET', 'DELETE'])
+@login_required
+def forms(id):
+    # get a specific form by primary key
+    if request.method == 'GET':
+        form = Form.query.get(id)
+        return form.to_dict()
+    # delete a specific form by primary key
+    elif request.method == 'DELETE':
+        form = Form.query.get(id)  # takes a form's id
 
-#         db.session.delete(form)
-#         db.session.commit()
-#         return form.to_dict()
+        db.session.delete(form)
+        db.session.commit()
+        return form.to_dict()
 
 
 # (GET) allow user to access a form without being logged in, i.e. SHARED form
@@ -67,7 +67,7 @@ def create_form():
     db.session.add(form)
     db.session.commit()
 
-    print('FORM FORM FORM:', form)
+    # print('FORM FORM FORM:', form)
 
     for field_info in data["fields"]:
         # all of the columns in the fields table (except id)
@@ -91,7 +91,7 @@ def create_form():
                 # create the key and set the default value to None
                 field_info.setdefault(key)
 
-        print('******* FIELD INFO ********', field_info)
+        # print('******* FIELD INFO ********', field_info)
         field = Field(
             type=field_info["type"],
             label=field_info["label"],
@@ -113,7 +113,7 @@ def create_form():
     return_form = form.to_dict()
     # add an entry in 'form' contaning its related fields
     return_form.update({"fields": [field.to_dict() for field in form_fields]})
-    print('**** FORM WITH FIELDS ****', return_form)
+    # print('**** FORM WITH FIELDS ****', return_form)
 
     return return_form
 
@@ -136,7 +136,7 @@ def get_form(id):
     form = Form.query.filter(Form.id == id).first()
     # fields = Field.query.filter(Field.form_id == form.id).all()
 
-    print('FORM IS HERE!!! ', form.to_dict())
+    # print('FORM IS HERE!!! ', form.to_dict())
     # print('FIELD IS HERE!!!!! ***',
     #       {'fields': [field.to_dict() for field in fields]})
 

@@ -13,7 +13,7 @@ class Field(db.Model):
     instructions = db.Column(db.String(255))
     choices = db.Column(db.Text)
     form_id = db.Column(db.Integer, db.ForeignKey("forms.id"), nullable=False)
-    forms = db.relationship("Form", foreign_keys=form_id, lazy="joined")
+    # forms = db.relationship("Form", foreign_keys=form_id, lazy="joined") # redundant
 
     def to_dict(self):
         return {
