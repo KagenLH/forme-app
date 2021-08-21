@@ -19,8 +19,16 @@
 }
 
 .logo {
-	height: 50px;
-	margin: 15px 70px 15px 20px;
+	background-image: url("../../../../assets/images/forme-logo-white.png");
+	width: 130px;
+	height: 100px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 170px;
+	/* width: 100%; */
+	margin: 0px 0px 15px 20px;
+	position: relative;
+	bottom: 20px;
 }
 
 .right_container {

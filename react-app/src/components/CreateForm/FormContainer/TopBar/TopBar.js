@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../../store/session";
-import logo from "../../../../assets/images/templogo.svg";
+import logo from "../../../../assets/images/forme-logo-white.png";
 
 const TopBar = () => {
 	const history = useHistory();
@@ -17,7 +17,7 @@ const TopBar = () => {
 		<div className={styles.topbar}>
 			<div className={styles.left_container}>
 				<Link to="/forms">
-					<img className={styles.logo} src={logo} alt="logo" />
+					<div className={styles.logo}></div>
 				</Link>
 			</div>
 			<div className={styles.right_container}>
