@@ -20,9 +20,12 @@ class Form(db.Model):
 
 
     def to_dict(self):
+        # convert associated fields to serializable dictionaries
+        form_fields = [field.to_dict() for field in self.fields]
+
         return {
             'id': self.id,
-            # 'fields': self.fields,
+            'fields': form_fields,
             'title': self.title,
             'owner_id': self.owner_id,
             'description': self.description,
