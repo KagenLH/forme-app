@@ -35,12 +35,9 @@ const FormEngine = () => {
 		fieldType: "single_line_text",
 		fieldSize: "small",
 	});
-	const [isCheckedOne, setIsCheckedOne] = useState(false);
-	const [isCheckedTwo, setIsCheckedTwo] = useState(false);
-	const [isCheckedThree, setIsCheckedThree] = useState(false);
-	const [firstChoice, setFirstChoice] = useState("First Choice");
-	const [secondChoice, setSecondChoice] = useState("Second Choice");
-	const [thirdChoice, setThirdChoice] = useState("Third Choice");
+
+	const [checkedFields, setCheckedFields] = useState({ 1: false, 2: false, 3: false});
+	const [fieldChoices, setFieldChoices] = useState(['First Choice', 'Second Choice', 'Third Choice']);
 	const [isCheckedRequired, setIsCheckedRequired] = useState(false);
 	const [maxChar, setMaxChar] = useState(25);
 	const [predefinedValue, setPredefinedValue] = useState("");
@@ -213,7 +210,7 @@ const FormEngine = () => {
 												setMultiLineValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, jsx];
+												return [...prevState, [jsx, initialFieldState]];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -241,7 +238,7 @@ const FormEngine = () => {
 												setMultiChoiceValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, jsx];
+												return [...prevState, [jsx, initialFieldState]];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -287,7 +284,7 @@ const FormEngine = () => {
 												setNumberValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, jsx];
+												return [...prevState, [jsx, initialFieldState]];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -305,7 +302,7 @@ const FormEngine = () => {
 											setcheckboxValue
 										);
 										setJsxContent((prevState) => {
-											return [...prevState, jsx];
+											return [...prevState, [jsx, initialFieldState]];
 										});
 									}}
 									className={
@@ -332,7 +329,7 @@ const FormEngine = () => {
 												setSelectValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, jsx];
+												return [...prevState, [jsx, initialFieldState]];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -438,68 +435,33 @@ const FormEngine = () => {
 									Choices
 								</legend>
 								<ul>
-									<li className={styles.choices_li}>
+									{fieldChoices.map((choice, i) => (
+										<li className={styles.choices_li} key={choice}>
 										<input
 											className={styles.choices_bullet}
 											type="checkbox"
-											value={isCheckedOne}
+											value={checkedFields[i]}
 											onClick={() => {
-												setIsCheckedOne(!isCheckedOne);
+												setCheckedFields((prevState) => { return { ...prevState, i: !checkedFields[i] }})
 											}}
 										/>
 										<input
 											className={`${styles.field_settings_choices} ${styles.input_boxes}`}
 											type="text"
 											maxLength="150"
-											value={firstChoice}
-											placeholder={firstChoice}
+											value={choice}
+											placeholder={choice}
 											onChange={(e) => {
-												setFirstChoice(e.target.value);
+												setFieldChoices((prevState) => {
+													const newState = [...prevState];
+													const changedIndex = newState.findIndex(field => field === choice);
+													newState[changedIndex] = e.target.value;
+													return newState;
+												})
 											}}
 										/>
 									</li>
-									<li className={styles.choices_li}>
-										<input
-											className={styles.choices_bullet}
-											type="checkbox"
-											value={isCheckedTwo}
-											onClick={() => {
-												setIsCheckedTwo(!isCheckedTwo);
-											}}
-										/>
-										<input
-											className={`${styles.field_settings_choices} ${styles.input_boxes}`}
-											type="text"
-											maxLength="150"
-											value={secondChoice}
-											placeholder={secondChoice}
-											onChange={(e) => {
-												setSecondChoice(e.target.value);
-											}}
-										/>
-									</li>
-									<li className={styles.choices_li}>
-										<input
-											className={styles.choices_bullet}
-											type="checkbox"
-											value={isCheckedThree}
-											onClick={() => {
-												setIsCheckedThree(
-													!isCheckedThree
-												);
-											}}
-										/>
-										<input
-											className={`${styles.field_settings_choices} ${styles.input_boxes}`}
-											type="text"
-											maxLength="150"
-											value={thirdChoice}
-											placeholder={thirdChoice}
-											onChange={(e) => {
-												setThirdChoice(e.target.value);
-											}}
-										/>
-									</li>
+									))}
 								</ul>
 							</fieldset>
 							<li className={styles.options_li}>
