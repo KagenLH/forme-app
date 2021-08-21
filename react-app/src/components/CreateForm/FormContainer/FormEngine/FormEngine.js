@@ -84,7 +84,7 @@ const FormEngine = () => {
 						className={`${styles.add_field_tab} ${styles.none_add_field_hide}`}>
 						{activeTab === "add" ? (
 							<span className={styles.caret_down}>
-								<i class="fas fa-caret-down"></i>
+								<i className="fas fa-caret-down"></i>
 							</span>
 						) : (
 							<span className={styles.caret_right}>
@@ -100,7 +100,7 @@ const FormEngine = () => {
 						className={` ${styles.field_settings_tab}`}>
 						{activeTab === "field" ? (
 							<span className={styles.caret_down}>
-								<i class="fas fa-caret-down"></i>
+								<i className="fas fa-caret-down"></i>
 							</span>
 						) : (
 							<span className={styles.caret_right}>
@@ -118,7 +118,7 @@ const FormEngine = () => {
 						className={`${styles.form_settings_tab}`}>
 						{activeTab === "form" ? (
 							<span className={styles.caret_down}>
-								<i class="fas fa-caret-down"></i>
+								<i className="fas fa-caret-down"></i>
 							</span>
 						) : (
 							<span className={styles.caret_right}>
