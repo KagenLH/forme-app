@@ -14,17 +14,17 @@ const TopBar = () => {
 	return (
 		<div className={styles.topbar}>
 			<div className={styles.left_container}>
-				<Link to="/">
+				<Link to="/forms">
 					<img className={styles.logo} src={logo} alt="logo" />
 				</Link>
 			</div>
 			<div className={styles.right_container}>
 				<ul className={styles.right_list}>
-					<li className={styles.options_list}>
-						<Link to="/users" className={styles.options_link}>
-							Users
-						</Link>
-					</li>
+// 					<li className={styles.options_list}>
+// 						<Link to="/users" className={styles.options_link}>
+// 							Users
+// 						</Link>
+// 					</li>
 					<li className={styles.options_list}>
 						{/* <Link className={styles.options_link}>Logout</Link> */}
 						<button

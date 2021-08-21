@@ -4,36 +4,34 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton/LogoutButton';
 import { useSelector } from 'react-redux';
 
-import logo from '../../assets/images/forme-logo.png';
+import logoRed from '../../assets/images/forme-logo.png';
+import logoWhite from '../../assets/images/forme-logo-white.png';
 import './NavBar.css';
 
 const NavBar = () => {
   const user = useSelector(store => store.session.user);
+  const loggedInNavbarClasses = 'navbar-container navbar-container-loggedin'
+  const loggedOutNavbarClasses = 'navbar-container navbar-container-loggedout'
 
   return (
-    <nav className="navbar-container">
+    <nav className={user ? loggedInNavbarClasses : loggedOutNavbarClasses}>
       <NavLink to='/' exact={true} activeClassName='active' className="navbar-links-home">
-        <img className="navbar-logo" src={logo} alt="\A" />
+        {/* <img className="navbar-logo" src={logoRed} alt="\A" /> */}
+        <img className="navbar-logo" src={user ? logoWhite : logoRed} alt="\A" />
       </NavLink>
       <ul className="navbar-links">
         <li>
-          <NavLink to='/users' exact={true} activeClassName='active' className="navbar-link">
+          {/* <NavLink to='/users' exact={true} activeClassName='active' className="navbar-link">
             Users
-          </NavLink>
+          </NavLink> */}
+          {/* {user ? (
+            <NavLink to="/forms" activeClassName='active' className="navbar-link">
+              Forms
+            </NavLink>
+          ) : ( null )
+          } */}
         </li>
       </ul>
-      {/* <ul className="navbar-links">
-        <li>
-        {user !== null ? (
-            <NavLink to="/forms" activeClassName='active' className="navbar-link">
-            Forms
-          </NavLink>
-          )
-            :
-            null
-        }
-        </li>
-      </ul> */}
       <ul className="navbar-auth-links">
         <li>
           {user === null ?
@@ -43,9 +41,7 @@ const NavBar = () => {
                   Sign Up
                 </span>
               </NavLink>
-            )
-            :
-            null
+            ) : null
           }
         </li>
         {user === null ?
@@ -56,9 +52,11 @@ const NavBar = () => {
               </span>
             </NavLink>
           </li>
-          )
-          :
-          (<li>
+          ) : (
+          <li navbar-auth-links-logout>
+            <NavLink to="/forms" activeClassName='active' className="navbar-link">
+              Forms
+            </NavLink>
             <LogoutButton />
           </li>)
         }

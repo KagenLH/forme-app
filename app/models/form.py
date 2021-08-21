@@ -5,7 +5,6 @@ class Form(db.Model):
     __tablename__ = 'forms'
 
     id = db.Column(db.Integer, primary_key=True)
-    # fields = db.relationship('Field', backref='forms', lazy=True)
     title = db.Column(db.String(50))
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     description = db.Column(db.Text)

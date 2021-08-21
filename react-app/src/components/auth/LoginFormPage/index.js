@@ -29,11 +29,12 @@ const LoginFormPage = () => {
 	};
 
 	const loginDemo = async () => {
-		await dispatch(login('demo@aa.io', 'password'));
+		await dispatch(login("demo@aa.io", "password"));
+		// <Redirect to="/forms" />;
 	};
 
 	if (user) {
-		return <Redirect to="/" />;
+		return <Redirect to="/forms" />;
 	}
 
 	return (
@@ -87,7 +88,9 @@ const LoginFormPage = () => {
 										<div>Create an account</div>
 									</Link>
 									<p className={styles.or}>Or</p>
-									<p className={styles.demo} onClick={loginDemo}>
+									<p
+										className={styles.demo}
+										onClick={loginDemo}>
 										Login as Demo User
 									</p>
 								</div>

@@ -26,7 +26,6 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'forms': self.forms,
             'username': self.username,
             'email': self.email
         }
