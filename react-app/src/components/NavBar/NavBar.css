@@ -10,8 +10,17 @@
     display: flex;
     /* width: 1200px; */
     align-items: center;
+}
+
+.navbar-container-loggedin {
     background-color: #e66760;
 }
+
+.navbar-container-loggedout {
+    background-color: white;
+}
+
+
 
 .navbar-links {
     display: flex;

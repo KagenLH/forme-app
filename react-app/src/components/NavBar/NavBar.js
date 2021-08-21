@@ -12,10 +12,10 @@ const NavBar = () => {
   const user = useSelector(store => store.session.user);
 
   return (
-    <nav className="navbar-container">
+    <nav className={user ? 'navbar-container navbar-container-loggedin' : 'navbar-container navbar-container-loggedout'}>
       <NavLink to='/' exact={true} activeClassName='active' className="navbar-links-home">
         {/* <img className="navbar-logo" src={logoRed} alt="\A" /> */}
-        <img className="navbar-logo" src={logoWhite} alt="\A" />
+        <img className="navbar-logo" src={user ? logoWhite : logoRed} alt="\A" />
       </NavLink>
       <ul className="navbar-links">
         <li>
