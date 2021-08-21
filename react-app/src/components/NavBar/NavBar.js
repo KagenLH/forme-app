@@ -10,9 +10,11 @@ import './NavBar.css';
 
 const NavBar = () => {
   const user = useSelector(store => store.session.user);
+  const loggedInNavbarClasses = 'navbar-container navbar-container-loggedin'
+  const loggedOutNavbarClasses = 'navbar-container navbar-container-loggedout'
 
   return (
-    <nav className={user ? 'navbar-container navbar-container-loggedin' : 'navbar-container navbar-container-loggedout'}>
+    <nav className={user ? loggedInNavbarClasses : loggedOutNavbarClasses}>
       <NavLink to='/' exact={true} activeClassName='active' className="navbar-links-home">
         {/* <img className="navbar-logo" src={logoRed} alt="\A" /> */}
         <img className="navbar-logo" src={user ? logoWhite : logoRed} alt="\A" />
