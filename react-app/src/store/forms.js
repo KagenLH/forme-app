@@ -70,7 +70,7 @@ export const getSharedForm = (id) => async (dispatch) => {
 
 // create a single form
 export const createForm = (formData) => async (dispatch) => {
-    const res = await fetch(`/api/forms/create`, {
+    const res = await fetch(`/api/forms/build`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

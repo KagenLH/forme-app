@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, session
 from flask_login import login_required
-from app.models import Form, db
+from app.models import Form, db, Field
 
 form_routes = Blueprint("forms", __name__)
 
@@ -44,24 +44,52 @@ def user_forms(id):  # takes a user's id
     return {'forms': [form.to_dict() for form in forms]}
 
 
-@form_routes.route('/create', methods=['POST'])
+@form_routes.route('/build', methods=['POST'])
 @login_required
 def create_form():
     # print('***** REQUEST DATA INFO *****', request.get_json())
 
+    user_id = session['_user_id']
+
     # pull JSON data from request body
     data = request.get_json()
+    form_fields = []
 
     form = Form(
         title=data["title"],
-        owner_id=data["owner_id"],
+        owner_id=user_id,
         description=data["description"],
-        label_placement=data["label_placement"],
-        description_align=data["description_align"],
-        title_align=data["title_align"]
+        label_placement=data["labelPlacement"],
+        description_align=data["descriptionAlignment"],
+        title_align=data["titleAlignment"],
     )
 
     db.session.add(form)
+    db.session.commit()
+
+    print('FORM FORM FORM:', form)
+
+    for field_info in data["fields"]:
+        if (type(field_info["maxLength"]) is not int):
+            field_info["maxLength"] = None
+        else:
+            int(field_info["maxLength"])
+        print('*******max length ********',field_info["maxLength"])
+        field = Field(
+            type=field_info["type"],
+            label=field_info["label"],
+            max_length=field_info["maxLength"],
+            required=field_info["required"],
+            placeholder=field_info["placeholder"],
+            instructions=field_info["instructions"],
+            choices=field_info["choices"],
+            form_id=form.id
+        )
+
+        # db.session.add(field)
+        form_fields.append(field)
+
+    db.session.add_all(form_fields)
     db.session.commit()
 
     return form.to_dict()

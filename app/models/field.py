@@ -6,14 +6,14 @@ class Field(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(10), nullable=False)
-    label = db.Column(db.String(55))
+    label = db.Column(db.String(55), nullable=False)
     max_length = db.Column(db.Integer)
     required = db.Column(db.Boolean, nullable=False)
     placeholder = db.Column(db.String(255))
     instructions = db.Column(db.String(255))
     choices = db.Column(db.Text)
     form_id = db.Column(db.Integer, db.ForeignKey("forms.id"), nullable=False)
-    forms = db.relationship("Form", back_populates="fields")
+    forms = db.relationship("Form", back_populates="fields", lazy="joined")
 
     def to_dict(self):
         return {

@@ -5,7 +5,7 @@ class Form(db.Model):
     __tablename__ = 'forms'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50))
+    title = db.Column(db.String(50), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     description = db.Column(db.Text)
     label_placement = db.Column(db.String(10))
@@ -24,3 +24,6 @@ class Form(db.Model):
             'description_align': self.description_align,
             'title_align': self.title_align
         }
+
+    def __repr__(self):
+        return str(self.to_dict())
