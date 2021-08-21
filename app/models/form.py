@@ -11,8 +11,8 @@ class Form(db.Model):
     label_placement = db.Column(db.String(10))
     description_align = db.Column(db.String(10))
     title_align = db.Column(db.String(10))
-    
-    fields = db.relationship("Field", back_populates="forms", lazy="joined")
+    field_id = db.Column(db.Integer, db.ForeignKey('fields.id'))
+    fields = db.relationship("Field", foreign_keys=field_id ,back_populates="forms", lazy="joined")
 
     def to_dict(self):
         return {
