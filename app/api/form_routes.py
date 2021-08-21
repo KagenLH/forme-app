@@ -70,19 +70,36 @@ def create_form():
     print('FORM FORM FORM:', form)
 
     for field_info in data["fields"]:
-        # if (field_info["maxLength"]):
-        #     int(field_info["maxLength"])
-        # else:
-        #     field_info["maxLength"] = None
+        # all of the columns in the fields table (except id)
+        expected_keys = [
+            "type",
+            "label",
+            "maxLength",
+            "required",
+            "placeholder",
+            "instructions",
+            "choices"
+            ]
+
+        # check whether field_info["maxLength"] exists
+        if "maxLength" in field_info:
+            # convert the value from string to integer
+            field_info["maxLength"] = int(field_info["maxLength"])
+
+        for key in expected_keys:
+            if key not in field_info:
+                # create the key and set the default value to None
+                field_info.setdefault(key)
+
         print('******* FIELD INFO ********', field_info)
         field = Field(
             type=field_info["type"],
             label=field_info["label"],
-            # max_length=field_info["maxLength"],
+            max_length=field_info["maxLength"],
             required=field_info["required"],
-            # placeholder=field_info["placeholder"],
-            # instructions=field_info["instructions"],
-            # choices=field_info["choices"],
+            placeholder=field_info["placeholder"],
+            instructions=field_info["instructions"],
+            choices=field_info["choices"],
             form=form  # handles the form_id
         )
 
