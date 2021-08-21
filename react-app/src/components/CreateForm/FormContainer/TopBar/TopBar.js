@@ -1,20 +1,22 @@
 import styles from "./TopBar.module.css";
-import { Link, Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../../store/session";
 import logo from "../../../../assets/images/templogo.svg";
 
 const TopBar = () => {
+	const history = useHistory();
 	const dispatch = useDispatch();
+
 	const onLogout = async (e) => {
 		await dispatch(logout());
-		<Redirect to="/" />;
+		history.push("/");
 	};
 	return (
 		<div className={styles.topbar}>
 			<div className={styles.left_container}>
-				<Link to="/">
+				<Link to="/forms">
 					<img className={styles.logo} src={logo} alt="logo" />
 				</Link>
 			</div>
