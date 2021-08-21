@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../../store/session";
 import styles from "./LoginFormPage.module.css";
+import NavBar from "../../NavBar/NavBar";
 
 const LoginFormPage = () => {
 	const [errors, setErrors] = useState([]);
@@ -39,6 +40,7 @@ const LoginFormPage = () => {
 
 	return (
 		<>
+			<NavBar />
 			<div className={styles.page_container}>
 				<div className={styles.middle_container}>
 					<div className={styles.welcome_block}>

@@ -5,6 +5,7 @@ import { getUserForms, deleteForm, createForm } from "../../store/forms.js";
 import FormsTable from "./FormsTable.js";
 import { Link } from "react-router-dom";
 import "./Forms.css";
+import NavBar from "../NavBar/NavBar.js";
 
 // TODO: Redirect unregistered users to a login page
 // TODO: Add form description under form title in form manager list (?)
@@ -70,33 +71,36 @@ function FormsManager() {
 	// }
 
 	return forms && user ? (
-		<div className="form-manager-container">
-			<div className="form-manager-page-header">
-				<div className="form-manager-header">
-					<h1 id="form-manager-title">Forms</h1>
+		<>
+			<NavBar />
+			<div className="form-manager-container">
+				<div className="form-manager-page-header">
+					<div className="form-manager-header">
+						<h1 id="form-manager-title">Forms</h1>
+					</div>
+					<div className="form-manager-actions">
+						<Link to="/forms/build">
+							<button className="form-create-button">
+								<div className="plus-logo"></div>
+								<span className="create-new-form">
+									Create New Form
+								</span>
+							</button>
+						</Link>
+					</div>
 				</div>
-				<div className="form-manager-actions">
-					<Link to="/forms/build">
-						<button className="form-create-button">
-							<div className="plus-logo"></div>
-							<span className="create-new-form">
-								Create New Form
-							</span>
-						</button>
-					</Link>
+				<div className="forms-area">
+					<div className="utility-bar">{/* search bar */}</div>
+					<div className="form-manager-forms">
+						<FormsTable
+							forms={forms}
+							handleDeleteForm={handleDeleteForm}
+							user={user}
+						/>
+					</div>
 				</div>
 			</div>
-			<div className="forms-area">
-				<div className="utility-bar">{/* search bar */}</div>
-				<div className="form-manager-forms">
-					<FormsTable
-						forms={forms}
-						handleDeleteForm={handleDeleteForm}
-						user={user}
-					/>
-				</div>
-			</div>
-		</div>
+		</>
 	) : (
 		<h1>Loading...</h1>
 	);

@@ -16,7 +16,7 @@ const NavBar = () => {
 	return (
 		<nav className={user ? loggedInNavbarClasses : loggedOutNavbarClasses}>
 			<NavLink
-				to="/"
+				to={user ? "/forms" : "/"}
 				exact={true}
 				activeClassName="active"
 				className="navbar-links-home">

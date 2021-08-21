@@ -3,9 +3,11 @@ import FormContainer from "./FormContainer";
 
 const CreateForm = () => {
 	return (
-		<div className={styles.form_container}>
-			<FormContainer />
-		</div>
+		<>
+			<div className={styles.form_container}>
+				<FormContainer />
+			</div>
+		</>
 	);
 };
 

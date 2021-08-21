@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../../store/session";
 import styles from "./SignUpFormPage.module.css";
+import NavBar from "../../NavBar/NavBar";
 
 const SignUpFormPage = () => {
 	const [errors, setErrors] = useState([]);
@@ -45,6 +46,7 @@ const SignUpFormPage = () => {
 
 	return (
 		<>
+			<NavBar />
 			<div className={styles.page_container}>
 				<div className={styles.middle_container}>
 					<div className={styles.welcome_block}>
@@ -120,12 +122,24 @@ const SignUpFormPage = () => {
 							<h3 className={styles.free}>FREE</h3>
 							<hr />
 							<ul className={styles.free_offers}>
-								<li className={styles.free_offers_item}>Forms</li>
-								<li className={styles.free_offers_item}>Shared Forms</li>
-								<li className={styles.free_offers_item}>Multiple Fields</li>
-								<li className={styles.free_offers_item}>1 User</li>
-								<li className={styles.free_offers_item}>Unlimited Previews</li>
-								<li className={styles.free_offers_item}>and more!!!</li>
+								<li className={styles.free_offers_item}>
+									Forms
+								</li>
+								<li className={styles.free_offers_item}>
+									Shared Forms
+								</li>
+								<li className={styles.free_offers_item}>
+									Multiple Fields
+								</li>
+								<li className={styles.free_offers_item}>
+									1 User
+								</li>
+								<li className={styles.free_offers_item}>
+									Unlimited Previews
+								</li>
+								<li className={styles.free_offers_item}>
+									and more!!!
+								</li>
 							</ul>
 							<hr />
 						</aside>
