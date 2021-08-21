@@ -8,11 +8,13 @@
 	align-items: center;
 	justify-content: space-between;
 	/* margin: 0px 96px; */
-	padding: 0px 100px 0 100px;
+	padding: 10px 100px 10px 100px;
 	/* max-width: 1400px; */
 	/* min-width: 728px; */
 	margin: 0 auto;
 	flex-wrap: wrap;
+	border-bottom: 1px solid rgb(230, 233, 238);
+	margin-bottom: 30px;
 }
 
 h1#form-manager-title {
@@ -21,6 +23,7 @@ h1#form-manager-title {
 	font-size: 28px;
 	margin: 20.1px 0;
 	font-weight: 100 !important;
+	letter-spacing: 1px;
 }
 
 .form-manager-header {
@@ -49,8 +52,13 @@ tr.form-table-rows {
 	height: 84px;
 	align-items: center;
 	justify-content: space-between;
+	border: 1px solid rgb(204, 208, 217);
 	/* margin-top: 12px;
 	margin-left: 80px; */
+}
+
+tr.form-table-rows:hover {
+	border: 1px solid rgb(38, 133, 198);
 }
 
 td.form-actions {
@@ -78,10 +86,15 @@ td.delete-buttons {
     width: 33.25px; */
 }
 
-i.fa-trash:hover,
-i.fa-share-alt-square:hover,
-button.form-create-button:hover {
+i.fa-trash:hover {
 	cursor: pointer;
+	background-color: rgb(236, 134, 134);
+	border-radius: 12%;
+}
+
+i.fa-share-alt-square:hover {
+	cursor: pointer;
+	color: #2686c6a1;
 }
 
 i.fa-trash {
@@ -107,8 +120,10 @@ i.fa-share-alt-square {
 
 td.form-table-data {
 	margin-left: 40px;
+	font-size: 16px;
 	font-family: Arial, Helvetica, sans-serif;
-	font-weight: 200;
+	font-weight: 600;
+	color: #434a54;
 }
 
 /* td.form-table-data {
@@ -136,6 +151,10 @@ td.form-table-data {
 	border: none;
 	box-sizing: content-box;
 	border-radius: 2px;
+}
+
+.form-create-button:hover {
+	background-color: rgb(40, 142, 211);
 }
 
 .plus-logo {
