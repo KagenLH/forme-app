@@ -116,6 +116,7 @@ def get_form(id):
     print('FORM IS HERE!!! ', form)
     print('FIELD IS HERE!!!!! ***',
           {'fields': [field.to_dict() for field in fields]})
-    # print('THIS IS THE FIELD ID', fields.form_id)
+    
+    # form["fields"] = {'fields': [field.to_dict() for field in fields]}
 
     return form.to_dict()
