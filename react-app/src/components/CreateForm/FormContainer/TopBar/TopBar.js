@@ -7,7 +7,7 @@ const TopBar = () => {
 		<div className={styles.topbar}>
 			<div className={styles.topbar_container}>
 				<div className={styles.left_container}>
-					<Link to="/">
+					<Link to="/forms">
 						<img className={styles.logo} src={logo} alt="logo" />
 					</Link>
 				</div>
