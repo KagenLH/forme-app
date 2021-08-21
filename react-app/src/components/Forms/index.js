@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getUserForms, deleteForm, createForm } from "../../store/forms.js";
+import { getUserForms, deleteForm } from "../../store/forms.js";
 import FormsTable from "./FormsTable.js";
 import { Link } from "react-router-dom";
 import "./Forms.css";
@@ -28,9 +28,9 @@ function FormsManager() {
 	};
 
 	// TODO: create modal and update this function for sharing forms
-	const handleShareForm = (formId) => {
-		const shareLink = `http://www.forme-live.herokuapp.com/forms/${formId}/shared`;
-	};
+	// const handleShareForm = (formId) => {
+	// 	const shareLink = `http://www.forme-live.herokuapp.com/forms/${formId}/shared`;
+	// };
 
 	//! testing only
 	// const formData = {

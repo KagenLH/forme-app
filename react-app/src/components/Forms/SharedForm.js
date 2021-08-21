@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import { getSharedForm } from '../../store/forms.js'
 import './Forms.css'
@@ -8,7 +8,7 @@ import './Forms.css'
 
 function SharedForm() {
     const dispatch = useDispatch()
-    const form = useSelector(state => state.forms)
+    // const form = useSelector(state => state.forms)
 
     useEffect(() => {
         dispatch(getSharedForm())

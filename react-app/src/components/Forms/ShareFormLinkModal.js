@@ -4,7 +4,7 @@ import ShareFormLink from './ShareFormLink';
 
 function ShareFormLinkModal({ formId }) {
     const [showModal, setShowModal] = useState(false);
-    const [shareFormLink, setShareFormLink] = useState(`http://www.forme-live.herokuapp.com/forms/${formId}/shared`)
+    const [shareFormLink, /* setShareFormLink */] = useState(`http://www.forme-live.herokuapp.com/forms/${formId}/shared`)
 
     return (
         <>
