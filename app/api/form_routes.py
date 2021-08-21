@@ -111,13 +111,14 @@ def create_form():
 
     test_form = Form.query.filter_by(title='To Test Fields').first()
 
-    print("*** FORM.FIELDS ***", type(test_form.fields))
+    # print("*** FORM.FIELDS ***", type(test_form.fields))
+    # print("*** FIELD.FORMS ***", form_fields[0].form)
 
     # # ...so we can use the dict.update() method
     # return_form = form.to_dict()
     # # add an entry in 'form' contaning its related fields
     # return_form.update({"fields": [field.to_dict() for field in form_fields]})
-    print('**** FORM WITH FIELDS ****', form.to_dict())
+    # print('**** FORM WITH FIELDS ****', form.to_dict())
 
     return form.to_dict()
 

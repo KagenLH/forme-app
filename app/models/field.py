@@ -12,13 +12,12 @@ class Field(db.Model):
     placeholder = db.Column(db.String(255))
     instructions = db.Column(db.String(255))
     choices = db.Column(db.Text)
-    form_id = db.Column(db.Integer, db.ForeignKey("forms.id"), nullable=False)
+    form_id = db.Column(db.Integer, db.ForeignKey("forms.id"))
     # forms = db.relationship("Form", foreign_keys=form_id, lazy="joined") # redundant
 
     def to_dict(self):
         return {
             'id': self.id,
-            # 'forms': self.forms,  # due to bidirectional relationship
             'form_id': self.form_id,
             'type': self.type,
             'label': self.label,
