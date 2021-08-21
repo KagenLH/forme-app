@@ -13,20 +13,20 @@ def get_forms():
     return {'forms': [form.to_dict() for form in forms]}
 
 
-@form_routes.route('/<int:id>', methods=['GET', 'DELETE'])
-@login_required
-def forms(id):
-    # get a specific form by primary key
-    if request.method == 'GET':
-        form = Form.query.get(id)
-        return form.to_dict()
-    # delete a specific form by primary key
-    elif request.method == 'DELETE':
-        form = Form.query.get(id)  # takes a form's id
+# @form_routes.route('/<int:id>', methods=['GET', 'DELETE'])
+# @login_required
+# def forms(id):
+#     # get a specific form by primary key
+#     if request.method == 'GET':
+#         form = Form.query.get(id)
+#         return form.to_dict()
+#     # delete a specific form by primary key
+#     elif request.method == 'DELETE':
+#         form = Form.query.get(id)  # takes a form's id
 
-        db.session.delete(form)
-        db.session.commit()
-        return form.to_dict()
+#         db.session.delete(form)
+#         db.session.commit()
+#         return form.to_dict()
 
 
 # (GET) allow user to access a form without being logged in, i.e. SHARED form
@@ -106,3 +106,12 @@ def create_form():
 #         db.session.delete(form)
 #         db.session.commit()
 #         return form.to_dict()
+
+
+@form_routes.route('/<int:id>')
+def get_form(id):
+    form = Form.query.filter(Form.id == id).first()
+
+    print('FORM IS HERE!!!', form)
+
+    return form.to_dict()
