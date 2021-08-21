@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../../store/session";
 import styles from "./LoginFormPage.module.css";
+import NavBar from "../../NavBar/NavBar";
 
 const LoginFormPage = () => {
 	const [errors, setErrors] = useState([]);
@@ -29,15 +30,17 @@ const LoginFormPage = () => {
 	};
 
 	const loginDemo = async () => {
-		await dispatch(login('demo@aa.io', 'password'));
+		await dispatch(login("demo@aa.io", "password"));
+		// <Redirect to="/forms" />;
 	};
 
 	if (user) {
-		return <Redirect to="/" />;
+		return <Redirect to="/forms" />;
 	}
 
 	return (
 		<>
+			<NavBar />
 			<div className={styles.page_container}>
 				<div className={styles.middle_container}>
 					<div className={styles.welcome_block}>
@@ -87,7 +90,9 @@ const LoginFormPage = () => {
 										<div>Create an account</div>
 									</Link>
 									<p className={styles.or}>Or</p>
-									<p className={styles.demo} onClick={loginDemo}>
+									<p
+										className={styles.demo}
+										onClick={loginDemo}>
 										Login as Demo User
 									</p>
 								</div>
