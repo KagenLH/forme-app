@@ -111,7 +111,11 @@ def create_form():
 @form_routes.route('/<int:id>')
 def get_form(id):
     form = Form.query.filter(Form.id == id).first()
+    fields = Field.query.filter(Field.form_id == form.id).all()
 
-    print('FORM IS HERE!!!', form)
+    print('FORM IS HERE!!! ', form)
+    print('FIELD IS HERE!!!!! ***',
+          {'fields': [field.to_dict() for field in fields]})
+    # print('THIS IS THE FIELD ID', fields.form_id)
 
     return form.to_dict()
