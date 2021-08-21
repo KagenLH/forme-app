@@ -9,6 +9,8 @@ function FormsTableBody({ forms, handleDeleteForm, user }) {
 				<thead className="table-head">
 					<tr>
 						<th className="column-title-name">Name</th>
+						<th>Share</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
