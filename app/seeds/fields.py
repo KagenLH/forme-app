@@ -1,12 +1,19 @@
 from app.models import db, Field
+from app.models import Form
 
 
 def seed_fields():
+    form = Form(
+        title='To Test Fields',
+        owner_id=1
+    )
+    db.session.add(form)
+
     testField = Field(
         type="text",
-        form_id=1,
-        label="Name",
-        required=False
+        label="Test Field",
+        required=False,
+        form=form  # creates the form_id / association
     )
 
     db.session.add(testField)

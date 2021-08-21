@@ -11,8 +11,12 @@ class Form(db.Model):
     label_placement = db.Column(db.String(10))
     description_align = db.Column(db.String(10))
     title_align = db.Column(db.String(10))
-    field_id = db.Column(db.Integer, db.ForeignKey('fields.id'))
-    fields = db.relationship("Field", foreign_keys=field_id ,back_populates="forms", lazy="joined")
+    # creates a pseudo-column (you won't see it) in the 'fields' table called 'form' that can be assigned a Form instance when creating a Field instance -- 'form' is not the name of this table
+    fields = db.relationship('Field', backref='form')
+
+
+    # field_id = db.Column(db.Integer, db.ForeignKey('fields.id'))
+    # fields = db.relationship("Field", foreign_keys=field_id ,back_populates="forms", lazy="joined")
 
     def to_dict(self):
         return {

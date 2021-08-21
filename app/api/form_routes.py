@@ -70,32 +70,35 @@ def create_form():
     print('FORM FORM FORM:', form)
 
     for field_info in data["fields"]:
-        if (type(field_info["maxLength"]) is not int):
-            field_info["maxLength"] = None
-        else:
-            int(field_info["maxLength"])
-        print('*******max length ********',field_info["maxLength"])
+        # if (field_info["maxLength"]):
+        #     int(field_info["maxLength"])
+        # else:
+        #     field_info["maxLength"] = None
+        print('******* FIELD INFO ********', field_info)
         field = Field(
             type=field_info["type"],
             label=field_info["label"],
-            max_length=field_info["maxLength"],
+            # max_length=field_info["maxLength"],
             required=field_info["required"],
-            placeholder=field_info["placeholder"],
-            instructions=field_info["instructions"],
-            choices=field_info["choices"],
-            form_id=form.id
+            # placeholder=field_info["placeholder"],
+            # instructions=field_info["instructions"],
+            # choices=field_info["choices"],
+            form=form  # handles the form_id
         )
 
         # db.session.add(field)
         form_fields.append(field)
-        
+
     db.session.add_all(form_fields)
     db.session.commit()
 
-    # form.fields = form_fields
-    # db.session.commit
+    # ...so we can use the dict.update() method
+    return_form = form.to_dict()
+    # add an entry in 'form' contaning its related fields
+    return_form.update({"fields": [field.to_dict() for field in form_fields]})
+    print('**** FORM WITH FIELDS ****', return_form)
 
-    return form.to_dict()
+    return return_form
 
 
 # ! currently causes error "405 method not allowed"
@@ -119,7 +122,7 @@ def get_form(id):
     print('FORM IS HERE!!! ', form.to_dict())
     # print('FIELD IS HERE!!!!! ***',
     #       {'fields': [field.to_dict() for field in fields]})
-    
+
     # form["fields"] = {'fields': [field.to_dict() for field in fields]}
 
     return form.to_dict()
