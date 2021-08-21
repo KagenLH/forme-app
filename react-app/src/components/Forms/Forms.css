@@ -24,7 +24,7 @@ h1#form-manager-title {
 }
 
 .form-manager-header {
-	padding: 0 12px;
+	padding-right: 12px;
 }
 
 .forms-area {
@@ -38,7 +38,7 @@ h1#form-manager-title {
 }
 
 .form-manager-actions {
-	padding: 0 12px;
+	padding-left: 12px;
 }
 
 tr.form-table-rows {
@@ -46,7 +46,7 @@ tr.form-table-rows {
 	background-color: white;
 	border: solid 1px rgba(128, 128, 128, 0.8);
 	width: 100%;
-	height: 92px;
+	height: 84px;
 	align-items: center;
 	justify-content: space-between;
 	/* margin-top: 12px;
@@ -65,7 +65,7 @@ td.delete-buttons {
 	justify-content: space-between;
 	justify-self: center;
 	align-self: center;
-	margin-right: 50px;
+	margin-right: 60px;
 	background-color: rgb(243, 83, 83);
 	/* border-radius: 6% / 12%; */
 	border-radius: 12%;
@@ -92,7 +92,7 @@ i.fa-trash {
 i.fa-share-alt-square {
 	font-size: 38px;
 	/* padding: 10px 15px; */
-	margin-right: 15px;
+	margin-right: 90px;
 	color: #2685c6;
 }
 
@@ -106,7 +106,7 @@ i.fa-share-alt-square {
 }
 
 td.form-table-data {
-	margin-left: 20px;
+	margin-left: 40px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: 200;
 }
@@ -160,13 +160,40 @@ th {
 }
 
 .column-title-name {
-	border-right: 1px solid rgb(204, 208, 217);
+	border-left: 1px solid rgb(204, 208, 217);
+}
+
+.share-label {
+	border-left: 1px solid rgb(204, 208, 217);
+	padding-left: 45px;
+	position: relative;
+	right: 4px;
+}
+
+.delete-label {
+	border-left: 1px solid rgb(204, 208, 217);
+	padding-left: 40px;
+	position: relative;
+	left: 14px;
+}
+
+.form-action-label {
+	display: flex;
 }
 
 table {
 	border-spacing: 0 12px;
 	width: 100%;
 	table-layout: fixed;
+}
+
+.column-title-container {
+	display: flex;
+	position: relative;
+	align-items: center;
+	width: 100%;
+	height: 35px;
+	justify-content: space-between;
 }
 
 .table-head {
@@ -184,16 +211,16 @@ table {
 	min-width: 728px; */
 	background-color: rgb(230, 233, 238);
 	vertical-align: middle;
-	border-collapse: separate;
 	border: none;
 	color: #434a54;
-	padding: 8px 24px;
+	font-size: 14px;
 	width: 100%;
-	margin: 0px 96px;
-	padding: 0px 100px 0 100px;
-
-	margin: 0 auto;
+	height: 36px;
+	/* margin: 0px 40px; */
+	padding: 0px 20px 0 30px;
+	margin: 10px auto;
 	display: inline-block;
+	position: relative;
 }
 
 /* the modal fields */

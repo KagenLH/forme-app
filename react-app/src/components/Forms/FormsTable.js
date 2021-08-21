@@ -7,10 +7,12 @@ function FormsTableBody({ forms, handleDeleteForm, user }) {
 		<div className="form-table">
 			<table>
 				<thead className="table-head">
-					<tr>
+					<tr className="column-title-container">
 						<th className="column-title-name">Name</th>
-						<th>Share</th>
-						<th>Delete</th>
+						<th className="form-action-label">
+							<th className="share-label">Share</th>
+							<th className="delete-label">Delete</th>
+						</th>
 					</tr>
 				</thead>
 				<tbody>
