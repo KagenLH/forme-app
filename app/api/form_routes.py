@@ -88,8 +88,9 @@ def create_form():
 
         # db.session.add(field)
         form_fields.append(field)
-
+        
     db.session.add_all(form_fields)
+    form.fields = form_fields
     db.session.commit()
 
     return form.to_dict()
@@ -111,11 +112,11 @@ def create_form():
 @form_routes.route('/<int:id>')
 def get_form(id):
     form = Form.query.filter(Form.id == id).first()
-    fields = Field.query.filter(Field.form_id == form.id).all()
+    # fields = Field.query.filter(Field.form_id == form.id).all()
 
     print('FORM IS HERE!!! ', form)
-    print('FIELD IS HERE!!!!! ***',
-          {'fields': [field.to_dict() for field in fields]})
+    # print('FIELD IS HERE!!!!! ***',
+    #       {'fields': [field.to_dict() for field in fields]})
     
     # form["fields"] = {'fields': [field.to_dict() for field in fields]}
 
