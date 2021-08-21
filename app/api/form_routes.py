@@ -113,7 +113,7 @@ def create_form():
     return_form = form.to_dict()
     # add an entry in 'form' contaning its related fields
     return_form.update({"fields": [field.to_dict() for field in form_fields]})
-    # print('**** FORM WITH FIELDS ****', return_form)
+    print('**** FORM WITH FIELDS ****', return_form)
 
     return return_form
 
@@ -129,17 +129,3 @@ def create_form():
 #         db.session.delete(form)
 #         db.session.commit()
 #         return form.to_dict()
-
-
-@form_routes.route('/<int:id>')
-def get_form(id):
-    form = Form.query.filter(Form.id == id).first()
-    # fields = Field.query.filter(Field.form_id == form.id).all()
-
-    # print('FORM IS HERE!!! ', form.to_dict())
-    # print('FIELD IS HERE!!!!! ***',
-    #       {'fields': [field.to_dict() for field in fields]})
-
-    # form["fields"] = {'fields': [field.to_dict() for field in fields]}
-
-    return form.to_dict()

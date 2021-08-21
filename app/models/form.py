@@ -18,6 +18,7 @@ class Form(db.Model):
     # field_id = db.Column(db.Integer, db.ForeignKey('fields.id'))
     # fields = db.relationship("Field", foreign_keys=field_id ,back_populates="forms", lazy="joined")
 
+
     def to_dict(self):
         return {
             'id': self.id,
