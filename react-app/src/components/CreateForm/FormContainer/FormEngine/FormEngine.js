@@ -38,8 +38,8 @@ export default function FormEngine() {
 	);
 	const [textValue, setTextValue] = useState("");
 	const [formSettings, setFormSettings] = useState({
-		titleAlignment: "left",
-		descriptionAlignment: "left",
+		titleAlignment: "flex-start",
+		descriptionAlignment: "flex-start",
 		labelPlacement: "top",
 	});
 
@@ -102,6 +102,64 @@ export default function FormEngine() {
 			console.log(data);
 		}
 	};
+
+	const updateAllFields = (e, tag) => {
+		setJsxContent((prevState) => {
+			return prevState.map((jsx) => {
+				const oldSettings = jsx[1];
+				const newSettings = { ...oldSettings, [tag]: e.target.value };
+				if (newSettings.type === "text") {
+					const newJsx = createTextInput(
+						textValue,
+						setTextValue,
+						newSettings
+					);
+					const newState = [newJsx, newSettings];
+					return newState;
+				} else if (newSettings.type === "textarea") {
+					const newJsx = createMultiLineText(
+						textValue,
+						setTextValue,
+						newSettings
+					);
+					const newState = [newJsx, newSettings];
+					return newState;
+				} else if (newSettings.type === "select") {
+					const newJsx = createSelectField(
+						textValue,
+						setTextValue,
+						newSettings
+					);
+					const newState = [newJsx, newSettings];
+					return newState;
+				} else if (newSettings.type === "multipleChoice") {
+					const newJsx = createMultipleChoice(
+						textValue,
+						setTextValue,
+						newSettings
+					);
+					const newState = [newJsx, newSettings];
+					return newState;
+				} else if (newSettings.type === "checkbox") {
+					const newJsx = createCheckboxField(
+						textValue,
+						setTextValue,
+						newSettings
+					);
+					const newState = [newJsx, newSettings];
+					return newState;
+				} else if (newSettings.type === "numeric") {
+					const newJsx = createNumericInput(
+						textValue,
+						setTextValue,
+						newSettings
+					);
+					const newState = [newJsx, newSettings];
+					return newState;
+				}
+			});
+		})
+	}
 
 	const updateFieldSettings = (e, tag) => {
 		const replacementIndex = jsxContent.findIndex((jsx) => jsx[0] === activeField[0]);
@@ -813,11 +871,11 @@ export default function FormEngine() {
 											};
 										});
 									}}>
-									<option value="left">Left Aligned</option>
+									<option value="flex-start">Left Aligned</option>
 									<option value="center">
 										Center Aligned
 									</option>
-									<option value="right">Right Aligned</option>
+									<option value="flex-end">Right Aligned</option>
 								</select>
 							</div>
 							<label className={styles.form_settings_label}>
@@ -839,11 +897,11 @@ export default function FormEngine() {
 											};
 										});
 									}}>
-									<option value="left">Left Aligned</option>
+									<option value="flex-start">Left Aligned</option>
 									<option value="center">
 										Center Aligned
 									</option>
-									<option value="right">Right Aligned</option>
+									<option value="flex-end">Right Aligned</option>
 								</select>
 							</div>
 							<label className={styles.form_settings_label}>
@@ -863,10 +921,11 @@ export default function FormEngine() {
 												labelPlacement: e.target.value,
 											};
 										});
+
+										updateAllFields(e, "labelPlacement");
 									}}>
 									<option value="top">Top Aligned</option>
 									<option value="left">Left Aligned</option>
-									<option value="right">Right Aligned</option>
 								</select>
 							</div>
 						</form>
@@ -875,9 +934,13 @@ export default function FormEngine() {
 			</div>
 			<div className={styles.form_preview}>
 				<div className={styles.form_preview_title}>
-					<div className={styles.actual_title}>{formTitle}</div>
-					<div className={styles.form_description}>
-						{formDescription}
+					<div style={{'display': 'flex', 'justifyContent': formSettings.titleAlignment}}>
+						<div className={styles.actual_title}>{formTitle}</div>
+					</div>
+					<div style={{'display': 'flex', 'justifyContent': formSettings.descriptionAlignment}}>
+						<div className={styles.form_description}>
+							{formDescription}
+						</div>
 					</div>
 				</div>
 				<div>
