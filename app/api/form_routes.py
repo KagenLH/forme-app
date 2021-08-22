@@ -50,6 +50,7 @@ def create_form():
     # print('***** REQUEST DATA INFO *****', request.get_json())
 
     user_id = session['_user_id']
+    print("This is the userID", user_id)
 
     # pull JSON data from request body
     data = request.get_json()
@@ -79,7 +80,7 @@ def create_form():
             "placeholder",
             "instructions",
             "choices"
-            ]
+        ]
 
         # check whether field_info["maxLength"] exists
         if "maxLength" in field_info:
