@@ -9,7 +9,6 @@ import NavBar from "../NavBar/NavBar.js";
 
 // TODO: Redirect unregistered users to a login page
 // TODO: Do something about share button on form creator
-// TODO: Make form names into links that lead to form render page
 // TODO: create read me for whole project
 //? forme-live.herokuapp.com
 function FormsManager() {
@@ -27,11 +26,6 @@ function FormsManager() {
 
 	const handleDeleteForm = async (formId) => {
 		await dispatch(deleteForm(formId));
-	};
-
-	// TODO: create modal and update this function for sharing forms
-	const handleShareForm = (formId) => {
-		const shareLink = `http://www.forme-live.herokuapp.com/forms/${formId}/shared`;
 	};
 
     // //! testing only

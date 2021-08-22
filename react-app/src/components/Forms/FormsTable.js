@@ -1,5 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ShareFormLinkModal from "./ShareFormLinkModal.js";
+
+// TODO: Make form names into links that lead to form render page
 
 function FormsTableBody({ forms, handleDeleteForm, user }) {
 	// console.log("PROPS DATA", forms, user);
@@ -20,10 +23,12 @@ function FormsTableBody({ forms, handleDeleteForm, user }) {
 						return (
 							<tr className="form-table-rows">
 								<td className="form-table-data" key={form.id}>
-									{form.title}
-                                <td className='form-description'>
-                                    {form.description}
-                                </td>
+									<Link to={`/forms/${form.id}/shared`} className='form-title-link'>
+										{form.title}
+									</Link>
+									<td className='form-description'>
+										{form.description}
+									</td>
 								</td>
 								<td className="form-actions">
 									<td className="share-buttons" key={form.id}>
