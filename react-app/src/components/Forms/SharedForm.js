@@ -29,7 +29,7 @@ function SharedForm() {
 
     let fieldsArray = form[formId]?.fields  
 
-    console.log('THIS IS THE FIELD ARRAY I HOPE!!!!!', fieldsArray)
+    // console.log('THIS IS THE FIELD ARRAY I HOPE!!!!!', fieldsArray)
 
     // console.log('THIS IS THE FORM STATEf', form[formId]?.title)
 
