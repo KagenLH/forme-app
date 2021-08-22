@@ -63,7 +63,7 @@ export const getSharedForm = (id) => async (dispatch) => {
 
     if (res.ok) {
         const form = await res.json()
-        dispatch(load(form))
+        dispatch(load([form]))
     }
 }
 
