@@ -544,7 +544,7 @@ export default function FormEngine() {
 										</select>
 									</div>
 								</li>
-								<fieldset className={styles.choices_container}>
+								{['select', 'checkbox', 'multipleChoice'].includes(activeField[1].type) && <fieldset className={styles.choices_container}>
 									<legend
 										className={`${styles.choices_legend}`}>
 										Choices
@@ -618,7 +618,8 @@ export default function FormEngine() {
 												/>
 										))}
 									</ul>
-								</fieldset>
+								</fieldset>}
+								<div>
 								<li className={styles.options_li}>
 									<fieldset
 										className={styles.options_container}>
@@ -648,7 +649,7 @@ export default function FormEngine() {
 										</label>
 									</fieldset>
 								</li>
-								<li className={styles.range_li}>
+								{['text', 'textarea'].includes(activeField[1].type) && <li className={styles.range_li}>
 									<fieldset
 										className={styles.range_container}>
 										<legend
@@ -681,29 +682,33 @@ export default function FormEngine() {
 											</span>
 										</div>
 									</fieldset>
-								</li>
-								<label className={styles.field_settings_label}>
-									Placeholder Text
-								</label>
-								<div
-									className={
-										styles.placeholder_text_container
-									}>
-									<input
-										className={`${styles.field_settings_placeholder_text}
-										${styles.input_boxes}`}
-										value={placeholderText}
-										onChange={(e) => {
-											setPlaceholderText(e.target.value);
-											updateFieldSettings(
-												e,
-												"placeholder"
-											);
-										}}
-										type="text"
-										maxlength="50"
-									/>
+								</li>}
 								</div>
+								{['text', 'textarea', 'numeric'].includes(activeField[1].type) && 
+								<div>
+									<label className={styles.field_settings_label}>
+										Placeholder Text
+									</label>
+									<div
+										className={
+											styles.placeholder_text_container
+										}>
+										<input
+											className={`${styles.field_settings_placeholder_text}
+											${styles.input_boxes}`}
+											value={placeholderText}
+											onChange={(e) => {
+												setPlaceholderText(e.target.value);
+												updateFieldSettings(
+													e,
+													"placeholder"
+												);
+											}}
+											type="text"
+											maxlength="50"
+										/>
+									</div>
+								</div>}
 								<label className={styles.field_settings_label}>
 									Instructions
 								</label>
