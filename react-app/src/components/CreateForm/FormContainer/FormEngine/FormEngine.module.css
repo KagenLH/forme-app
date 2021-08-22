@@ -857,3 +857,26 @@ li {
 	color: rgb(209, 47, 25);
 	font-weight: 600;
 }
+
+.none_selected_notice {
+	padding: 15px;
+	margin-top: 5px;
+	background-color: #fbffcf;
+	border-top: 1px solid #ebefc2;
+	border-left: 1px solid #ebefc2;
+	border-bottom: 1px solid #d9df99;
+	border-right: 1px solid #d9df99;
+	border-radius: 15px;
+}
+
+.no_field_selected_text {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #bd3d20;
+	font-size: 14px;
+}
+
+.please_click_text {
+	color: #222;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
