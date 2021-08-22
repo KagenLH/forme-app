@@ -91,16 +91,16 @@ export default function FormEngine() {
 		};
 
 		console.log(formData);
-		// const res = await fetch('/api/forms', {
-		// 	method: 'POST',
-		// 	headers: { 'Content-Type': 'application/json' },
-		// 	body: JSON.stringify(formData)
-		// });
+		const res = await fetch("/api/forms/build", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(formData),
+		});
 
-		// if(res.ok) {
-		// 	const data = res.json();
-		// 	console.log(data);
-		// }
+		if (res.ok) {
+			const data = res.json();
+			console.log(data);
+		}
 	};
 
 	const updateFieldSettings = (e, tag) => {
