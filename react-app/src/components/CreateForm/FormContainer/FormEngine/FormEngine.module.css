@@ -819,3 +819,11 @@ li {
 	height: 60px;
 	resize: none;
 }
+
+.form_preview_field {
+	cursor: pointer;
+}
+
+.form_preview_field * {
+	cursor: pointer;
+}

@@ -19,6 +19,7 @@ const initialFieldState = {
 };
 
 const FormEngine = () => {
+	const [activeField, setActiveField] = useState(null);
 	const [activeTab, setActiveTab] = useState("add");
 	const [formTitle, setFormTitle] = useState("Untitled Form");
 	const [formDescription, setFormDescription] = useState(
@@ -40,7 +41,6 @@ const FormEngine = () => {
 	const [fieldChoices, setFieldChoices] = useState(['First Choice', 'Second Choice', 'Third Choice']);
 	const [isCheckedRequired, setIsCheckedRequired] = useState(false);
 	const [maxChar, setMaxChar] = useState(25);
-	const [predefinedValue, setPredefinedValue] = useState("");
 	const [placeholderText, setPlaceholderText] = useState("");
 	const [instructions, setInstructions] = useState("");
 
@@ -89,12 +89,47 @@ const FormEngine = () => {
 		// }
 	};
 
-	// const insertToPreview = (jsx) => {
-	// 	setJsxContent((prevState) => {
-	// 		return prevState;
-	// 	});
-	// };
-
+	const updateFieldSettings = (e, tag) => {
+		const replacementIndex = jsxContent.findIndex(jsx => jsx[0] === activeField[0]);
+		setJsxContent((prevState) => {
+			const newState = [...prevState];
+			const oldSettings = jsxContent[replacementIndex][1];
+			const newSettings = { ...oldSettings, [tag]: e.target.value}
+			console.log(newSettings);
+			if (newSettings.type === "text") {
+				const newJsx = createTextInput(textValue, setTextValue, newSettings);
+				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState);
+				return newState;
+			}
+			else if (newSettings.type === "textarea") {
+				const newJsx = createMultiLineText(textValue, setTextValue, newSettings);
+				newState[replacementIndex] = [newJsx, newSettings];
+				return newState;
+			}
+			else if (newSettings.type === "select") {
+				const newJsx = createSelectField(textValue, setTextValue, newSettings);
+				newState[replacementIndex] = [newJsx, newSettings];
+				return newState;
+			}
+			else if (newSettings.type === "multipleChoice") {
+				const newJsx = createMultipleChoice(textValue, setTextValue, newSettings);
+				newState[replacementIndex] = [newJsx, newSettings];
+				return newState;
+			}
+			else if (newSettings.type === "checkbox") {
+				const newJsx = createCheckboxField(textValue, setTextValue, newSettings);
+				newState[replacementIndex] = [newJsx, newSettings];
+				return newState;
+			}
+			else if (newSettings.type === "numeric") {
+				const newJsx = createNumericInput(textValue, setTextValue, newSettings);
+				newState[replacementIndex] = [newJsx, newSettings];
+				return newState;
+			}
+		});
+		setActiveField(jsxContent[replacementIndex]);
+	};
 	return (
 		<div className={styles.engine_container}>
 			<div
@@ -210,7 +245,7 @@ const FormEngine = () => {
 												setMultiLineValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, [jsx, initialFieldState]];
+												return [...prevState, [jsx, { type: "textarea", ...initialFieldState }]];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -238,7 +273,7 @@ const FormEngine = () => {
 												setMultiChoiceValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, [jsx, initialFieldState]];
+												return [...prevState, [jsx, { type: "multipleChoice", ...initialFieldState }]];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -284,7 +319,7 @@ const FormEngine = () => {
 												setNumberValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, [jsx, initialFieldState]];
+												return [...prevState, [jsx, { type: "numeric", ...initialFieldState }]];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -302,7 +337,7 @@ const FormEngine = () => {
 											setcheckboxValue
 										);
 										setJsxContent((prevState) => {
-											return [...prevState, [jsx, initialFieldState]];
+											return [...prevState, [jsx, { type: "checkbox", ...initialFieldState }]];
 										});
 									}}
 									className={
@@ -329,7 +364,7 @@ const FormEngine = () => {
 												setSelectValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, [jsx, initialFieldState]];
+												return [...prevState, [jsx, { type: "select", ...initialFieldState }]];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -370,6 +405,8 @@ const FormEngine = () => {
 									placeholder={fieldLabel}
 									onChange={(e) => {
 										setFieldLabel(e.target.value);
+										console.log(activeField);
+										updateFieldSettings(e, "label");
 									}}
 								/>
 							</div>
@@ -388,21 +425,22 @@ const FormEngine = () => {
 													fieldType: e.target.value,
 												};
 											});
+											updateFieldSettings(e, "type");
 										}}>
-										<option value="single_line_text">
+										<option value="text">
 											Single Line Text
 										</option>
-										<option value="paragraph_text">
+										<option value="textarea">
 											Paragraph Text
 										</option>
-										<option value="multiple_choice">
+										<option value="mulpipleChoice">
 											Multiple Choice
 										</option>
-										<option value="number">Number</option>
-										<option value="checkboxes">
+										<option value="numeric">Number</option>
+										<option value="checkbox">
 											Checkboxes
 										</option>
-										<option value="dropdown">
+										<option value="select">
 											Dropdown
 										</option>
 									</select>
@@ -474,10 +512,11 @@ const FormEngine = () => {
 										className={styles.required_checkbox}
 										type="checkbox"
 										value={isCheckedRequired}
-										onClick={() => {
+										onClick={(e) => {
 											setIsCheckedRequired(
 												!isCheckedRequired
 											);
+											updateFieldSettings(e, "required");
 										}}
 									/>
 									<label className={styles.required_text}>
@@ -506,27 +545,13 @@ const FormEngine = () => {
 												value={maxChar}
 												onChange={(e) => {
 													setMaxChar(e.target.value);
+													updateFieldSettings(e, "maxLength");
 												}}
 											/>
 										</span>
 									</div>
 								</fieldset>
 							</li>
-							<label className={styles.field_settings_label}>
-								Predefined Value
-							</label>
-							<div className={styles.predefined_value_container}>
-								<input
-									className={`${styles.field_settings_predefined_values}
-										${styles.input_boxes}`}
-									value={predefinedValue}
-									onChange={(e) => {
-										setPredefinedValue(e.target.value);
-									}}
-									type="text"
-									maxlength="50"
-								/>
-							</div>
 							<label className={styles.field_settings_label}>
 								Placeholder Text
 							</label>
@@ -537,6 +562,7 @@ const FormEngine = () => {
 									value={placeholderText}
 									onChange={(e) => {
 										setPlaceholderText(e.target.value);
+										updateFieldSettings(e, "placeholder");
 									}}
 									type="text"
 									maxlength="50"
@@ -552,6 +578,7 @@ const FormEngine = () => {
 									placeholder={setInstructions}
 									onChange={(e) => {
 										setFieldLabel(e.target.value);
+										updateFieldSettings(e, "instructions");
 									}}
 								/>
 							</div>
@@ -678,18 +705,16 @@ const FormEngine = () => {
 				<div>
 					{jsxContent?.map((jsxcontent) => (
 						<div
+							className={styles.form_preview_field}
 							key={Math.random()}
 							onClick={() => {
-								setJsxContent((prevState) => {
-									const newState = [...prevState];
-									const deletedIdx = newState.findIndex(
-										(ele) => {
-											return ele === jsxcontent;
-										}
-									);
-									delete newState[deletedIdx];
-									return newState;
-								});
+								setActiveField(jsxcontent);
+								setFieldLabel(jsxcontent[1].label);
+								setInstructions(jsxcontent[1].instructions);
+								setFieldChoices(jsxcontent[1].choices);
+								setMaxChar(jsxcontent[1].maxLength);
+								setIsCheckedRequired(jsxcontent[1].required);
+								setPlaceholderText(jsxcontent[1].placeholder);
 							}}>
 							{jsxcontent && jsxcontent[0]}
 						</div>
