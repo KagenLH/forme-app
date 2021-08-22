@@ -560,8 +560,9 @@ const FormEngine = () => {
 								/>
 							</div>
 							<button
+								type="button"
 								className={`${styles.standard_button} ${styles.delete_buttons}`}>
-								<b className={styles.delete_icon}></b>
+								<b className={styles.delete_icons}></b>
 								<span className={styles.delete_text}>
 									Delete
 								</span>
