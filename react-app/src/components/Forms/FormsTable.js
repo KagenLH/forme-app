@@ -21,6 +21,9 @@ function FormsTableBody({ forms, handleDeleteForm, user }) {
 							<tr className="form-table-rows">
 								<td className="form-table-data" key={form.id}>
 									{form.title}
+                                <td className='form-description'>
+                                    {form.description}
+                                </td>
 								</td>
 								<td className="form-actions">
 									<td className="share-buttons" key={form.id}>

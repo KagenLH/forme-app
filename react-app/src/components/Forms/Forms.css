@@ -126,6 +126,11 @@ td.form-table-data {
 	color: #434a54;
 }
 
+td.form-description {
+	font-weight: lighter;
+	overflow: hidden;
+}
+
 /* td.form-table-data {
     background-color: white;
     border: solid 1px rgba(128, 128, 128, .3);
