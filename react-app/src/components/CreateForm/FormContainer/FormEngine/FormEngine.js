@@ -9,7 +9,6 @@ import {
 	createNumericInput,
 } from "@kagenlh/jsxfields";
 
-
 const initialFieldState = {
 	label: "Untitled",
 	maxLength: 255, // Used with text inputs to determine a maximum number of characters
@@ -73,7 +72,6 @@ const FormEngine = () => {
 			setActiveTab("form");
 		}
 	};
-
 
 	const onSave = async () => {
 		const fieldSettings = jsxContent.map((pair) => pair[1]);
@@ -482,207 +480,232 @@ const FormEngine = () => {
 				{activeTab === "field" ? (
 					<ul className={styles.field_settings_constructor}>
 						{activeField !== null ? (
-						<form>
-							<label className={styles.field_settings_label}>
-								Field Label
-							</label>
-							<div className={styles.field_label_container}>
-								<textarea
-									className={`${styles.field_settings_field_label} ${styles.input_boxes}`}
-									value={fieldLabel}
-									placeholder={fieldLabel}
-									onChange={(e) => {
-										setFieldLabel(e.target.value);
-										updateFieldSettings(e, "label");
-									}}
-								/>
-							</div>
-							<li className={styles.field_type_li}>
+							<form>
 								<label className={styles.field_settings_label}>
-									Field Type
+									Field Label
 								</label>
-								<div className={styles.field_type_container}>
-									<select
-										className={`${styles.field_settings_field_type} ${styles.dropdown_boxes}`}
-										value={fieldSettings.fieldType}
+								<div className={styles.field_label_container}>
+									<textarea
+										className={`${styles.field_settings_field_label} ${styles.input_boxes}`}
+										value={fieldLabel}
+										placeholder={fieldLabel}
 										onChange={(e) => {
-											setFieldSettings((prevState) => {
-												return {
-													...prevState,
-													fieldType: e.target.value,
-												};
-											});
-											updateFieldSettings(e, "type");
-										}}>
-										<option value="text">
-											Single Line Text
-										</option>
-										<option value="textarea">
-											Paragraph Text
-										</option>
-										<option value="multipleChoice">
-											Multiple Choice
-										</option>
-										<option value="numeric">Number</option>
-										<option value="checkbox">
-											Checkboxes
-										</option>
-										<option value="select">Dropdown</option>
-									</select>
-								</div>
-							</li>
-							<fieldset className={styles.choices_container}>
-								<legend className={`${styles.choices_legend}`}>
-									Choices
-								</legend>
-								<ul>
-									{fieldChoices.map((choice, i) => (
-										<li
-											className={styles.choices_li}
-											key={choice}>
-											<input
-												className={
-													styles.choices_bullet
-												}
-												type="checkbox"
-												value={checkedFields[i]}
-												onClick={() => {
-													setCheckedFields(
-														(prevState) => {
-															return {
-																...prevState,
-																i: !checkedFields[
-																	i
-																],
-															};
-														}
-													);
-												}}
-											/>
-											<input
-												className={`${styles.field_settings_choices} ${styles.input_boxes}`}
-												type="text"
-												maxLength="150"
-												value={choice}
-												placeholder={choice}
-												onChange={(e) => {
-													setFieldChoices(
-														(prevState) => {
-															const newState = [
-																...prevState,
-															];
-															const changedIndex =
-																newState.findIndex(
-																	(field) =>
-																		field ===
-																		choice
-																);
-															newState[
-																changedIndex
-															] = e.target.value;
-															return newState;
-														}
-													);
-												}}
-											/>
-										</li>
-									))}
-								</ul>
-							</fieldset>
-							<li className={styles.options_li}>
-								<fieldset className={styles.options_container}>
-									<legend
-										className={`${styles.option_legend}`}>
-										Option
-									</legend>
-									<input
-										className={styles.required_checkbox}
-										type="checkbox"
-										checked={isCheckedRequired}
-										onClick={(e) => {
-											setIsCheckedRequired(
-												!isCheckedRequired
-											);
-											updateFieldSettings(e, "required");
+											setFieldLabel(e.target.value);
+											updateFieldSettings(e, "label");
 										}}
 									/>
-									<label className={styles.required_text}>
-										Required
+								</div>
+								<li className={styles.field_type_li}>
+									<label
+										className={styles.field_settings_label}>
+										Field Type
 									</label>
-								</fieldset>
-							</li>
-							<li className={styles.range_li}>
-								<fieldset className={styles.range_container}>
-									<legend
-										className={` ${styles.range_legend}`}>
-										Range
-									</legend>
-									<div>
-										<span>
-											<label
-												className={
-													styles.max_char_text
-												}>
-												Max Characters
-											</label>
-											<input
-												type="text"
-												className={` ${styles.input_boxes} ${styles.max_char_input}`}
-												placeholder={maxChar}
-												value={maxChar}
-												onChange={(e) => {
-													setMaxChar(e.target.value);
-													updateFieldSettings(
-														e,
-														"maxLength"
-													);
-												}}
-											/>
-										</span>
+									<div
+										className={styles.field_type_container}>
+										<select
+											className={`${styles.field_settings_field_type} ${styles.dropdown_boxes}`}
+											value={fieldSettings.fieldType}
+											onChange={(e) => {
+												setFieldSettings(
+													(prevState) => {
+														return {
+															...prevState,
+															fieldType:
+																e.target.value,
+														};
+													}
+												);
+												updateFieldSettings(e, "type");
+											}}>
+											<option value="text">
+												Single Line Text
+											</option>
+											<option value="textarea">
+												Paragraph Text
+											</option>
+											<option value="multipleChoice">
+												Multiple Choice
+											</option>
+											<option value="numeric">
+												Number
+											</option>
+											<option value="checkbox">
+												Checkboxes
+											</option>
+											<option value="select">
+												Dropdown
+											</option>
+										</select>
 									</div>
+								</li>
+								<fieldset className={styles.choices_container}>
+									<legend
+										className={`${styles.choices_legend}`}>
+										Choices
+									</legend>
+									<ul>
+										{fieldChoices.map((choice, i) => (
+											<li
+												className={styles.choices_li}
+												key={choice}>
+												<input
+													className={`${styles.field_settings_choices} ${styles.input_boxes}`}
+													type="text"
+													maxLength="150"
+													value={choice}
+													placeholder={choice}
+													onChange={(e) => {
+														setFieldChoices(
+															(prevState) => {
+																const newState =
+																	[
+																		...prevState,
+																	];
+																const changedIndex =
+																	newState.findIndex(
+																		(
+																			field
+																		) =>
+																			field ===
+																			choice
+																	);
+																newState[
+																	changedIndex
+																] =
+																	e.target.value;
+																return newState;
+															}
+														);
+													}}
+												/>
+											</li>
+										))}
+									</ul>
 								</fieldset>
-							</li>
-							<label className={styles.field_settings_label}>
-								Placeholder Text
-							</label>
-							<div className={styles.placeholder_text_container}>
-								<input
-									className={`${styles.field_settings_placeholder_text}
+								<li className={styles.options_li}>
+									<fieldset
+										className={styles.options_container}>
+										<legend
+											className={`${styles.option_legend}`}>
+											Option
+										</legend>
+										<input
+											className={styles.required_checkbox}
+											type="checkbox"
+											checked={isCheckedRequired}
+											onClick={(e) => {
+												setIsCheckedRequired(
+													!isCheckedRequired
+												);
+												updateFieldSettings(
+													e,
+													"required"
+												);
+											}}
+										/>
+										<label className={styles.required_text}>
+											Required
+										</label>
+									</fieldset>
+								</li>
+								<li className={styles.range_li}>
+									<fieldset
+										className={styles.range_container}>
+										<legend
+											className={` ${styles.range_legend}`}>
+											Range
+										</legend>
+										<div>
+											<span>
+												<label
+													className={
+														styles.max_char_text
+													}>
+													Max Characters
+												</label>
+												<input
+													type="text"
+													className={` ${styles.input_boxes} ${styles.max_char_input}`}
+													placeholder={maxChar}
+													value={maxChar}
+													onChange={(e) => {
+														setMaxChar(
+															e.target.value
+														);
+														updateFieldSettings(
+															e,
+															"maxLength"
+														);
+													}}
+												/>
+											</span>
+										</div>
+									</fieldset>
+								</li>
+								<label className={styles.field_settings_label}>
+									Placeholder Text
+								</label>
+								<div
+									className={
+										styles.placeholder_text_container
+									}>
+									<input
+										className={`${styles.field_settings_placeholder_text}
 										${styles.input_boxes}`}
-									value={placeholderText}
-									onChange={(e) => {
-										setPlaceholderText(e.target.value);
-										updateFieldSettings(e, "placeholder");
-									}}
-									type="text"
-									maxlength="50"
-								/>
+										value={placeholderText}
+										onChange={(e) => {
+											setPlaceholderText(e.target.value);
+											updateFieldSettings(
+												e,
+												"placeholder"
+											);
+										}}
+										type="text"
+										maxlength="50"
+									/>
+								</div>
+								<label className={styles.field_settings_label}>
+									Instructions
+								</label>
+								<div className={styles.instructions_container}>
+									<textarea
+										className={`${styles.field_settings_instructions} ${styles.input_boxes}`}
+										value={instructions}
+										placeholder={setInstructions}
+										onChange={(e) => {
+											setInstructions(e.target.value);
+											updateFieldSettings(
+												e,
+												"instructions"
+											);
+										}}
+									/>
+								</div>
+								<button
+									type="button"
+									className={`${styles.standard_button} ${styles.delete_buttons}`}>
+									<b className={styles.delete_icons}></b>
+									<span className={styles.delete_text}>
+										Delete
+									</span>
+								</button>
+							</form>
+						) : (
+							<div className={styles.none_selected_notice}>
+								<h3>
+									<b
+										className={
+											styles.no_field_selected_text
+										}>
+										No Field Selected
+									</b>
+								</h3>
+								<p className={styles.please_click_text}>
+									Please click on a field in the form preview
+									on the right to change its properties.
+								</p>
 							</div>
-							<label className={styles.field_settings_label}>
-								Instructions
-							</label>
-							<div className={styles.instructions_container}>
-								<textarea
-									className={`${styles.field_settings_instructions} ${styles.input_boxes}`}
-									value={instructions}
-									placeholder={setInstructions}
-									onChange={(e) => {
-										setInstructions(e.target.value);
-										updateFieldSettings(e, "instructions");
-									}}
-								/>
-							</div>
-							<button
-								type="button"
-								className={`${styles.standard_button} ${styles.delete_buttons}`}>
-								<b className={styles.delete_icons}></b>
-								<span className={styles.delete_text}>
-									Delete
-								</span>
-							</button>
-						</form>)
-						:
-						<div>You don't currently have any fields selected! Add some fields or select one to get started.</div>}
+						)}
 					</ul>
 				) : null}
 				{activeTab === "form" ? (
@@ -809,7 +832,12 @@ const FormEngine = () => {
 							key={Math.random()}
 							onClick={() => {
 								setActiveField(jsxcontent);
-								setFieldSettings(prevState => { return {...prevState, fieldType: jsxcontent[1].type }})
+								setFieldSettings((prevState) => {
+									return {
+										...prevState,
+										fieldType: jsxcontent[1].type,
+									};
+								});
 								setFieldLabel(jsxcontent[1].label);
 								setInstructions(jsxcontent[1].instructions);
 								setFieldChoices(jsxcontent[1].choices);
