@@ -10,7 +10,17 @@ import {
 } from "@kagenlh/jsxfields";
 
 
+const initialFieldState = {
+	label: "Untitled",
+	maxLength: 255, // Used with text inputs to determine a maximum number of characters
+	required: false,
+	placeholder: "",
+	instructions: "", // If not empty creates a blurb of grey text to the right of the field
+	choices: ["First Choice", "Second Choice", "Third Choice"], // Used to determine the available options with selects, multiple choices, and checkboxes.
+};
+
 const FormEngine = () => {
+	const [activeField, setActiveField] = useState(null);
 	const [activeTab, setActiveTab] = useState("add");
 	const [formTitle, setFormTitle] = useState("Untitled Form");
 	const [formDescription, setFormDescription] = useState(
@@ -27,15 +37,19 @@ const FormEngine = () => {
 		fieldType: "single_line_text",
 		fieldSize: "small",
 	});
-	const [isCheckedOne, setIsCheckedOne] = useState(false);
-	const [isCheckedTwo, setIsCheckedTwo] = useState(false);
-	const [isCheckedThree, setIsCheckedThree] = useState(false);
-	const [firstChoice, setFirstChoice] = useState("First Choice");
-	const [secondChoice, setSecondChoice] = useState("Second Choice");
-	const [thirdChoice, setThirdChoice] = useState("Third Choice");
+
+	const [checkedFields, setCheckedFields] = useState({
+		1: false,
+		2: false,
+		3: false,
+	});
+	const [fieldChoices, setFieldChoices] = useState([
+		"First Choice",
+		"Second Choice",
+		"Third Choice",
+	]);
 	const [isCheckedRequired, setIsCheckedRequired] = useState(false);
 	const [maxChar, setMaxChar] = useState(25);
-	const [predefinedValue, setPredefinedValue] = useState("");
 	const [placeholderText, setPlaceholderText] = useState("");
 	const [instructions, setInstructions] = useState("");
 
@@ -60,9 +74,94 @@ const FormEngine = () => {
 		}
 	};
 
-	//!TESTING PURPOSES
 
+	const onSave = async () => {
+		const fieldSettings = jsxContent.map((pair) => pair[1]);
+		const formData = {
+			title: formTitle,
+			description: formDescription,
+			...formSettings,
+			fields: [...fieldSettings],
+		};
 
+		console.log(formData);
+		// const res = await fetch('/api/forms', {
+		// 	method: 'POST',
+		// 	headers: { 'Content-Type': 'application/json' },
+		// 	body: JSON.stringify(formData)
+		// });
+
+		// if(res.ok) {
+		// 	const data = res.json();
+		// 	console.log(data);
+		// }
+	};
+
+	const updateFieldSettings = (e, tag) => {
+		const replacementIndex = jsxContent.findIndex(
+			(jsx) => jsx[0] === activeField[0]
+		);
+		setJsxContent((prevState) => {
+			const newState = [...prevState];
+			const oldSettings = jsxContent[replacementIndex][1];
+			const newSettings = { ...oldSettings, [tag]: e.target.value };
+			if (newSettings.type === "text") {
+				const newJsx = createTextInput(
+					textValue,
+					setTextValue,
+					newSettings
+				);
+				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState[replacementIndex]);
+				return newState;
+			} else if (newSettings.type === "textarea") {
+				const newJsx = createMultiLineText(
+					textValue,
+					setTextValue,
+					newSettings
+				);
+				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState[replacementIndex]);
+				return newState;
+			} else if (newSettings.type === "select") {
+				const newJsx = createSelectField(
+					textValue,
+					setTextValue,
+					newSettings
+				);
+				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState[replacementIndex]);
+				return newState;
+			} else if (newSettings.type === "multipleChoice") {
+				const newJsx = createMultipleChoice(
+					textValue,
+					setTextValue,
+					newSettings
+				);
+				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState[replacementIndex]);
+				return newState;
+			} else if (newSettings.type === "checkbox") {
+				const newJsx = createCheckboxField(
+					textValue,
+					setTextValue,
+					newSettings
+				);
+				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState[replacementIndex]);
+				return newState;
+			} else if (newSettings.type === "numeric") {
+				const newJsx = createNumericInput(
+					textValue,
+					setTextValue,
+					newSettings
+				);
+				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState[replacementIndex]);
+				return newState;
+			}
+		});
+	};
 
 	return (
 		<div className={styles.engine_container}>
@@ -151,7 +250,16 @@ const FormEngine = () => {
 												setTextValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, jsx];
+												return [
+													...prevState,
+													[
+														jsx,
+														{
+															type: "text",
+															...initialFieldState,
+														},
+													],
+												];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -179,7 +287,16 @@ const FormEngine = () => {
 												setMultiLineValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, jsx];
+												return [
+													...prevState,
+													[
+														jsx,
+														{
+															type: "textarea",
+															...initialFieldState,
+														},
+													],
+												];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -207,7 +324,16 @@ const FormEngine = () => {
 												setMultiChoiceValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, jsx];
+												return [
+													...prevState,
+													[
+														jsx,
+														{
+															type: "multipleChoice",
+															...initialFieldState,
+														},
+													],
+												];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -253,7 +379,16 @@ const FormEngine = () => {
 												setNumberValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, jsx];
+												return [
+													...prevState,
+													[
+														jsx,
+														{
+															type: "numeric",
+															...initialFieldState,
+														},
+													],
+												];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -271,7 +406,16 @@ const FormEngine = () => {
 											setcheckboxValue
 										);
 										setJsxContent((prevState) => {
-											return [...prevState, jsx];
+											return [
+												...prevState,
+												[
+													jsx,
+													{
+														type: "checkbox",
+														...initialFieldState,
+													},
+												],
+											];
 										});
 									}}
 									className={
@@ -298,7 +442,16 @@ const FormEngine = () => {
 												setSelectValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, jsx];
+												return [
+													...prevState,
+													[
+														jsx,
+														{
+															type: "select",
+															...initialFieldState,
+														},
+													],
+												];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -339,6 +492,8 @@ const FormEngine = () => {
 									placeholder={fieldLabel}
 									onChange={(e) => {
 										setFieldLabel(e.target.value);
+										console.log(activeField);
+										updateFieldSettings(e, "label");
 									}}
 								/>
 							</div>
@@ -357,45 +512,22 @@ const FormEngine = () => {
 													fieldType: e.target.value,
 												};
 											});
+											updateFieldSettings(e, "type");
 										}}>
-										<option value="single_line_text">
+										<option value="text">
 											Single Line Text
 										</option>
-										<option value="paragraph_text">
+										<option value="textarea">
 											Paragraph Text
 										</option>
-										<option value="multiple_choice">
+										<option value="multipleChoice">
 											Multiple Choice
 										</option>
-										<option value="number">Number</option>
-										<option value="checkboxes">
+										<option value="numeric">Number</option>
+										<option value="checkbox">
 											Checkboxes
 										</option>
-										<option value="dropdown">
-											Dropdown
-										</option>
-									</select>
-								</div>
-							</li>
-							<li className={styles.field_size_li}>
-								<label className={styles.field_settings_label}>
-									Field Size
-								</label>
-								<div className={styles.field_size_container}>
-									<select
-										className={`${styles.field_settings_field_size} ${styles.dropdown_boxes}`}
-										value={fieldSettings.fieldSize}
-										onChange={(e) => {
-											setFieldSettings((prevState) => {
-												return {
-													...prevState,
-													fieldSize: e.target.value,
-												};
-											});
-										}}>
-										<option value="small">Small</option>
-										<option value="medium">Medium</option>
-										<option value="large">Large</option>
+										<option value="select">Dropdown</option>
 									</select>
 								</div>
 							</li>
@@ -404,68 +536,57 @@ const FormEngine = () => {
 									Choices
 								</legend>
 								<ul>
-									<li className={styles.choices_li}>
-										<input
-											className={styles.choices_bullet}
-											type="checkbox"
-											value={isCheckedOne}
-											onClick={() => {
-												setIsCheckedOne(!isCheckedOne);
-											}}
-										/>
-										<input
-											className={`${styles.field_settings_choices} ${styles.input_boxes}`}
-											type="text"
-											maxLength="150"
-											value={firstChoice}
-											placeholder={firstChoice}
-											onChange={(e) => {
-												setFirstChoice(e.target.value);
-											}}
-										/>
-									</li>
-									<li className={styles.choices_li}>
-										<input
-											className={styles.choices_bullet}
-											type="checkbox"
-											value={isCheckedTwo}
-											onClick={() => {
-												setIsCheckedTwo(!isCheckedTwo);
-											}}
-										/>
-										<input
-											className={`${styles.field_settings_choices} ${styles.input_boxes}`}
-											type="text"
-											maxLength="150"
-											value={secondChoice}
-											placeholder={secondChoice}
-											onChange={(e) => {
-												setSecondChoice(e.target.value);
-											}}
-										/>
-									</li>
-									<li className={styles.choices_li}>
-										<input
-											className={styles.choices_bullet}
-											type="checkbox"
-											value={isCheckedThree}
-											onClick={() => {
-												setIsCheckedThree(
-													!isCheckedThree
-												);
-											}}
-										/>
-										<input
-											className={`${styles.field_settings_choices} ${styles.input_boxes}`}
-											type="text"
-											maxLength="150"
-											value={thirdChoice}
-											placeholder={thirdChoice}
-											onChange={(e) => {
-												setThirdChoice(e.target.value);
-											}}
-										/>
-									</li>
+									{fieldChoices.map((choice, i) => (
+										<li
+											className={styles.choices_li}
+											key={choice}>
+											<input
+												className={
+													styles.choices_bullet
+												}
+												type="checkbox"
+												value={checkedFields[i]}
+												onClick={() => {
+													setCheckedFields(
+														(prevState) => {
+															return {
+																...prevState,
+																i: !checkedFields[
+																	i
+																],
+															};
+														}
+													);
+												}}
+											/>
+											<input
+												className={`${styles.field_settings_choices} ${styles.input_boxes}`}
+												type="text"
+												maxLength="150"
+												value={choice}
+												placeholder={choice}
+												onChange={(e) => {
+													setFieldChoices(
+														(prevState) => {
+															const newState = [
+																...prevState,
+															];
+															const changedIndex =
+																newState.findIndex(
+																	(field) =>
+																		field ===
+																		choice
+																);
+															newState[
+																changedIndex
+															] = e.target.value;
+															return newState;
+														}
+													);
+												}}
+											/>
+										</li>
+									))}
 								</ul>
 							</fieldset>
 							<li className={styles.options_li}>
@@ -478,10 +599,11 @@ const FormEngine = () => {
 										className={styles.required_checkbox}
 										type="checkbox"
 										value={isCheckedRequired}
-										onClick={() => {
+										onClick={(e) => {
 											setIsCheckedRequired(
 												!isCheckedRequired
 											);
+											updateFieldSettings(e, "required");
 										}}
 									/>
 									<label className={styles.required_text}>
@@ -510,27 +632,16 @@ const FormEngine = () => {
 												value={maxChar}
 												onChange={(e) => {
 													setMaxChar(e.target.value);
+													updateFieldSettings(
+														e,
+														"maxLength"
+													);
 												}}
 											/>
 										</span>
 									</div>
 								</fieldset>
 							</li>
-							<label className={styles.field_settings_label}>
-								Predefined Value
-							</label>
-							<div className={styles.predefined_value_container}>
-								<input
-									className={`${styles.field_settings_predefined_values}
-										${styles.input_boxes}`}
-									value={predefinedValue}
-									onChange={(e) => {
-										setPredefinedValue(e.target.value);
-									}}
-									type="text"
-									maxlength="50"
-								/>
-							</div>
 							<label className={styles.field_settings_label}>
 								Placeholder Text
 							</label>
@@ -541,6 +652,7 @@ const FormEngine = () => {
 									value={placeholderText}
 									onChange={(e) => {
 										setPlaceholderText(e.target.value);
+										updateFieldSettings(e, "placeholder");
 									}}
 									type="text"
 									maxlength="50"
@@ -556,6 +668,7 @@ const FormEngine = () => {
 									placeholder={setInstructions}
 									onChange={(e) => {
 										setFieldLabel(e.target.value);
+										updateFieldSettings(e, "instructions");
 									}}
 								/>
 							</div>
@@ -690,19 +803,18 @@ const FormEngine = () => {
 				<div>
 					{jsxContent?.map((jsxcontent) => (
 						<div
+							className={styles.form_preview_field}
+							key={Math.random()}
 							onClick={() => {
-								setJsxContent((prevState) => {
-									const newState = [...prevState];
-									const deletedIdx = newState.findIndex(
-										(ele) => {
-											return ele === jsxcontent;
-										}
-									);
-									delete newState[deletedIdx];
-									return newState;
-								});
+								setActiveField(jsxcontent);
+								setFieldLabel(jsxcontent[1].label);
+								setInstructions(jsxcontent[1].instructions);
+								setFieldChoices(jsxcontent[1].choices);
+								setMaxChar(jsxcontent[1].maxLength);
+								setIsCheckedRequired(jsxcontent[1].required);
+								setPlaceholderText(jsxcontent[1].placeholder);
 							}}>
-							{jsxcontent}
+							{jsxcontent && jsxcontent[0]}
 						</div>
 					))}
 				</div>
@@ -712,6 +824,18 @@ const FormEngine = () => {
 							<b className={styles.view_button_icon}></b>
 							<span className={styles.view_button_text}>
 								View Form
+							</span>
+						</button>
+					</span>
+					<span className={styles.save_button_wrapper}>
+						<button
+							className={styles.save_button}
+							onClick={() => onSave()}>
+							<span className={styles.save_button_icon}>
+								<i className="fas fa-check"></i>
+							</span>
+							<span className={styles.save_button_text}>
+								Save Form
 							</span>
 						</button>
 					</span>
