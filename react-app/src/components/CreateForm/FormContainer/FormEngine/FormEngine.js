@@ -559,6 +559,13 @@ const FormEngine = () => {
 									}}
 								/>
 							</div>
+							<button
+								className={`${styles.standard_button} ${styles.delete_buttons}`}>
+								<b className={styles.delete_icon}></b>
+								<span className={styles.delete_text}>
+									Delete
+								</span>
+							</button>
 						</form>
 					</ul>
 				) : null}
