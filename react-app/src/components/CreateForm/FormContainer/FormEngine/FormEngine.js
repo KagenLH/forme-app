@@ -10,12 +10,12 @@ import {
 } from "@kagenlh/jsxfields";
 
 const initialFieldState = {
-	label:  "Untitled",
-	maxLength:  255, // Used with text inputs to determine a maximum number of characters
-	required:  false,
-	placeholder:  "",
-	instructions:  "", // If not empty creates a blurb of grey text to the right of the field
-	choices: ['First Choice', 'Second Choice', 'Third Choice'], // Used to determine the available options with selects, multiple choices, and checkboxes.
+	label: "Untitled",
+	maxLength: 255, // Used with text inputs to determine a maximum number of characters
+	required: false,
+	placeholder: "",
+	instructions: "", // If not empty creates a blurb of grey text to the right of the field
+	choices: ["First Choice", "Second Choice", "Third Choice"], // Used to determine the available options with selects, multiple choices, and checkboxes.
 };
 
 const FormEngine = () => {
@@ -37,8 +37,16 @@ const FormEngine = () => {
 		fieldSize: "small",
 	});
 
-	const [checkedFields, setCheckedFields] = useState({ 1: false, 2: false, 3: false});
-	const [fieldChoices, setFieldChoices] = useState(['First Choice', 'Second Choice', 'Third Choice']);
+	const [checkedFields, setCheckedFields] = useState({
+		1: false,
+		2: false,
+		3: false,
+	});
+	const [fieldChoices, setFieldChoices] = useState([
+		"First Choice",
+		"Second Choice",
+		"Third Choice",
+	]);
 	const [isCheckedRequired, setIsCheckedRequired] = useState(false);
 	const [maxChar, setMaxChar] = useState(25);
 	const [placeholderText, setPlaceholderText] = useState("");
@@ -71,9 +79,7 @@ const FormEngine = () => {
 			title: formTitle,
 			description: formDescription,
 			...formSettings,
-			fields: [
-				...fieldSettings
-			]
+			fields: [...fieldSettings],
 		};
 
 		console.log(formData);
@@ -90,43 +96,64 @@ const FormEngine = () => {
 	};
 
 	const updateFieldSettings = (e, tag) => {
-		const replacementIndex = jsxContent.findIndex(jsx => jsx[0] === activeField[0]);
+		const replacementIndex = jsxContent.findIndex(
+			(jsx) => jsx[0] === activeField[0]
+		);
 		setJsxContent((prevState) => {
 			const newState = [...prevState];
 			const oldSettings = jsxContent[replacementIndex][1];
-			const newSettings = { ...oldSettings, [tag]: e.target.value}
+			const newSettings = { ...oldSettings, [tag]: e.target.value };
 			if (newSettings.type === "text") {
-				const newJsx = createTextInput(textValue, setTextValue, newSettings);
+				const newJsx = createTextInput(
+					textValue,
+					setTextValue,
+					newSettings
+				);
 				newState[replacementIndex] = [newJsx, newSettings];
 				setActiveField(newState[replacementIndex]);
 				return newState;
-			}
-			else if (newSettings.type === "textarea") {
-				const newJsx = createMultiLineText(textValue, setTextValue, newSettings);
+			} else if (newSettings.type === "textarea") {
+				const newJsx = createMultiLineText(
+					textValue,
+					setTextValue,
+					newSettings
+				);
 				newState[replacementIndex] = [newJsx, newSettings];
 				setActiveField(newState[replacementIndex]);
 				return newState;
-			}
-			else if (newSettings.type === "select") {
-				const newJsx = createSelectField(textValue, setTextValue, newSettings);
+			} else if (newSettings.type === "select") {
+				const newJsx = createSelectField(
+					textValue,
+					setTextValue,
+					newSettings
+				);
 				newState[replacementIndex] = [newJsx, newSettings];
 				setActiveField(newState[replacementIndex]);
 				return newState;
-			}
-			else if (newSettings.type === "multipleChoice") {
-				const newJsx = createMultipleChoice(textValue, setTextValue, newSettings);
+			} else if (newSettings.type === "multipleChoice") {
+				const newJsx = createMultipleChoice(
+					textValue,
+					setTextValue,
+					newSettings
+				);
 				newState[replacementIndex] = [newJsx, newSettings];
 				setActiveField(newState[replacementIndex]);
 				return newState;
-			}
-			else if (newSettings.type === "checkbox") {
-				const newJsx = createCheckboxField(textValue, setTextValue, newSettings);
+			} else if (newSettings.type === "checkbox") {
+				const newJsx = createCheckboxField(
+					textValue,
+					setTextValue,
+					newSettings
+				);
 				newState[replacementIndex] = [newJsx, newSettings];
 				setActiveField(newState[replacementIndex]);
 				return newState;
-			}
-			else if (newSettings.type === "numeric") {
-				const newJsx = createNumericInput(textValue, setTextValue, newSettings);
+			} else if (newSettings.type === "numeric") {
+				const newJsx = createNumericInput(
+					textValue,
+					setTextValue,
+					newSettings
+				);
 				newState[replacementIndex] = [newJsx, newSettings];
 				setActiveField(newState[replacementIndex]);
 				return newState;
@@ -220,7 +247,16 @@ const FormEngine = () => {
 												setTextValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, [jsx, { type: "text", ...initialFieldState }]];
+												return [
+													...prevState,
+													[
+														jsx,
+														{
+															type: "text",
+															...initialFieldState,
+														},
+													],
+												];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -248,7 +284,16 @@ const FormEngine = () => {
 												setMultiLineValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, [jsx, { type: "textarea", ...initialFieldState }]];
+												return [
+													...prevState,
+													[
+														jsx,
+														{
+															type: "textarea",
+															...initialFieldState,
+														},
+													],
+												];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -276,7 +321,16 @@ const FormEngine = () => {
 												setMultiChoiceValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, [jsx, { type: "multipleChoice", ...initialFieldState }]];
+												return [
+													...prevState,
+													[
+														jsx,
+														{
+															type: "multipleChoice",
+															...initialFieldState,
+														},
+													],
+												];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -322,7 +376,16 @@ const FormEngine = () => {
 												setNumberValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, [jsx, { type: "numeric", ...initialFieldState }]];
+												return [
+													...prevState,
+													[
+														jsx,
+														{
+															type: "numeric",
+															...initialFieldState,
+														},
+													],
+												];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -340,7 +403,16 @@ const FormEngine = () => {
 											setcheckboxValue
 										);
 										setJsxContent((prevState) => {
-											return [...prevState, [jsx, { type: "checkbox", ...initialFieldState }]];
+											return [
+												...prevState,
+												[
+													jsx,
+													{
+														type: "checkbox",
+														...initialFieldState,
+													},
+												],
+											];
 										});
 									}}
 									className={
@@ -367,7 +439,16 @@ const FormEngine = () => {
 												setSelectValue
 											);
 											setJsxContent((prevState) => {
-												return [...prevState, [jsx, { type: "select", ...initialFieldState }]];
+												return [
+													...prevState,
+													[
+														jsx,
+														{
+															type: "select",
+															...initialFieldState,
+														},
+													],
+												];
 											});
 										}}
 										className={`${styles.standard_button}`}
@@ -443,31 +524,7 @@ const FormEngine = () => {
 										<option value="checkbox">
 											Checkboxes
 										</option>
-										<option value="select">
-											Dropdown
-										</option>
-									</select>
-								</div>
-							</li>
-							<li className={styles.field_size_li}>
-								<label className={styles.field_settings_label}>
-									Field Size
-								</label>
-								<div className={styles.field_size_container}>
-									<select
-										className={`${styles.field_settings_field_size} ${styles.dropdown_boxes}`}
-										value={fieldSettings.fieldSize}
-										onChange={(e) => {
-											setFieldSettings((prevState) => {
-												return {
-													...prevState,
-													fieldSize: e.target.value,
-												};
-											});
-										}}>
-										<option value="small">Small</option>
-										<option value="medium">Medium</option>
-										<option value="large">Large</option>
+										<option value="select">Dropdown</option>
 									</select>
 								</div>
 							</li>
@@ -477,31 +534,55 @@ const FormEngine = () => {
 								</legend>
 								<ul>
 									{fieldChoices.map((choice, i) => (
-										<li className={styles.choices_li} key={choice}>
-										<input
-											className={styles.choices_bullet}
-											type="checkbox"
-											value={checkedFields[i]}
-											onClick={() => {
-												setCheckedFields((prevState) => { return { ...prevState, i: !checkedFields[i] }})
-											}}
-										/>
-										<input
-											className={`${styles.field_settings_choices} ${styles.input_boxes}`}
-											type="text"
-											maxLength="150"
-											value={choice}
-											placeholder={choice}
-											onChange={(e) => {
-												setFieldChoices((prevState) => {
-													const newState = [...prevState];
-													const changedIndex = newState.findIndex(field => field === choice);
-													newState[changedIndex] = e.target.value;
-													return newState;
-												})
-											}}
-										/>
-									</li>
+										<li
+											className={styles.choices_li}
+											key={choice}>
+											<input
+												className={
+													styles.choices_bullet
+												}
+												type="checkbox"
+												value={checkedFields[i]}
+												onClick={() => {
+													setCheckedFields(
+														(prevState) => {
+															return {
+																...prevState,
+																i: !checkedFields[
+																	i
+																],
+															};
+														}
+													);
+												}}
+											/>
+											<input
+												className={`${styles.field_settings_choices} ${styles.input_boxes}`}
+												type="text"
+												maxLength="150"
+												value={choice}
+												placeholder={choice}
+												onChange={(e) => {
+													setFieldChoices(
+														(prevState) => {
+															const newState = [
+																...prevState,
+															];
+															const changedIndex =
+																newState.findIndex(
+																	(field) =>
+																		field ===
+																		choice
+																);
+															newState[
+																changedIndex
+															] = e.target.value;
+															return newState;
+														}
+													);
+												}}
+											/>
+										</li>
 									))}
 								</ul>
 							</fieldset>
@@ -548,7 +629,10 @@ const FormEngine = () => {
 												value={maxChar}
 												onChange={(e) => {
 													setMaxChar(e.target.value);
-													updateFieldSettings(e, "maxLength");
+													updateFieldSettings(
+														e,
+														"maxLength"
+													);
 												}}
 											/>
 										</span>
@@ -735,8 +819,7 @@ const FormEngine = () => {
 					<span className={styles.save_button_wrapper}>
 						<button
 							className={styles.save_button}
-							onClick={() => onSave()}
-						>
+							onClick={() => onSave()}>
 							<span className={styles.save_button_icon}>
 								<i className="fas fa-check"></i>
 							</span>
