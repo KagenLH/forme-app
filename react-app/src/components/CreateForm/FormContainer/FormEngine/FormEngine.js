@@ -95,40 +95,43 @@ const FormEngine = () => {
 			const newState = [...prevState];
 			const oldSettings = jsxContent[replacementIndex][1];
 			const newSettings = { ...oldSettings, [tag]: e.target.value}
-			console.log(newSettings);
 			if (newSettings.type === "text") {
 				const newJsx = createTextInput(textValue, setTextValue, newSettings);
 				newState[replacementIndex] = [newJsx, newSettings];
-				setActiveField(newState);
+				setActiveField(newState[replacementIndex]);
 				return newState;
 			}
 			else if (newSettings.type === "textarea") {
 				const newJsx = createMultiLineText(textValue, setTextValue, newSettings);
 				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState[replacementIndex]);
 				return newState;
 			}
 			else if (newSettings.type === "select") {
 				const newJsx = createSelectField(textValue, setTextValue, newSettings);
 				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState[replacementIndex]);
 				return newState;
 			}
 			else if (newSettings.type === "multipleChoice") {
 				const newJsx = createMultipleChoice(textValue, setTextValue, newSettings);
 				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState[replacementIndex]);
 				return newState;
 			}
 			else if (newSettings.type === "checkbox") {
 				const newJsx = createCheckboxField(textValue, setTextValue, newSettings);
 				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState[replacementIndex]);
 				return newState;
 			}
 			else if (newSettings.type === "numeric") {
 				const newJsx = createNumericInput(textValue, setTextValue, newSettings);
 				newState[replacementIndex] = [newJsx, newSettings];
+				setActiveField(newState[replacementIndex]);
 				return newState;
 			}
 		});
-		setActiveField(jsxContent[replacementIndex]);
 	};
 	return (
 		<div className={styles.engine_container}>
@@ -433,7 +436,7 @@ const FormEngine = () => {
 										<option value="textarea">
 											Paragraph Text
 										</option>
-										<option value="mulpipleChoice">
+										<option value="multipleChoice">
 											Multiple Choice
 										</option>
 										<option value="numeric">Number</option>
