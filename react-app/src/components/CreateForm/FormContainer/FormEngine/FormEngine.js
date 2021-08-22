@@ -98,6 +98,7 @@ const FormEngine = () => {
 	};
 
 	const updateFieldSettings = (e, tag) => {
+		console.log(activeField);
 		const replacementIndex = jsxContent.findIndex(
 			(jsx) => jsx[0] === activeField[0]
 		);
@@ -674,7 +675,18 @@ const FormEngine = () => {
 							</div>
 							<button
 								type="button"
-								className={`${styles.standard_button} ${styles.delete_buttons}`}>
+								className={`${styles.standard_button} ${styles.delete_buttons}`}
+								onClick={() => {
+									const active = [...activeField];
+									setActiveField(null);
+									setJsxContent((prevState) => {
+										const newState = [...prevState];
+										const deletionIndex = newState.findIndex(jsx => jsx[0] === active[0]);
+										delete newState[deletionIndex];
+										return newState;
+									});
+								}}
+							>
 								<b className={styles.delete_icons}></b>
 								<span className={styles.delete_text}>
 									Delete
