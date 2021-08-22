@@ -34,7 +34,7 @@ const FormEngine = () => {
 	});
 
 	const [fieldSettings, setFieldSettings] = useState({
-		fieldType: "single_line_text",
+		fieldType: "text",
 		fieldSize: "small",
 	});
 
@@ -492,7 +492,6 @@ const FormEngine = () => {
 									placeholder={fieldLabel}
 									onChange={(e) => {
 										setFieldLabel(e.target.value);
-										console.log(activeField);
 										updateFieldSettings(e, "label");
 									}}
 								/>
@@ -598,7 +597,7 @@ const FormEngine = () => {
 									<input
 										className={styles.required_checkbox}
 										type="checkbox"
-										value={isCheckedRequired}
+										checked={isCheckedRequired}
 										onClick={(e) => {
 											setIsCheckedRequired(
 												!isCheckedRequired
@@ -667,7 +666,7 @@ const FormEngine = () => {
 									value={instructions}
 									placeholder={setInstructions}
 									onChange={(e) => {
-										setFieldLabel(e.target.value);
+										setInstructions(e.target.value);
 										updateFieldSettings(e, "instructions");
 									}}
 								/>
@@ -807,6 +806,7 @@ const FormEngine = () => {
 							key={Math.random()}
 							onClick={() => {
 								setActiveField(jsxcontent);
+								setFieldSettings(prevState => { return {...prevState, fieldType: jsxcontent[1].type }})
 								setFieldLabel(jsxcontent[1].label);
 								setInstructions(jsxcontent[1].instructions);
 								setFieldChoices(jsxcontent[1].choices);
