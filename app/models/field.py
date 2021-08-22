@@ -25,5 +25,6 @@ class Field(db.Model):
             'required': self.required,
             'placeholder': self.placeholder,
             'instructions': self.instructions,
-            'choices': self.choices
+            # splits choices into a list, removes empty list entry at the end
+            'choices': self.choices[:-2].split('&&')
         }

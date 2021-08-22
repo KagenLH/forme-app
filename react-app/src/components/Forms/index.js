@@ -31,26 +31,31 @@ function FormsManager() {
 	const handleShareForm = (formId) => {
 		const shareLink = `http://www.forme-live.herokuapp.com/forms/${formId}/shared`;
 	};
-	//! testing only
-	// const fieldData1 = {
-	//     type: 'text',
-	//     label: 'Test Field 1',
-	//     required: false
-	// }
 
-	// //! testing only
-	// const fieldData2 = {
-	//     type: 'text',
-	//     label: 'Test Field 2',
-	//     required: false
-	// }
+    // //! testing only
+    // const fieldData1 = {
+    //     type: 'text',
+    //     label: 'Test Field 1',
+    //     required: false,
+    //     choices: ['choice1', 'choice2', 'choice3']
+    // }
 
-	// //! testing only
-	// const fieldData3 = {
-	//     type: 'text',
-	//     label: 'Test Field 3',
-	//     required: false
-	// }
+    // //! testing only
+    // const fieldData2 = {
+    //     type: 'text',
+    //     label: 'Test Field 2',
+    //     required: false,
+    //     choices: ['choice1', 'choice2', 'choice3']
+    // }
+
+    // //! testing only
+    // const fieldData3 = {
+    //     type: 'text',
+    //     label: 'Test Field 3',
+    //     required: false,
+    //     choices: ['choice1', 'choice2', 'choice3']
+    // }
+
 
 	// //! testing only
 	// const formData = {

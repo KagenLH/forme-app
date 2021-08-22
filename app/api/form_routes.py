@@ -92,6 +92,13 @@ def create_form():
                 field_info.setdefault(key)
 
         # print('******* FIELD INFO ********', field_info)
+
+        field_choices = field_info['choices']
+        choices_string = ""
+
+        for choice in field_choices:
+            choices_string += (str(choice) + '&&')
+
         field = Field(
             type=field_info["type"],
             label=field_info["label"],
@@ -99,7 +106,7 @@ def create_form():
             required=field_info["required"],
             placeholder=field_info["placeholder"],
             instructions=field_info["instructions"],
-            choices=field_info["choices"],
+            choices=choices_string,
             form=form  # handles the form_id
         )
 
