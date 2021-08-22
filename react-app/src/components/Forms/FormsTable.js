@@ -2,7 +2,7 @@ import React from "react";
 import ShareFormLinkModal from "./ShareFormLinkModal.js";
 
 function FormsTableBody({ forms, handleDeleteForm, user }) {
-	console.log("PROPS DATA", forms, user);
+	// console.log("PROPS DATA", forms, user);
 	return (
 		<div className="form-table">
 			<table>
