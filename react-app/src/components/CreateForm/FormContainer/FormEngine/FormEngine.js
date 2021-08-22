@@ -9,6 +9,7 @@ import {
 	createNumericInput,
 } from "@kagenlh/jsxfields";
 
+
 const initialFieldState = {
 	label: "Untitled",
 	maxLength: 255, // Used with text inputs to determine a maximum number of characters
@@ -72,6 +73,7 @@ const FormEngine = () => {
 			setActiveTab("form");
 		}
 	};
+
 
 	const onSave = async () => {
 		const fieldSettings = jsxContent.map((pair) => pair[1]);
@@ -160,6 +162,7 @@ const FormEngine = () => {
 			}
 		});
 	};
+
 	return (
 		<div className={styles.engine_container}>
 			<div
@@ -669,6 +672,14 @@ const FormEngine = () => {
 									}}
 								/>
 							</div>
+							<button
+								type="button"
+								className={`${styles.standard_button} ${styles.delete_buttons}`}>
+								<b className={styles.delete_icons}></b>
+								<span className={styles.delete_text}>
+									Delete
+								</span>
+							</button>
 						</form>
 					</ul>
 				) : null}

@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .forms import seed_forms, undo_forms
+from .fields import seed_fields, undo_fields
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -12,6 +13,7 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     seed_forms()
+    seed_fields()
     # Add other seed functions here
 
 
@@ -20,4 +22,5 @@ def seed():
 def undo():
     undo_users()
     undo_forms()
+    undo_fields()
     # Add other undo functions here

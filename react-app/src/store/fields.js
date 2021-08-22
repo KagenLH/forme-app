@@ -32,7 +32,7 @@ export const getFormFields = (formId) => async (dispatch) => {
     if (res.ok) {
         const data = res.json()
         const { fields } = data
-        dispatch(add(fields))
+        dispatch(load(fields))
     }
 }
 
@@ -51,6 +51,9 @@ export const createFields = (fieldsData) => async (dispatch) => {
         const data = res.json()
         const { fields } = data
         dispatch(add(fields))
+    }
+    else {
+        console.log("ERROR!")
     }
 }
 

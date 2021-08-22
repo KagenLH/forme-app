@@ -826,4 +826,33 @@ li {
 
 .form_preview_field * {
 	cursor: pointer;
+
+.delete_buttons {
+	width: 110px !important;
+	position: relative;
+	left: 97px;
+	margin-top: 10px;
+}
+
+.delete_buttons:hover {
+	box-shadow: 3px 3px 3px rgb(205, 207, 208);
+}
+
+.delete_icons {
+	line-height: 24px;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	position: absolute;
+	left: 13px;
+	bottom: 0px;
+	background-image: url(../../../../../src/assets/images/icons8-do-not-disturb-48.png);
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.delete_text {
+	color: rgb(209, 47, 25);
+	font-weight: 600;
 }
