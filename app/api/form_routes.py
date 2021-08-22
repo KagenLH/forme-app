@@ -116,7 +116,7 @@ def create_form():
     db.session.add_all(form_fields)
     db.session.commit()
 
-    test_form = Form.query.filter_by(title='To Test Fields').first()
+    # test_form = Form.query.filter_by(title='To Test Fields').first()
 
     # print("*** FORM.FIELDS ***", type(test_form.fields))
     # print("*** FIELD.FORMS ***", form_fields[0].form)
