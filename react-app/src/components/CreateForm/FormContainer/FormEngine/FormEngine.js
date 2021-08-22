@@ -481,6 +481,7 @@ const FormEngine = () => {
 				) : null}
 				{activeTab === "field" ? (
 					<ul className={styles.field_settings_constructor}>
+						{activeField !== null ? (
 						<form>
 							<label className={styles.field_settings_label}>
 								Field Label
@@ -679,7 +680,9 @@ const FormEngine = () => {
 									Delete
 								</span>
 							</button>
-						</form>
+						</form>)
+						:
+						<div>You don't currently have any fields selected! Add some fields or select one to get started.</div>}
 					</ul>
 				) : null}
 				{activeTab === "form" ? (
