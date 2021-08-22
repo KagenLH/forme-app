@@ -8,8 +8,6 @@ import "./Forms.css";
 import NavBar from "../NavBar/NavBar.js";
 
 // TODO: Redirect unregistered users to a login page
-// TODO: Add form description under form title in form manager list (?)
-// TODO: Save form button should redirect to forms manager
 // TODO: Do something about share button on form creator
 // TODO: Make form names into links that lead to form render page
 // TODO: create read me for whole project

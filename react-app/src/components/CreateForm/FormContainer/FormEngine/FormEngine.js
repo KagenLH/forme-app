@@ -1,5 +1,6 @@
 import styles from "./FormEngine.module.css";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
 	createTextInput,
 	createMultiLineText,
@@ -30,6 +31,7 @@ function toBool(str) {
 }
 
 export default function FormEngine() {
+	const history = useHistory()
 	const [activeField, setActiveField] = useState(null);
 	const [activeTab, setActiveTab] = useState("add");
 	const [formTitle, setFormTitle] = useState("Untitled Form");
@@ -101,6 +103,8 @@ export default function FormEngine() {
 			const data = res.json();
 			console.log(data);
 		}
+
+		history.push('/forms')
 	};
 
 	const updateAllFields = (e, tag) => {
@@ -742,7 +746,7 @@ export default function FormEngine() {
 									</fieldset>
 								</li>}
 								</div>
-								{['text', 'textarea', 'numeric'].includes(activeField[1].type) && 
+								{['text', 'textarea', 'numeric'].includes(activeField[1].type) &&
 								<div>
 									<label className={styles.field_settings_label}>
 										Placeholder Text
