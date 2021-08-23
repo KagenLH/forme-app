@@ -104,6 +104,7 @@ export default function FormEngine() {
 	};
 
 	const updateAllFields = (e, tag) => {
+		const currentJSX = activeField;
 		setJsxContent((prevState) => {
 			return prevState.map((jsx) => {
 				const oldSettings = jsx[1];
@@ -148,7 +149,7 @@ export default function FormEngine() {
 					);
 					const newState = [newJsx, newSettings];
 					return newState;
-				} else if (newSettings.type === "numeric") {
+				} else {
 					const newJsx = createNumericInput(
 						textValue,
 						setTextValue,
@@ -158,11 +159,14 @@ export default function FormEngine() {
 					return newState;
 				}
 			});
-		})
+		});
+		setActiveField(currentJSX);
 	}
 
 	const updateFieldSettings = (e, tag) => {
 		const replacementIndex = jsxContent.findIndex((jsx) => jsx[0] === activeField[0]);
+		console.log(activeField);
+		console.log(replacementIndex);
 		setJsxContent((prevState) => {
 			const newState = [...prevState];
 			const oldSettings = jsxContent[replacementIndex][1];
