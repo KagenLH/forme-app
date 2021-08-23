@@ -161,6 +161,7 @@ td.form-description {
 	border: none;
 	box-sizing: content-box;
 	border-radius: 2px;
+	cursor: pointer;
 }
 
 .form-create-button:hover {
@@ -285,25 +286,47 @@ i.copy-btn:hover {
 	cursor: pointer;
 }
 
-form.shared-form {
+.shared-form {
 	display: flex;
-	text-align: center;
-	justify-content: center;
-}
-
-.form-field {
-	margin-left: 320px;
+	position: relative;
+	flex-direction: column;
 	border-radius: 1px;
 	border-width: .05px;
-	border-color: #919090;
+	border-color: rgba(0, 0, 0, 0.2);
 	border-style: solid;
-	margin-top: 10px;
-	margin-bottom: 5px;
-	width: 400px;
+	border-bottom: none;
+	border-top: none;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
 }
 
-.form-title, .form-description {
-	margin-left: 320px;
+.shared-form-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+}
+
+.shared-form-logo-container {
+	position: relative;
+	right: 250px;
+	height: 100px;
+	overflow: hidden;
+}
+
+.shared-form-logo {
+	position: relative;
+	bottom: 75px;
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+}
+.form-field {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	width: 600px;
 }
 
 .forms-return {
@@ -311,11 +334,11 @@ form.shared-form {
 	font-size: 15px;
 	font-weight: 500;
 	color: #fff;
-	padding: 0 8px;
+	padding: 5px;
 	height: 20px;
 	width: 100px;
 	border: none;
 	box-sizing: content-box;
 	border-radius: 2px;
-	margin-left: 610px;
+	cursor: pointer;
 }
