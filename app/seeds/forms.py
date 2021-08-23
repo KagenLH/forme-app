@@ -3,24 +3,15 @@ from app.models import db, Form
 
 def seed_forms():
     test = Form(
-        title='Test Form',
-        owner_id='1',
-        description='This is a test form.',
-        # label_align=None
-        # description_align=None
-        # title_align=None
-    )
-    test2 = Form(
-        title='Another Test Form',
-        owner_id='1',
-        description='This is a another test form.'
-        # label_align=None
-        # description_align=None
-        # title_align=None
+            title = "Test Form Render",
+            owner_id = 1,
+            description = "",
+            label_placement = "",
+            description_align = "",
+            title_align = "",
     )
 
     db.session.add(test)
-    db.session.add(test2)
     db.session.commit()
 
 
