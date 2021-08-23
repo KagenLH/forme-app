@@ -10,7 +10,7 @@ function SharedForm() {
     const form = useSelector(state => state.forms)
     const { formId } = useParams()
 
-    let fieldsArray = form[formId]?.fields  
+    let fieldsArray = form[formId]?.fields
 
     useEffect(() => {
         dispatch(getSharedForm(formId))
@@ -20,14 +20,14 @@ function SharedForm() {
         <div>
             <form classNames="shared-form">
                 <h2 className="form-title">{form[formId]?.title}</h2>
-                <p>{form[formId]?.description}</p>
+                <p className='form-description'>{form[formId]?.description}</p>
                 {
                     fieldsArray?.map(field => <FormField field={field} />)
                 }
                 <Link to="/forms"><button className="forms-return">Back To Forms</button></Link>
             </form>
         </div>
- 
+
     )
 }
 

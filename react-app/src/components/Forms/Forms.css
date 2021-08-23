@@ -302,7 +302,7 @@ form.shared-form {
 	width: 400px;
 }
 
-.form-title {
+.form-title, .form-description {
 	margin-left: 320px;
 }
 
