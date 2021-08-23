@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { getSharedForm } from '../../store/forms.js'
 import './Forms.css'
 import FormField from './FormField.js';
@@ -24,6 +24,7 @@ function SharedForm() {
                 {
                     fieldsArray?.map(field => <FormField field={field} />)
                 }
+                <Link to="/forms"><button className="forms-return">Back To Forms</button></Link>
             </form>
         </div>
  
