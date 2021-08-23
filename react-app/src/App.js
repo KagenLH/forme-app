@@ -13,6 +13,7 @@ import SharedForm from "./components/Forms/SharedForm";
 import Footer from "./components/Footer";
 import CreateForm from "./components/CreateForm";
 import ContentWrap from "./components/ContentWrap";
+import PageNotFound from "./components/PageNotFound";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -58,6 +59,9 @@ function App() {
 					</Route>
 					<Route path="/" exact={true}>
 						<HomePage />
+					</Route>
+					<Route>
+						<PageNotFound />
 					</Route>
 				</Switch>
 			</ContentWrap>
