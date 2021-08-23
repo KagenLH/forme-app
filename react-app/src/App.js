@@ -50,9 +50,9 @@ function App() {
 					<ProtectedRoute path="/forms" exact={true}>
 						<FormsManager />
 					</ProtectedRoute>
-					<Route path="/forms/build" exact={true}>
+					<ProtectedRoute path="/forms/build" exact={true}>
 						<CreateForm />
-					</Route>
+					</ProtectedRoute>
 					<Route path="/forms/:formId/shared">
 						<SharedForm />
 					</Route>
