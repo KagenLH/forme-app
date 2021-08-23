@@ -61,12 +61,12 @@ export const getUserForms = (userId) => async (dispatch) => {
 
 // get a form without being logged in (shared forms)
 export const getSharedForm = (id) => async (dispatch) => {
-	const res = await fetch(`/api/forms/${id}/shared`);
+    const res = await fetch(`/api/forms/${id}/shared`)
 
-	if (res.ok) {
-		const form = await res.json();
-		dispatch(load(form));
-	}
+    if (res.ok) {
+        const form = await res.json()
+        dispatch(load([form]))
+    }
 };
 
 // create a single form

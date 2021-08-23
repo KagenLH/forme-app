@@ -284,3 +284,38 @@ i.copy-btn:hover {
 	box-shadow: grey;
 	cursor: pointer;
 }
+
+form.shared-form {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+
+.form-field {
+	margin-left: 320px;
+	border-radius: 1px;
+	border-width: .05px;
+	border-color: #919090;
+	border-style: solid;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	width: 400px;
+}
+
+.form-title {
+	margin-left: 320px;
+}
+
+.forms-return {
+	background-color: #2685c6;
+	font-size: 15px;
+	font-weight: 500;
+	color: #fff;
+	padding: 0 8px;
+	height: 20px;
+	width: 100px;
+	border: none;
+	box-sizing: content-box;
+	border-radius: 2px;
+	margin-left: 610px;
+}
