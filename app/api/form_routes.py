@@ -30,10 +30,10 @@ def forms(id):
 
 
 # (GET) allow user to access a form without being logged in, i.e. SHARED form
-@form_routes.route('/<int:id>/shared')
-def shared_form(id):
-    form = Form.query.get(id)
-    return form.to_dict()
+# @form_routes.route('/<int:id>/shared')
+# def shared_form(id):
+#     form = Form.query.get(id)
+#     return form.to_dict()
 
 
 # get forms by owner_id (i.e. all forms owned by a specific user)
@@ -130,6 +130,9 @@ def create_form():
     return form.to_dict()
 
 
+
+
+
 # ! currently causes error "405 method not allowed"
 # ! when not bundled with `user_forms(id)` above
 # delete a specific form by primary key
@@ -155,3 +158,13 @@ def create_form():
 #     # form["fields"] = {'fields': [field.to_dict() for field in fields]}
 
 #     return form.to_dict()
+
+@form_routes.route('/<int:id>/shared', methods=['GET'])
+@login_required
+def get_share_forms(id):
+    # get a specific form by primary key
+    if request.method == 'GET':
+        form = Form.query.get(id)
+        print('FORM CHOICES!!!!!!', form)
+        
+        return form.to_dict()
