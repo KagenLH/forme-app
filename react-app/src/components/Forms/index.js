@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 
 import { getUserForms, deleteForm, createForm } from "../../store/forms.js";
 import FormsTable from "./FormsTable.js";
-import { Link } from "react-router-dom";
 import "./Forms.css";
 import NavBar from "../NavBar/NavBar.js";
 
@@ -124,7 +124,7 @@ function FormsManager() {
 			</div>
 		</>
 	) : (
-		<h1>Loading...</h1>
+		<Redirect to='/login' />
 	);
 }
 
