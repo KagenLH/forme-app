@@ -220,7 +220,7 @@ export default function FormEngine() {
 				newState[replacementIndex] = [newJsx, newSettings];
 				setActiveField(newState[replacementIndex]);
 				return newState;
-			} else if (newSettings.type === "numeric") {
+			} else if (newSettings.type === "number") {
 				const newJsx = createNumericInput(
 					textValue,
 					setTextValue,
@@ -454,7 +454,7 @@ export default function FormEngine() {
 													[
 														jsx,
 														{
-															type: "numeric",
+															type: "number",
 															...initialFieldState,
 														},
 													],
@@ -598,7 +598,7 @@ export default function FormEngine() {
 											<option value="multipleChoice">
 												Multiple Choice
 											</option>
-											<option value="numeric">
+											<option value="number">
 												Number
 											</option>
 											<option value="checkbox">
@@ -750,7 +750,7 @@ export default function FormEngine() {
 									</fieldset>
 								</li>}
 								</div>
-								{['text', 'textarea', 'numeric'].includes(activeField[1].type) &&
+								{['text', 'textarea', 'number'].includes(activeField[1].type) &&
 								<div>
 									<label className={styles.field_settings_label}>
 										Placeholder Text
