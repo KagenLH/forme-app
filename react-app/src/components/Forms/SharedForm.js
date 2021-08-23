@@ -18,8 +18,7 @@ function SharedForm() {
 
     return (
         <div>
-            <h1>Shared Form Page</h1>
-            <form>
+            <form classNames="sharedForm">
                 <h2>{form[formId]?.title}</h2>
                 <p>{form[formId]?.description}</p>
                 {

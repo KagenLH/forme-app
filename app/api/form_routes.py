@@ -30,10 +30,10 @@ def forms(id):
 
 
 # (GET) allow user to access a form without being logged in, i.e. SHARED form
-@form_routes.route('/<int:id>/shared')
-def shared_form(id):
-    form = Form.query.get(id)
-    return form.to_dict()
+# @form_routes.route('/<int:id>/shared')
+# def shared_form(id):
+#     form = Form.query.get(id)
+#     return form.to_dict()
 
 
 # get forms by owner_id (i.e. all forms owned by a specific user)
@@ -158,4 +158,6 @@ def get_share_forms(id):
     # get a specific form by primary key
     if request.method == 'GET':
         form = Form.query.get(id)
+        print('FORM CHOICES!!!!!!', form)
+        
         return form.to_dict()

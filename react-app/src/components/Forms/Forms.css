@@ -273,3 +273,9 @@ i.copy-btn:hover {
 	box-shadow: grey;
 	cursor: pointer;
 }
+
+.sharedForm {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
