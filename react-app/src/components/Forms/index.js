@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 
 import { getUserForms, deleteForm, createForm } from "../../store/forms.js";
 import FormsTable from "./FormsTable.js";
-import { Link } from "react-router-dom";
 import "./Forms.css";
 import NavBar from "../NavBar/NavBar.js";
 
 // TODO: Redirect unregistered users to a login page
-// TODO: Add form description under form title in form manager list (?)
+// TODO: Do something about share button on form creator
+// TODO: create read me for whole project
 //? forme-live.herokuapp.com
 function FormsManager() {
 	const dispatch = useDispatch();
@@ -27,30 +28,30 @@ function FormsManager() {
 		await dispatch(deleteForm(formId));
 	};
 
-	// TODO: create modal and update this function for sharing forms
-	const handleShareForm = (formId) => {
-		const shareLink = `http://www.forme-live.herokuapp.com/forms/${formId}/shared`;
-	};
-	//! testing only
-	// const fieldData1 = {
-	//     type: 'text',
-	//     label: 'Test Field 1',
-	//     required: false
-	// }
+    // //! testing only
+    // const fieldData1 = {
+    //     type: 'text',
+    //     label: 'Test Field 1',
+    //     required: false,
+    //     choices: ['choice1', 'choice2', 'choice3']
+    // }
 
-	// //! testing only
-	// const fieldData2 = {
-	//     type: 'text',
-	//     label: 'Test Field 2',
-	//     required: false
-	// }
+    // //! testing only
+    // const fieldData2 = {
+    //     type: 'text',
+    //     label: 'Test Field 2',
+    //     required: false,
+    //     choices: ['choice1', 'choice2', 'choice3']
+    // }
 
-	// //! testing only
-	// const fieldData3 = {
-	//     type: 'text',
-	//     label: 'Test Field 3',
-	//     required: false
-	// }
+    // //! testing only
+    // const fieldData3 = {
+    //     type: 'text',
+    //     label: 'Test Field 3',
+    //     required: false,
+    //     choices: ['choice1', 'choice2', 'choice3']
+    // }
+
 
 	// //! testing only
 	// const formData = {
@@ -123,7 +124,7 @@ function FormsManager() {
 			</div>
 		</>
 	) : (
-		<h1>Loading...</h1>
+		<Redirect to='/login' />
 	);
 }
 
