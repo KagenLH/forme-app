@@ -18,8 +18,8 @@ function SharedForm() {
 
     return (
         <div>
-            <form classNames="sharedForm">
-                <h2>{form[formId]?.title}</h2>
+            <form classNames="shared-form">
+                <h2 className="form-title">{form[formId]?.title}</h2>
                 <p>{form[formId]?.description}</p>
                 {
                     fieldsArray?.map(field => <FormField field={field} />)

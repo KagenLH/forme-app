@@ -14,7 +14,7 @@ function FormField({ field }) {
 
     console.log(field)
     return (
-        <div>
+        <div className="form-field">
             {field.type === 'text' ? createTextInput(inputValue, setInputValue, field) : null}
             {field.type === 'textarea' ? createMultiLineText(inputValue, setInputValue, field) : null}
             {field.type === 'select' ? createSelectField(inputValue, setInputValue, field.choices) : null}

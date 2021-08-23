@@ -274,8 +274,23 @@ i.copy-btn:hover {
 	cursor: pointer;
 }
 
-.sharedForm {
+form.shared-form {
 	display: flex;
 	text-align: center;
 	justify-content: center;
+}
+
+.form-field {
+	margin-left: 320px;
+	border-radius: 1px;
+	border-width: .05px;
+	border-color: #919090;
+	border-style: solid;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	width: 400px;
+}
+
+.form-title {
+	margin-left: 320px;
 }
