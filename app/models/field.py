@@ -5,7 +5,7 @@ class Field(db.Model):
     __tablename__ = 'fields'
 
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(10), nullable=False)
+    type = db.Column(db.String(255), nullable=False)
     label = db.Column(db.String(55), nullable=False)
     max_length = db.Column(db.Integer)
     required = db.Column(db.Boolean, nullable=False)

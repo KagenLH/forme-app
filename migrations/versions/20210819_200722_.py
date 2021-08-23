@@ -21,7 +21,7 @@ def upgrade():
     op.create_table('fields',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('form_id', sa.Integer(), nullable=False),
-    sa.Column('type', sa.String(length=10), nullable=False),
+    sa.Column('type', sa.String(length=255), nullable=False),
     sa.Column('label', sa.String(length=55), nullable=True),
     sa.Column('max_length', sa.Integer(), nullable=True),
     sa.Column('required', sa.Boolean(), nullable=False),

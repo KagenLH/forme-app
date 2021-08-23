@@ -13,7 +13,8 @@ def seed_fields():
         type="text",
         label="Test Field",
         required=False,
-        form=form  # creates the form_id / association
+        form=form,  # creates the form_id / association
+        choices='Some Stuff&&Another choice&&Hello from hell&&'
     )
 
     db.session.add(testField)
