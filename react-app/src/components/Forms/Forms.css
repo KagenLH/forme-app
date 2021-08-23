@@ -126,6 +126,16 @@ td.form-table-data {
 	color: #434a54;
 }
 
+.form-title-link {
+	text-decoration: none;
+	color: #2685c6;
+}
+
+td.form-description {
+	font-weight: lighter;
+	overflow: hidden;
+}
+
 /* td.form-table-data {
     background-color: white;
     border: solid 1px rgba(128, 128, 128, .3);
@@ -174,6 +184,7 @@ td.form-table-data {
 	bottom: 11px;
 	left: 14px;
 }
+
 th {
 	padding: 8px 24px;
 }

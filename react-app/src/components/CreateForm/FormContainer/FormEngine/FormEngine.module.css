@@ -691,6 +691,7 @@ li {
 
 .field_settings_choices {
 	position: relative;
+	margin-top: 5px;
 	left: 18px;
 	top: 2px;
 	width: 270px;
