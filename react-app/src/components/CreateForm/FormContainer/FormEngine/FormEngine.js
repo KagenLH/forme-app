@@ -92,7 +92,6 @@ export default function FormEngine() {
 			fields: [...fieldSettings],
 		};
 
-		console.log(formData);
 		const res = await fetch("/api/forms/build", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -101,7 +100,6 @@ export default function FormEngine() {
 
 		if (res.ok) {
 			const data = res.json();
-			console.log(data);
 		}
 
 		history.push('/forms')
@@ -169,8 +167,6 @@ export default function FormEngine() {
 
 	const updateFieldSettings = (e, tag) => {
 		const replacementIndex = jsxContent.findIndex((jsx) => jsx[0] === activeField[0]);
-		console.log(activeField);
-		console.log(replacementIndex);
 		setJsxContent((prevState) => {
 			const newState = [...prevState];
 			const oldSettings = jsxContent[replacementIndex][1];
@@ -702,8 +698,6 @@ export default function FormEngine() {
 													!isCheckedRequired
 												);
 												e.target.value = !isCheckedRequired;
-												console.log(typeof e.target.value);
-												console.log(typeof isCheckedRequired);
 												updateFieldSettings(
 													e,
 													"required"

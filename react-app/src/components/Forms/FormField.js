@@ -12,7 +12,6 @@ import './Forms.css'
 function FormField({ field }) {
     const [inputValue, setInputValue] = useState('')
 
-    console.log(field)
     return (
         <div className="form-field">
             {field.type === 'text' ? createTextInput(inputValue, setInputValue, field) : null}

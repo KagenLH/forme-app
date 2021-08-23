@@ -5,7 +5,6 @@ import ShareFormLinkModal from "./ShareFormLinkModal.js";
 // TODO: Make form names into links that lead to form render page
 
 function FormsTableBody({ forms, handleDeleteForm, user }) {
-	// console.log("PROPS DATA", forms, user);
 	return (
 		<div className="form-table">
 			<table>

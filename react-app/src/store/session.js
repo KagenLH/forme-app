@@ -44,11 +44,9 @@ export const login = (email, password) => async (dispatch) => {
 	});
 
 	if (response.ok) {
-		console.log("OKKKKK");
 		const data = await response.json();
 		dispatch(setUser(data));
 		dispatch(getUserForms(data.id));
-		console.log("dataidddd", data.id);
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();

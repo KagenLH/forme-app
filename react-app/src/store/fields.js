@@ -53,7 +53,7 @@ export const createFields = (fieldsData) => async (dispatch) => {
         dispatch(add(fields))
     }
     else {
-        console.log("ERROR!")
+
     }
 }
 
