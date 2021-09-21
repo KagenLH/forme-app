@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { useEffect } from "react";
+import { setErrors } from "../../../store/errors";
 import { signUp } from "../../../store/session";
 import styles from "./SignUpFormPage.module.css";
 import NavBar from "../../NavBar/NavBar";
+import Errors from "../../Errors";
 
 const SignUpFormPage = () => {
 	const [errors, setErrors] = useState([]);
@@ -14,14 +17,14 @@ const SignUpFormPage = () => {
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 
+	// Resetting errors from images
+	// useEffect(() => {
+	// 	dispatch(setErrors(null));
+	// }, [dispatch]);
+
 	const onSignUp = async (e) => {
 		e.preventDefault();
-		if (password === repeatPassword) {
-			const data = await dispatch(signUp(username, email, password));
-			if (data) {
-				setErrors(data);
-			}
-		}
+		await dispatch(signUp(username, email, password, repeatPassword));
 	};
 
 	const updateUsername = (e) => {
@@ -63,10 +66,12 @@ const SignUpFormPage = () => {
 									))}
 								</div>
 								<div>
+									<Errors />
 									<label className={styles.input_label}>
 										* EMAIL ADDRESS
 									</label>
 									<input
+										// required={true}
 										className={styles.input_fields}
 										type="text"
 										placeholder="Your valid email"
@@ -79,6 +84,7 @@ const SignUpFormPage = () => {
 										* USERNAME
 									</label>
 									<input
+										required={true}
 										className={styles.input_fields}
 										type="text"
 										placeholder="Your custom FORMe name"
@@ -91,6 +97,7 @@ const SignUpFormPage = () => {
 										* PASSWORD
 									</label>
 									<input
+										required={true}
 										className={styles.input_fields}
 										type="password"
 										placeholder="At least 7 characters with one letter and number"
