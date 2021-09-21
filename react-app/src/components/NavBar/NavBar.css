@@ -18,6 +18,9 @@
 
 .navbar-container-loggedout {
     background-color: white;
+    width: 1200px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 
