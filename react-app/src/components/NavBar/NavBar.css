@@ -53,11 +53,11 @@
     list-style: none;
     width: 180px;
     font: 17px National, Helvetica, sans-serif;
-    justify-content: flex-end;
+    margin-right: 20px;
 }
 
 .navbar-auth-links-login {
-    display: inline;
+    position: relative;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 400;
@@ -68,7 +68,7 @@
 }
 
 .navbar-auth-links-logout {
-    display: inline;
+    position: relative;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 400;
@@ -100,10 +100,6 @@
     position: relative;
     top: 25%;
     left: 15%;
-}
-
-.navbar-login-text {
-    width: 100%;
 }
 
 .navbar-links-home {
