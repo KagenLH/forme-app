@@ -1,10 +1,11 @@
 .footer {
-	position: absolute;
-	background-color: rgba(0, 0, 0, 0.1);
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.025);
+	box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.2);
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	height: 250px;
+	height: 200px;
 	align-items: center;
 	bottom: 0;
 	margin-top: auto;
@@ -18,15 +19,16 @@
 
 .footer-header {
 	margin-bottom: 10px;
-	font: 22px National, Helvetica, Arial, sans-serif;
+	padding-top: 5px;
+	font: 20px National, Helvetica, Arial, sans-serif;
 	color: rgba(0, 0, 0, 0.7);
 }
 
 .footer-name {
 	display: flex;
 	align-items: center;
-	font: 20px National, Helvetica, Arial, sans-serif;
-	font-weight: 600;
+	font: 18px National, Helvetica, Arial, sans-serif;
+	color: rgba(0, 0, 0, 0.8);
 }
 
 .footer-github-container {
@@ -45,7 +47,7 @@
 	display: flex;
 	align-items: center;
 	font-family: Arial, Helvetica, sans-serif;
-	margin-top: 25px;
+	margin-top: 10px;
 }
 
 .footer-github-container-repo {

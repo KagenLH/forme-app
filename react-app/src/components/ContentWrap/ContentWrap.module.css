@@ -1,3 +1,4 @@
 .content_wrap {
-	padding-bottom: 250px;
+	min-height: 100vh;
+	margin-bottom: 75px;
 }

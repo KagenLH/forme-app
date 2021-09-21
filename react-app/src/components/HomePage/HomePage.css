@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    margin-bottom: -73px;
 }
 
 .homepage-content {
@@ -94,7 +94,6 @@
     transform: translateX(-16%);
     height: 290px;
     width: 300%;
-    overflow: hidden;
 }
 
 .homepage-scene-text {
