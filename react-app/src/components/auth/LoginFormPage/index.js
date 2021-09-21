@@ -1,24 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../../store/session";
 import styles from "./LoginFormPage.module.css";
 import NavBar from "../../NavBar/NavBar";
+import Errors from "../../Errors";
+import { setErrors } from "../../../store/errors";
 
 const LoginFormPage = () => {
-	const [errors, setErrors] = useState([]);
+	// const [errors, setErrors] = useState([]);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 
+	// Reset errors when visiting this page
+	useEffect(() => {
+		dispatch(setErrors(null));
+	}, [dispatch]);
+
 	const onLogin = async (e) => {
 		e.preventDefault();
-		const data = await dispatch(login(email, password));
-		if (data) {
-			setErrors(data);
-		}
+		await dispatch(login(email, password));
 	};
 
 	const updateEmail = (e) => {
@@ -52,11 +56,7 @@ const LoginFormPage = () => {
 					<div className={styles.form_container}>
 						<div className={styles.form_block}>
 							<form className={styles.form} onSubmit={onLogin}>
-								<div>
-									{errors.map((error, ind) => (
-										<div key={ind}>{error}</div>
-									))}
-								</div>
+								<Errors />
 								<label htmlFor="email"></label>
 								<input
 									className={styles.email}

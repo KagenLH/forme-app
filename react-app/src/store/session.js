@@ -44,16 +44,13 @@ export const login = (email, password) => async (dispatch) => {
 		}),
 	});
 
+	// data from res is either the data you want(200) or errors(401)
+	const data = await response.json();
 	if (response.ok) {
-		const data = await response.json();
 		dispatch(setUser(data));
-		dispatch(getUserForms(data.id));
 		return null;
 	} else if (response.status < 500) {
-		const data = await response.json();
-		if (data.errors) {
-			return data.errors;
-		}
+		dispatch(setErrors(data));
 	} else {
 		return ["An error occurred. Please try again."];
 	}
