@@ -68,7 +68,7 @@
 	border-radius: 5px;
 	padding: 3em 2em;
 	background: #f8fafb;
-	height: 560px;
+	min-height: 560px;
 }
 
 .submit_button {
@@ -158,4 +158,4 @@ hr {
 	color: #858484;
 	letter-spacing: 1px;
 	font-size: 18px;
-} 
+}
