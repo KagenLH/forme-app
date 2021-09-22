@@ -35,6 +35,15 @@ function toBool(str) {
 export default function EditFormEngine() {
     const history = useHistory();
     const { formId } = useParams();
+    const dispatch = useDispatch()
+    const form = useSelector(state => state.forms)
+
+
+    useEffect(() => {
+        dispatch(getSharedForm(formId))
+    }, [dispatch, formId])
+
+
     const [activeField, setActiveField] = useState(null);
     const [activeTab, setActiveTab] = useState("add");
     const [formTitle, setFormTitle] = useState("Untitled Form");
@@ -74,9 +83,6 @@ export default function EditFormEngine() {
 
     const [fieldLabel, setFieldLabel] = useState("Untitled");
 
-    const dispatch = useDispatch()
-    const form = useSelector(state => state.forms)
-
     const toggleTab = (tab) => {
         if (tab === "add") {
             setActiveTab("add");
@@ -88,10 +94,6 @@ export default function EditFormEngine() {
             setActiveTab("form");
         }
     };
-
-    useEffect(() => {
-        dispatch(getSharedForm(formId))
-    }, [dispatch, formId])
 
     const onSave = async () => {
         const fieldSettings = jsxContent.map((pair) => pair[1]);
