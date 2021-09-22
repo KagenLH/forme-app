@@ -64,8 +64,8 @@ function App() {
 						<PageNotFound />
 					</Route>
 				</Switch>
+				<Footer />
 			</ContentWrap>
-			<Footer />
 		</BrowserRouter>
 	);
 }

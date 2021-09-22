@@ -1,5 +1,6 @@
 .form-manager-container {
 	margin: auto;
+	padding-bottom: 200px;
 }
 
 .form-manager-page-header {
@@ -295,7 +296,7 @@ i.copy-btn:hover {
 	position: relative;
 	flex-direction: column;
 	border-radius: 1px;
-	border-width: .05px;
+	border-width: 0.05px;
 	border-color: rgba(0, 0, 0, 0.2);
 	border-style: solid;
 	border-bottom: none;
