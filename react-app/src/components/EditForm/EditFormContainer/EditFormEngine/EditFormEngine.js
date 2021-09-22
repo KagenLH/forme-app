@@ -9,7 +9,7 @@ import {
     createCheckboxField,
     createNumericInput,
 } from "@kagenlh/jsxfields";
-// import { getSharedForm } from "../../../../store/forms";
+import { getSharedForm } from "../../../../store/forms";
 import { useSelector, useDispatch } from 'react-redux';
 
 const initialFieldState = {
@@ -35,9 +35,15 @@ function toBool(str) {
 export default function EditFormEngine() {
     const history = useHistory();
     const { formId } = useParams();
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     console.log('FORM ID PLACE', formId);
+
+
+    useEffect(() => {
+        dispatch(getSharedForm(formId))
+    }, [dispatch, formId])
+
 
     const form = useSelector(state => state.forms)
 
