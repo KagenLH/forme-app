@@ -127,12 +127,16 @@ td.form-table-data {
 }
 
 .form-title-link {
+	position: relative;
+	top: 12px;
 	text-decoration: none;
 	color: #2685c6;
 }
 
 td.form-description {
+	position: relative;
 	font-weight: lighter;
+	top: 3px;
 	overflow: hidden;
 }
 

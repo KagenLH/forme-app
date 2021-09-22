@@ -28,7 +28,7 @@
 	/* width: 100%; */
 	margin: 0px 0px 15px 20px;
 	position: relative;
-	bottom: 20px;
+	bottom: 24px;
 }
 
 .right_container {
@@ -45,7 +45,7 @@
 }
 
 .options_list {
-	padding-top: 2px;
+	padding-top: 5px;
 	font-weight: 700;
 	display: inline-block;
 	margin: 18px 20px 15px 10px;
@@ -61,4 +61,5 @@
 	background-color: transparent;
 	border: none;
 	letter-spacing: 1px;
+	cursor: pointer;
 }
