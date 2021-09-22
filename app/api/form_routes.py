@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, session
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import Form, db, Field
 
 form_routes = Blueprint("forms", __name__)
@@ -129,7 +129,80 @@ def create_form():
 
     return form.to_dict()
 
+@form_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_form(id):
+    form = Form.query.get(id)
+    if form:
+        if form.owner_id == current_user.id:
+            data = request.get_json()
 
+            form.title= data["title"]
+            form.description= data["description"]
+            form.label_placement= data["labelPlacement"]
+            form.description_align= data["descriptionAlignment"]
+            form.title_align= data["titleAlignment"]
+
+            # Remove any fields on the form that previously existed
+            for field in form.fields:
+                db.session.delete(field)
+                db.session.commit()
+
+            # Re-add all the fields to the form
+            form_fields = []
+
+            for field_info in data["fields"]:
+                # all of the columns in the fields table (except id)
+                expected_keys = [
+                    "type",
+                    "label",
+                    "maxLength",
+                    "required",
+                    "placeholder",
+                    "instructions",
+                    "choices"
+                    ]
+
+                # check whether field_info["maxLength"] exists
+                if "maxLength" in field_info:
+                    # convert the value from string to integer
+                    field_info["maxLength"] = int(field_info["maxLength"])
+
+                for key in expected_keys:
+                    if key not in field_info:
+                        # create the key and set the default value to None
+                        field_info.setdefault(key)
+
+                # print('******* FIELD INFO ********', field_info)
+
+                field_choices = field_info['choices']
+                choices_string = ""
+
+                for choice in field_choices:
+                    choices_string += (str(choice) + '&&')
+
+                field = Field(
+                    type=field_info["type"],
+                    label=field_info["label"],
+                    max_length=field_info["maxLength"],
+                    required=field_info["required"],
+                    placeholder=field_info["placeholder"],
+                    instructions=field_info["instructions"],
+                    choices=choices_string,
+                    form=form  # handles the form_id
+                )
+
+                # db.session.add(field)
+                form_fields.append(field)
+
+            db.session.add_all(form_fields)
+            db.session.commit()
+
+            return form.to_dict()
+        else:
+            return "You do not own the form you are trying to edit.", 401
+    else:
+        return "The form you're trying to edit does not exist.", 400
 
 
 
