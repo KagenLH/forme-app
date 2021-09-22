@@ -1,5 +1,5 @@
 import styles from "./EditFormEngine.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import {
     createTextInput,
@@ -9,6 +9,8 @@ import {
     createCheckboxField,
     createNumericInput,
 } from "@kagenlh/jsxfields";
+import { getSharedForm } from "../../../../store/forms";
+import { useSelector, useDispatch } from 'react-redux';
 
 const initialFieldState = {
     label: "Untitled",
@@ -32,7 +34,7 @@ function toBool(str) {
 
 export default function EditFormEngine() {
     const history = useHistory();
-    const { id } = useParams();
+    const { formId } = useParams();
     const [activeField, setActiveField] = useState(null);
     const [activeTab, setActiveTab] = useState("add");
     const [formTitle, setFormTitle] = useState("Untitled Form");
@@ -72,6 +74,9 @@ export default function EditFormEngine() {
 
     const [fieldLabel, setFieldLabel] = useState("Untitled");
 
+    const dispatch = useDispatch()
+    const form = useSelector(state => state.forms)
+
     const toggleTab = (tab) => {
         if (tab === "add") {
             setActiveTab("add");
@@ -83,6 +88,10 @@ export default function EditFormEngine() {
             setActiveTab("form");
         }
     };
+
+    useEffect(() => {
+        dispatch(getSharedForm(formId))
+    }, [dispatch, formId])
 
     const onSave = async () => {
         const fieldSettings = jsxContent.map((pair) => pair[1]);
