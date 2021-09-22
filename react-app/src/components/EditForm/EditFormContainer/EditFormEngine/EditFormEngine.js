@@ -1,6 +1,6 @@
 import styles from "./EditFormEngine.module.css";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import {
     createTextInput,
     createMultiLineText,
@@ -31,7 +31,8 @@ function toBool(str) {
 }
 
 export default function EditFormEngine() {
-    const history = useHistory()
+    const history = useHistory();
+    const { id } = useParams();
     const [activeField, setActiveField] = useState(null);
     const [activeTab, setActiveTab] = useState("add");
     const [formTitle, setFormTitle] = useState("Untitled Form");

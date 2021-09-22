@@ -85,6 +85,21 @@ export const createForm = (formData) => async (dispatch) => {
 	}
 };
 
+export const editForm = (formData, id) => async (dispatch) => {
+	const res = await fetch(`/api/forms/${id}/edit`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(formData),
+	})
+
+	if (res.ok) {
+		const form = await res.json();
+		dispatch(add(form))
+	}
+}
+
 // deletes a form
 export const deleteForm = (id) => async (dispatch) => {
 	const res = await fetch(`/api/forms/${id}`, {
@@ -126,8 +141,11 @@ const formsReducer = (state = initialState, action) => {
 				return newState;
 			}
 			// TODO: do stuff for edited forms?
-			break;
-
+			else {
+				const newState = { ...state[action.form.id] }
+				return newState
+			}
+			// break; dunno what to do with this it became unreachable
 		case REMOVE:
 			// removes forms from the state
 			const newState = { ...state }; // Object.assign({}, state) <-- same thing
