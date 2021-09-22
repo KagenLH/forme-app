@@ -69,7 +69,6 @@ function fieldsReducer(state = initialState, action) {
                 ...state,
                 ...allFields
             }
-
         case ADD:
             // won't edit/overwrite existing fields in state,
             // would need to remove conditional in forEach,
