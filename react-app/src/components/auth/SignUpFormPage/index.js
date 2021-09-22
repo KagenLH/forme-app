@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useEffect } from "react";
@@ -15,6 +15,10 @@ const SignUpFormPage = () => {
 	const [repeatPassword, setRepeatPassword] = useState("");
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
+  
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	// Resetting errors from images
 	useEffect(() => {

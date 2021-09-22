@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import "./HomePage.css";
 import fillForm from "../../assets/images/fill-in-form.png";
@@ -6,6 +7,14 @@ import dinoForm from "../../assets/images/wufoo-online-form-builder.png";
 import NavBar from "../NavBar/NavBar";
 
 export default function HomePage() {
+	const user = useSelector(state => state.session.user);
+
+	if(user) {
+		return (
+			<Redirect to="/forms"/>
+		);
+	}
+	
 	return (
 		<>
 			<NavBar />
@@ -66,7 +75,7 @@ export default function HomePage() {
 							</div>
 							<div className="homepage-scene-signup">
 								<NavLink
-									to="/signup"
+									to="/sign-up"
 									className="homepage-scene-signup-button">
 									<span className="homepage-scene-signup-text">
 										Sign Up Now
