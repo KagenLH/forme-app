@@ -72,7 +72,7 @@
 }
 
 .submit_button {
-	background-color: #61e064;
+	background-color: #156616;
 	color: #fff;
 	width: 100%;
 	height: 2.7em;
@@ -88,7 +88,7 @@
 }
 
 .submit_button:hover {
-	background-color: #62da64;
+	background-color: #1b7b1c;
 }
 
 .input_label {
@@ -128,7 +128,7 @@
 }
 
 .free {
-	color: #69c5e4;
+	color: #529db6;
 	text-align: center;
 	font-weight: 600;
 	font-size: 36px;
