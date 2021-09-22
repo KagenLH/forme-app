@@ -13,8 +13,7 @@
 	/* min-width: 728px; */
 	margin: 0 auto;
 	flex-wrap: wrap;
-	border-bottom: 1px solid rgb(230, 233, 238);
-	margin-bottom: 30px;
+	border-bottom: 1px solid rgb(0, 0, 0, 0.05);
 }
 
 h1#form-manager-title {
@@ -32,12 +31,13 @@ h1#form-manager-title {
 
 .forms-area {
 	background-color: #f6f7fb;
-	padding-bottom: 64px;
+	padding-bottom: 25px;
 	border-top: 1px solid #e6e9ee;
 	/* max-width: 1400px; */
 	/* padding: 0 32px; */
 	width: 100%;
 	margin: 0 auto;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .form-manager-actions {
