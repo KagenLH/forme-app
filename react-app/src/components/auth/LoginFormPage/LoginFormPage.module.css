@@ -103,7 +103,7 @@
 }
 
 .submit_button {
-	background-color: #61e064;
+	background-color: #156616;
 	color: #fff;
 	width: 100%;
 	height: 3.4em;
@@ -118,7 +118,7 @@
 }
 
 .submit_button:hover {
-	background-color: #62da64;
+	background-color: #1b7b1c;
 }
 
 .first_time_message {
@@ -128,7 +128,7 @@
 }
 
 .create {
-	color: #28acd8;
+	color: #529db6;
 	text-decoration: none;
 	letter-spacing: 0.5px;
 }
@@ -146,7 +146,7 @@
 }
 
 .demo {
-	color: #28acd8;
+	color: #529db6;
 	text-decoration: none;
 	letter-spacing: 0.5px;
 	cursor: pointer;
