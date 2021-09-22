@@ -17,7 +17,7 @@ function FormField({ field }) {
             {field.type === 'text' ? createTextInput(inputValue, setInputValue, field) : null}
             {field.type === 'textarea' ? createMultiLineText(inputValue, setInputValue, field) : null}
             {field.type === 'select' ? createSelectField(inputValue, setInputValue, field) : null}
-            {field.type === 'radio' ? createMultipleChoice(inputValue, setInputValue, field) : null}
+            {field.type === 'multipleChoice' ? createMultipleChoice(inputValue, setInputValue, field) : null}
             {field.type === 'checkbox' ? createCheckboxField(inputValue, setInputValue, field) : null}
             {field.type === 'number' ? createNumericInput(inputValue, setInputValue, field) : null}
         </div>
