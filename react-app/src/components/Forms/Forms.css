@@ -241,7 +241,7 @@ th {
 	border-left: 1px solid rgb(204, 208, 217);
 	padding-left: 40px;
 	position: relative;
-	right: 18px;
+	right: 20px;
 }
 
 .delete-label {
@@ -255,7 +255,7 @@ th {
 	border-left: 1px solid rgb(204, 208, 217);
 	padding-left: 45px;
 	position: relative;
-	right: 14px;
+	right: 4px;
 }
 
 .form-action-label {
