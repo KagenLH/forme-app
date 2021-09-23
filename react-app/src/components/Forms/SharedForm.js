@@ -20,35 +20,43 @@ function SharedForm() {
 
 	return (
 		<div className="shared-form-container">
-			<div className="shared-form-logo-container">
+			<div className="middle-container">
+				<div className="shared-form-logo-container">
+					<Link to="/forms">
+						<img
+							className="shared-form-logo"
+							src={redLogo}
+							alt="\A"
+						/>
+					</Link>
+				</div>
+				<form className="shared-form">
+					<header className="header">
+						<h2
+							className="form-title"
+							style={{
+								display: "flex",
+								justifyContent: form[formId]?.title_align,
+							}}>
+							{form[formId]?.title}
+						</h2>
+						<p
+							className="form-description"
+							style={{
+								display: "flex",
+								justifyContent: form[formId]?.description_align,
+							}}>
+							{form[formId]?.description}
+						</p>
+					</header>
+					{fieldsArray?.map((field) => (
+						<FormField field={field} />
+					))}
+				</form>
 				<Link to="/forms">
-					<img className="shared-form-logo" src={redLogo} alt="\A" />
+					<button className="forms-return">Submit</button>
 				</Link>
 			</div>
-			<form className="shared-form">
-				<h2
-					className="form-title"
-					style={{
-						display: "flex",
-						justifyContent: form[formId]?.title_align,
-					}}>
-					{form[formId]?.title}
-				</h2>
-				<p
-					className="form-description"
-					style={{
-						display: "flex",
-						justifyContent: form[formId]?.description_align,
-					}}>
-					{form[formId]?.description}
-				</p>
-				{fieldsArray?.map((field) => (
-					<FormField field={field} />
-				))}
-			</form>
-			<Link to="/forms">
-				<button className="forms-return">Submit</button>
-			</Link>
 		</div>
 	);
 }
