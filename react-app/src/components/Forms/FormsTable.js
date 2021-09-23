@@ -12,6 +12,7 @@ function FormsTableBody({ forms, handleDeleteForm, user }) {
 					<tr className="column-title-container">
 						<th className="column-title-name">Name</th>
 						<th className="form-action-label">
+							<th className="edit-label">Edit</th>
 							<th className="share-label">Share</th>
 							<th className="delete-label">Delete</th>
 						</th>
@@ -30,6 +31,17 @@ function FormsTableBody({ forms, handleDeleteForm, user }) {
 									</td>
 								</td>
 								<td className="form-actions">
+									{
+										user.id === form?.owner_id ? (
+											<td
+												className="edit-button"
+											>
+												<Link to={`forms/${form?.id}/edit`}>
+													<img src={"https://lh3.googleusercontent.com/proxy/kGqo9JPSMlJtkZ-Qf7qRx6pUu1u2N_DwKq2oZt-oV0RG6ifwpYrTtNhikhpvLNMHOb3yZufwz_U0y9J5zcfEzI79oN9FUvlYI67_5QhgZIKhNxD0AJza5y2bHd_bFpA"} style={{ height: 30, width:30, }} alt="editimage" />
+												</Link>
+											</td>
+										): null
+									}
 									<td className="share-buttons" key={form?.id}>
 										{/* <i className="fa fa-share-alt-square" title='Share' aria-hidden="true" /> */}
 										<ShareFormLinkModal formId={form?.id} />
