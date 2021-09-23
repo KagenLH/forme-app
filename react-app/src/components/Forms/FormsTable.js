@@ -37,7 +37,7 @@ function FormsTableBody({ forms, handleDeleteForm, user }) {
 												className="edit-button"
 											>
 												<Link to={`forms/${form?.id}/edit`}>
-													Edit
+													<img src={"https://lh3.googleusercontent.com/proxy/kGqo9JPSMlJtkZ-Qf7qRx6pUu1u2N_DwKq2oZt-oV0RG6ifwpYrTtNhikhpvLNMHOb3yZufwz_U0y9J5zcfEzI79oN9FUvlYI67_5QhgZIKhNxD0AJza5y2bHd_bFpA"} style={{ height: 30, width:30, }} alt="editimage" />
 												</Link>
 											</td>
 										): null
