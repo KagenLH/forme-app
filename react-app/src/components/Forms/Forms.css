@@ -118,6 +118,13 @@ td.delete-buttons {
     width: 33.25px; */
 }
 
+td.edit-button {
+	justify-content: space-between;
+	justify-self: center;
+	align-self: center;
+	margin-right: 75px;
+}
+
 i.fa-trash:hover {
 	cursor: pointer;
 	background-color: rgb(236, 134, 134);
@@ -242,6 +249,13 @@ th {
 	padding-left: 40px;
 	position: relative;
 	left: 14px;
+}
+
+.edit-label {
+		border-left: 1px solid rgb(204, 208, 217);
+	padding-left: 45px;
+	position: relative;
+	right: 4px;
 }
 
 .form-action-label {
