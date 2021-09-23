@@ -22,25 +22,25 @@ function FormsTableBody({ forms, handleDeleteForm, user }) {
 						return (
 							<tr className="form-table-rows">
 								<td className="form-table-data" key={form.id}>
-									<Link to={`/forms/${form.id}/shared`} className='form-title-link'>
-										{form.title}
+									<Link to={`/forms/${form?.id}/shared`} className='form-title-link'>
+										{form?.title}
 									</Link>
 									<td className='form-description'>
-										{form.description}
+										{form?.description}
 									</td>
 								</td>
 								<td className="form-actions">
-									<td className="share-buttons" key={form.id}>
+									<td className="share-buttons" key={form?.id}>
 										{/* <i className="fa fa-share-alt-square" title='Share' aria-hidden="true" /> */}
-										<ShareFormLinkModal formId={form.id} />
+										<ShareFormLinkModal formId={form?.id} />
 									</td>
 									{
 										// only render delete button if user owns form
-										user.id === form.owner_id ? (
+										user.id === form?.owner_id ? (
 											<td
 												className="delete-buttons"
 												onClick={(e) =>
-													handleDeleteForm(form.id)
+													handleDeleteForm(form?.id)
 												}>
 												<i
 													className="fa fa-trash"

@@ -10,6 +10,7 @@ import {
     createNumericInput,
 } from "@kagenlh/jsxfields";
 import { getSharedForm } from "../../../../store/forms";
+import { editForm } from "../../../../store/forms";
 import { useSelector, useDispatch } from 'react-redux';
 
 const initialFieldState = {
@@ -34,20 +35,12 @@ function toBool(str) {
 
 export default function EditFormEngine() {
     const history = useHistory();
+    const [form, setForm] = useState("");
     const { formId } = useParams();
     const dispatch = useDispatch()
 
     console.log('FORM ID PLACE', formId);
-
-
-    useEffect(() => {
-        dispatch(getSharedForm(formId))
-    }, [dispatch, formId])
-
-
-    const form = useSelector(state => state.forms)
-
-    console.log(form);
+    // const form = useSelector(state => state.forms[formId]);
 
     const [activeField, setActiveField] = useState(null);
     const [activeTab, setActiveTab] = useState("add");
@@ -88,6 +81,141 @@ export default function EditFormEngine() {
 
     const [fieldLabel, setFieldLabel] = useState("Untitled");
 
+    useEffect(() => {
+        async function initialise() {
+            const newForm = await dispatch(getSharedForm(formId));
+            setForm(newForm);
+            
+            newForm.fields.forEach(field => {
+                if(field.type === "text") {
+                    const jsx = createTextInput(
+                        textValue,
+                        setTextValue,
+                        field
+                    );
+                    setJsxContent((prevState) => {
+                        return [
+                            ...prevState,
+                            [
+                                jsx,
+                                {
+                                    type: "text",
+                                    ...field,
+                                },
+                            ],
+                        ];
+                    });
+                }
+                if(field.type === "textarea") {
+                    const jsx = createMultiLineText(
+                        multiLineValue,
+                        setMultiLineValue,
+                        field
+                    );
+                    setJsxContent((prevState) => {
+                        return [
+                            ...prevState,
+                            [
+                                jsx,
+                                {
+                                    type: "textarea",
+                                    ...field,
+                                },
+                            ],
+                        ];
+                    });
+                }
+                if(field.type === "multipleChoice") {
+                    const jsx = createMultipleChoice(
+                        multiChoiceValue,
+                        setMultiChoiceValue,
+                        field
+                    );
+                    setJsxContent((prevState) => {
+                        return [
+                            ...prevState,
+                            [
+                                jsx,
+                                {
+                                    type: "multipleChoice",
+                                    ...field,
+                                },
+                            ],
+                        ];
+                    });
+                }
+                if(field.type === "number") {
+                    const jsx = createNumericInput(
+                        numberValue,
+                        setNumberValue,
+                        field
+                    );
+                    setJsxContent((prevState) => {
+                        return [
+                            ...prevState,
+                            [
+                                jsx,
+                                {
+                                    type: "number",
+                                    ...field,
+                                },
+                            ],
+                        ];
+                    });
+                }
+                if(field.type === "checkbox") {
+                    const jsx = createCheckboxField(
+                        checkboxValue,
+                        setcheckboxValue,
+                        field
+                    );
+                    setJsxContent((prevState) => {
+                        return [
+                            ...prevState,
+                            [
+                                jsx,
+                                {
+                                    type: "checkbox",
+                                    ...field,
+                                },
+                            ],
+                        ];
+                    });
+                }
+                if(field.type === "select") {
+                    const jsx = createSelectField(
+                        selectValue,
+                        setSelectValue,
+                        field
+                    );
+                    setJsxContent((prevState) => {
+                        return [
+                            ...prevState,
+                            [
+                                jsx,
+                                {
+                                    type: "select",
+                                    ...field,
+                                },
+                            ],
+                        ];
+                    });
+                }
+
+            });
+            setFormTitle(newForm.title);
+            setFormDescription(newForm.description);
+            setFormSettings({
+                titleAlignment: newForm.title_align,
+                descriptionAlignment: newForm.description_align,
+                labelPlacement: newForm.label_placement,
+            });
+            updateAllFields({ target: { value: newForm.label_placement }}, "labelPlacement");
+        }
+
+        initialise();
+    }, [dispatch, formId]);
+
     const toggleTab = (tab) => {
         if (tab === "add") {
             setActiveTab("add");
@@ -109,15 +237,16 @@ export default function EditFormEngine() {
             fields: [...fieldSettings],
         };
 
-        const res = await fetch("/api/forms/build", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-        });
+        dispatch(editForm(formData, formId));
+        // const res = await fetch("/api/forms/build", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(formData),
+        // });
 
-        if (res.ok) {
-            const data = res.json();
-        }
+        // if (res.ok) {
+        //     const data = res.json();
+        // }
 
         history.push('/forms')
     };

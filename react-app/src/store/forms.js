@@ -1,6 +1,7 @@
 // TYPE CONSTANTS
 const LOAD = "forms/LOAD";
 const ADD = "forms/ADD";
+const EDIT = "forms/EDIT";
 const REMOVE = "forms/REMOVE";
 const REMOVE_SESSION = "forms/REMOVE_SESSION";
 
@@ -16,6 +17,11 @@ const add = (form) => ({
 	type: ADD,
 	form,
 });
+
+const edit = (form) => ({
+	type: EDIT,
+	form
+})
 
 // for removing forms
 const remove = (form) => ({
@@ -65,7 +71,8 @@ export const getSharedForm = (id) => async (dispatch) => {
 
     if (res.ok) {
         const form = await res.json()
-        dispatch(load([form]))
+        dispatch(load([form]));
+		return form;
     }
 };
 
@@ -86,7 +93,7 @@ export const createForm = (formData) => async (dispatch) => {
 };
 
 export const editForm = (formData, id) => async (dispatch) => {
-	const res = await fetch(`/api/forms/${id}/edit`, {
+	const res = await fetch(`/api/forms/${id}`, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
@@ -96,7 +103,8 @@ export const editForm = (formData, id) => async (dispatch) => {
 
 	if (res.ok) {
 		const form = await res.json();
-		dispatch(add(form))
+		console.log(form.id);
+		dispatch(edit(form));
 	}
 }
 
@@ -130,22 +138,19 @@ const formsReducer = (state = initialState, action) => {
 				...state,
 			};
 		case ADD:
-			// adds new forms to state
+			{// adds new forms to state
 			// console.log('*** ACTION.FORM ***', action.form)
-			if (!state[action.form.id]) {
 				const newState = {
 					...state,
 					[action.form.id]: action.form,
 				};
 				// console.log('*** REDUCER ADD ***', newState[action.form.id])
 				return newState;
-			}
 			// TODO: do stuff for edited forms?
-			else {
-				const newState = { ...state[action.form.id] }
-				return newState
-			}
 			// break; dunno what to do with this it became unreachable
+		}
+		case EDIT:
+			return { ...state, [action.form.id]: action.form };
 		case REMOVE:
 			// removes forms from the state
 			const newState = { ...state }; // Object.assign({}, state) <-- same thing
