@@ -239,9 +239,9 @@ th {
 
 .share-label {
 	border-left: 1px solid rgb(204, 208, 217);
-	padding-left: 45px;
+	padding-left: 40px;
 	position: relative;
-	right: 4px;
+	right: 18px;
 }
 
 .delete-label {
@@ -252,10 +252,10 @@ th {
 }
 
 .edit-label {
-		border-left: 1px solid rgb(204, 208, 217);
+	border-left: 1px solid rgb(204, 208, 217);
 	padding-left: 45px;
 	position: relative;
-	right: 4px;
+	right: 14px;
 }
 
 .form-action-label {
@@ -428,4 +428,9 @@ i.copy-btn:hover {
 	cursor: pointer;
 	margin-right: 14px;
 	float: right;
+}
+
+.forms-edit-button {
+	color: black;
+	font-size: 34px;
 }
