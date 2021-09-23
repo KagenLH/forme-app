@@ -1,5 +1,37 @@
 .form-manager-container {
 	margin: auto;
+	padding-bottom: 200px;
+}
+
+label {
+	color: #59616c !important;
+}
+
+label + div {
+	width: 100%;
+	height: 100%;
+}
+
+textarea {
+	border: 1px solid #ccd0d9;
+	border-radius: 3px;
+	/* background-image: none !important; */
+	padding: 10px 14px;
+	/* height: 3000px !important; */
+	width: 100% !important;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+	border: 1px solid #ccd0d9;
+	border-radius: 3px;
+	padding: 10px;
+}
+
+select {
+	border: 1px solid #ccd0d9;
+	border-radius: 3px;
+	height: 37px;
 }
 
 .form-manager-page-header {
@@ -294,30 +326,60 @@ i.copy-btn:hover {
 	display: flex;
 	position: relative;
 	flex-direction: column;
-	border-radius: 1px;
-	border-width: .05px;
-	border-color: rgba(0, 0, 0, 0.2);
-	border-style: solid;
-	border-bottom: none;
-	border-top: none;
+
 	justify-content: center;
-	align-items: center;
+	/* align-items: center; */
 	padding: 15px;
+	margin: 20px 14px 0 14px;
+	padding: 0 0 20px 0;
+	position: relative;
+	letter-spacing: 1px;
+}
+
+.header {
+	margin: 0 0 5px 0;
+	padding: 0 1% 1.1em 1%;
+	border-bottom: 1px solid #ccd0d9;
+}
+
+.form-title {
+	padding-bottom: 18px;
+	font-size: 35px;
+}
+
+.form-description {
+	padding-bottom: 10px;
+	font-size: 20px;
 }
 
 .shared-form-container {
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+	/* align-items: center; */
+	/* flex-direction: column; */
 	width: 100%;
+	min-height: 1200px;
+	background-color: rgb(238, 238, 238);
+	padding-bottom: 200px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: rgb(67, 67, 67);
 }
 
 .shared-form-logo-container {
 	position: relative;
-	right: 250px;
-	height: 100px;
+	/* right: 250px; */
+	height: 90px;
+	width: 960px;
 	overflow: hidden;
+	border-bottom: 1px solid #ccd0d9;
+	right: 20px;
+}
+
+.middle-container {
+	width: 960px;
+	background-color: #ffffff;
+	margin-bottom: 20px;
+	padding: 20px;
 }
 
 .shared-form-logo {
@@ -330,19 +392,26 @@ i.copy-btn:hover {
 .form-field {
 	margin-top: 10px;
 	margin-bottom: 5px;
-	width: 600px;
+	width: 100%;
+	height: 100%;
+}
+
+.form-field > div {
+	height: 100%;
 }
 
 .forms-return {
-	background-color: #2685c6;
+	background-color: #007faa;
 	font-size: 15px;
 	font-weight: 500;
 	color: #fff;
 	padding: 5px;
-	height: 20px;
+	height: 40px;
 	width: 100px;
 	border: none;
 	box-sizing: content-box;
 	border-radius: 2px;
 	cursor: pointer;
+	margin-right: 14px;
+	float: right;
 }
