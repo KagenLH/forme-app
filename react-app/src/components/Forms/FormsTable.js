@@ -13,6 +13,7 @@ function FormsTableBody({ forms, handleDeleteForm, user }) {
 						<th className="column-title-name">Name</th>
 						<th className="form-action-label">
 							<th className="share-label">Share</th>
+							<th className="edit-label">Edit</th>
 							<th className="delete-label">Delete</th>
 						</th>
 					</tr>
@@ -34,6 +35,17 @@ function FormsTableBody({ forms, handleDeleteForm, user }) {
 										{/* <i className="fa fa-share-alt-square" title='Share' aria-hidden="true" /> */}
 										<ShareFormLinkModal formId={form?.id} />
 									</td>
+									{
+										user.id === form?.owner_id ? (
+											<td
+												className="edit-button"
+											>
+												<Link to={`forms/${form?.id}/edit`} className="forms-edit-button">
+													<i className="fa fa-edit"></i>
+												</Link>
+											</td>
+										): null
+									}
 									{
 										// only render delete button if user owns form
 										user.id === form?.owner_id ? (

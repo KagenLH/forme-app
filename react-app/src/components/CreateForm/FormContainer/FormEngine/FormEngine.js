@@ -1092,14 +1092,14 @@ export default function FormEngine() {
 					))}
 				</div>
 				<div className={styles.view_share_footer}>
-					<span className={styles.view_button_wrapper}>
-						{/* <button className={styles.view_button}>
+					{/* <span className={styles.view_button_wrapper}>
+						<button className={styles.view_button}>
 							<b className={styles.view_button_icon}></b>
 							<span className={styles.view_button_text}>
 								View Form
 							</span>
-						</button> */}
-					</span>
+						</button>
+					</span> */}
 					<span className={styles.save_button_wrapper}>
 						<button
 							className={styles.save_button}
@@ -1112,14 +1112,14 @@ export default function FormEngine() {
 							</span>
 						</button>
 					</span>
-					<span className={styles.share_button_wrapper}>
-						{/* <button className={styles.share_button}>
+					{/* <span className={styles.share_button_wrapper}>
+						<button className={styles.share_button}>
 							<b className={styles.share_button_icon}></b>
 							<span className={styles.share_button_text}>
 								Share Form
 							</span>
-						</button> */}
-					</span>
+						</button>
+					</span> */}
 				</div>
 			</div>
 		</div>
