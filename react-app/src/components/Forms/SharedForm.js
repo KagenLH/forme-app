@@ -11,6 +11,7 @@ function SharedForm() {
 	const dispatch = useDispatch();
 	const form = useSelector((state) => state.forms);
 	const { formId } = useParams();
+	console.log("FoTTMTT", form);
 
 	let fieldsArray = form[formId]?.fields;
 
@@ -50,7 +51,10 @@ function SharedForm() {
 						</p>
 					</header>
 					{fieldsArray?.map((field) => (
-						<FormField field={field} />
+						<FormField
+							field={field}
+							label_placement={form[formId]?.label_placement}
+						/>
 					))}
 				</form>
 				<Link to="/forms">

@@ -12,6 +12,20 @@ label + div {
 	height: 100%;
 }
 
+label + textarea {
+	width: 100%;
+}
+
+.form-field > div > div {
+	width: 100%;
+	position: relative;
+	justify-content: flex-start !important;
+}
+
+/* label + input {
+  position: relative;
+} */
+
 textarea {
 	border: 1px solid #ccd0d9;
 	border-radius: 3px;
@@ -406,12 +420,13 @@ i.copy-btn:hover {
 .form-field {
 	margin-top: 10px;
 	margin-bottom: 5px;
-	width: 100%;
+	/* width: 100%; */
 	height: 100%;
 }
 
 .form-field > div {
-	height: 100%;
+	/* height: 100%;
+	width: 100%; */
 }
 
 .forms-return {

@@ -20,18 +20,27 @@ const initialFieldState = {
 };
 
 function toBool(str) {
-	if(typeof str === "string")
-	switch(str.toLowerCase().trim()) {
-        case "true": case "yes": case "1": return true;
-        case "false": case "no": case "0": case null: return false;
-        default: return Boolean(str);
-	} else {
+	if (typeof str === "string")
+		switch (str.toLowerCase().trim()) {
+			case "true":
+			case "yes":
+			case "1":
+				return true;
+			case "false":
+			case "no":
+			case "0":
+			case null:
+				return false;
+			default:
+				return Boolean(str);
+		}
+	else {
 		return str;
 	}
 }
 
 export default function FormEngine() {
-	const history = useHistory()
+	const history = useHistory();
 	const [activeField, setActiveField] = useState(null);
 	const [activeTab, setActiveTab] = useState("add");
 	const [formTitle, setFormTitle] = useState("Untitled Form");
@@ -49,7 +58,6 @@ export default function FormEngine() {
 		fieldType: "text",
 		fieldSize: "small",
 	});
-
 
 	const [fieldChoices, setFieldChoices] = useState([
 		"First Choice",
@@ -102,7 +110,7 @@ export default function FormEngine() {
 			const data = res.json();
 		}
 
-		history.push('/forms')
+		history.push("/forms");
 	};
 
 	const updateAllFields = (e, tag) => {
@@ -163,10 +171,12 @@ export default function FormEngine() {
 			});
 		});
 		setActiveField(currentJSX);
-	}
+	};
 
 	const updateFieldSettings = (e, tag) => {
-		const replacementIndex = jsxContent.findIndex((jsx) => jsx[0] === activeField[0]);
+		const replacementIndex = jsxContent.findIndex(
+			(jsx) => jsx[0] === activeField[0]
+		);
 		setJsxContent((prevState) => {
 			const newState = [...prevState];
 			const oldSettings = jsxContent[replacementIndex][1];
@@ -420,7 +430,7 @@ export default function FormEngine() {
 									className={
 										styles.standard_button_container
 									}>
-									<button
+									{/* <button
 										className={`${styles.standard_button} ${styles.section_break_button}`}
 										href="#">
 										<b></b>
@@ -430,7 +440,7 @@ export default function FormEngine() {
 											}>
 											Section Break
 										</span>
-									</button>
+									</button> */}
 								</li>
 							</ul>
 							<ul className={styles.right_col_stand}>
@@ -532,14 +542,14 @@ export default function FormEngine() {
 									className={
 										styles.standard_button_container
 									}>
-									<button
+									{/* <button
 										className={`${styles.standard_button} ${styles.page_break_button}`}
 										href="#">
 										<b></b>
 										<span className={styles.pagebreak_text}>
 											Page Break
 										</span>
-									</button>
+									</button> */}
 								</li>
 							</ul>
 						</div>
@@ -606,13 +616,19 @@ export default function FormEngine() {
 										</select>
 									</div>
 								</li>
-								{['select', 'checkbox', 'multipleChoice'].includes(activeField[1].type) && <fieldset className={styles.choices_container}>
-									<legend
-										className={`${styles.choices_legend}`}>
-										Choices
-									</legend>
-									<ul>
-										{fieldChoices.map((choice, i) => (
+								{[
+									"select",
+									"checkbox",
+									"multipleChoice",
+								].includes(activeField[1].type) && (
+									<fieldset
+										className={styles.choices_container}>
+										<legend
+											className={`${styles.choices_legend}`}>
+											Choices
+										</legend>
+										<ul>
+											{fieldChoices.map((choice, i) => (
 												<input
 													className={`${styles.field_settings_choices} ${styles.input_boxes}`}
 													type="text"
@@ -637,138 +653,222 @@ export default function FormEngine() {
 																	changedIndex
 																] =
 																	e.target.value;
-																newFieldChoices = newState;
+																newFieldChoices =
+																	newState;
 																return newState;
 															}
 														);
 
-														const replacementIndex = jsxContent.findIndex((jsx) => jsx[0] === activeField[0]);
-														setJsxContent((prevState) => {
-															const newState = [...prevState];
-															const oldSettings = jsxContent[replacementIndex][1];
-															const newSettings = { ...oldSettings, choices: newFieldChoices };
-															if (newSettings.type === "select") {
-																const newJsx = createSelectField(
-																	textValue,
-																	setTextValue,
-																	newSettings
-																);
-																newState[replacementIndex] = [newJsx, newSettings];
-																setActiveField(newState[replacementIndex]);
-																return newState;
-															} else if (newSettings.type === "multipleChoice") {
-																const newJsx = createMultipleChoice(
-																	textValue,
-																	setTextValue,
-																	newSettings
-																);
-																newState[replacementIndex] = [newJsx, newSettings];
-																setActiveField(newState[replacementIndex]);
-																return newState;
-															} else if (newSettings.type === "checkbox") {
-																const newJsx = createCheckboxField(
-																	textValue,
-																	setTextValue,
-																	newSettings
-																);
-																newState[replacementIndex] = [newJsx, newSettings];
-																setActiveField(newState[replacementIndex]);
-																return newState;
+														const replacementIndex =
+															jsxContent.findIndex(
+																(jsx) =>
+																	jsx[0] ===
+																	activeField[0]
+															);
+														setJsxContent(
+															(prevState) => {
+																const newState =
+																	[
+																		...prevState,
+																	];
+																const oldSettings =
+																	jsxContent[
+																		replacementIndex
+																	][1];
+																const newSettings =
+																	{
+																		...oldSettings,
+																		choices:
+																			newFieldChoices,
+																	};
+																if (
+																	newSettings.type ===
+																	"select"
+																) {
+																	const newJsx =
+																		createSelectField(
+																			textValue,
+																			setTextValue,
+																			newSettings
+																		);
+																	newState[
+																		replacementIndex
+																	] = [
+																		newJsx,
+																		newSettings,
+																	];
+																	setActiveField(
+																		newState[
+																			replacementIndex
+																		]
+																	);
+																	return newState;
+																} else if (
+																	newSettings.type ===
+																	"multipleChoice"
+																) {
+																	const newJsx =
+																		createMultipleChoice(
+																			textValue,
+																			setTextValue,
+																			newSettings
+																		);
+																	newState[
+																		replacementIndex
+																	] = [
+																		newJsx,
+																		newSettings,
+																	];
+																	setActiveField(
+																		newState[
+																			replacementIndex
+																		]
+																	);
+																	return newState;
+																} else if (
+																	newSettings.type ===
+																	"checkbox"
+																) {
+																	const newJsx =
+																		createCheckboxField(
+																			textValue,
+																			setTextValue,
+																			newSettings
+																		);
+																	newState[
+																		replacementIndex
+																	] = [
+																		newJsx,
+																		newSettings,
+																	];
+																	setActiveField(
+																		newState[
+																			replacementIndex
+																		]
+																	);
+																	return newState;
+																}
 															}
-														})
+														);
 													}}
 												/>
-										))}
-									</ul>
-								</fieldset>}
+											))}
+										</ul>
+									</fieldset>
+								)}
 								<div>
-								<li className={styles.options_li}>
-									<fieldset
-										className={styles.options_container}>
-										<legend
-											className={`${styles.option_legend}`}>
-											Option
-										</legend>
-										<input
-											className={styles.required_checkbox}
-											type="checkbox"
-											checked={isCheckedRequired}
-											onChange={(e) => {
-												setIsCheckedRequired(
-													!isCheckedRequired
-												);
-												e.target.value = !isCheckedRequired;
-												updateFieldSettings(
-													e,
-													"required"
-												);
-											}}
-										/>
-										<label className={styles.required_text}>
-											Required
-										</label>
-									</fieldset>
-								</li>
-								{['text', 'textarea'].includes(activeField[1].type) && <li className={styles.range_li}>
-									<fieldset
-										className={styles.range_container}>
-										<legend
-											className={` ${styles.range_legend}`}>
-											Range
-										</legend>
-										<div>
-											<span>
-												<label
-													className={
-														styles.max_char_text
-													}>
-													Max Characters
-												</label>
-												<input
-													type="text"
-													className={` ${styles.input_boxes} ${styles.max_char_input}`}
-													placeholder={maxChar}
-													value={maxChar}
-													onChange={(e) => {
-														setMaxChar(
-															e.target.value
-														);
-														updateFieldSettings(
-															e,
-															"maxLength"
-														);
-													}}
-												/>
-											</span>
-										</div>
-									</fieldset>
-								</li>}
+									<li className={styles.options_li}>
+										<fieldset
+											className={
+												styles.options_container
+											}>
+											<legend
+												className={`${styles.option_legend}`}>
+												Option
+											</legend>
+											<input
+												className={
+													styles.required_checkbox
+												}
+												type="checkbox"
+												checked={isCheckedRequired}
+												onChange={(e) => {
+													setIsCheckedRequired(
+														!isCheckedRequired
+													);
+													e.target.value =
+														!isCheckedRequired;
+													updateFieldSettings(
+														e,
+														"required"
+													);
+												}}
+											/>
+											<label
+												className={
+													styles.required_text
+												}>
+												Required
+											</label>
+										</fieldset>
+									</li>
+									{["text", "textarea"].includes(
+										activeField[1].type
+									) && (
+										<li className={styles.range_li}>
+											<fieldset
+												className={
+													styles.range_container
+												}>
+												<legend
+													className={` ${styles.range_legend}`}>
+													Range
+												</legend>
+												<div>
+													<span>
+														<label
+															className={
+																styles.max_char_text
+															}>
+															Max Characters
+														</label>
+														<input
+															type="text"
+															className={` ${styles.input_boxes} ${styles.max_char_input}`}
+															placeholder={
+																maxChar
+															}
+															value={maxChar}
+															onChange={(e) => {
+																setMaxChar(
+																	e.target
+																		.value
+																);
+																updateFieldSettings(
+																	e,
+																	"maxLength"
+																);
+															}}
+														/>
+													</span>
+												</div>
+											</fieldset>
+										</li>
+									)}
 								</div>
-								{['text', 'textarea', 'number'].includes(activeField[1].type) &&
-								<div>
-									<label className={styles.field_settings_label}>
-										Placeholder Text
-									</label>
-									<div
-										className={
-											styles.placeholder_text_container
-										}>
-										<input
-											className={`${styles.field_settings_placeholder_text}
+								{["text", "textarea", "number"].includes(
+									activeField[1].type
+								) && (
+									<div>
+										<label
+											className={
+												styles.field_settings_label
+											}>
+											Placeholder Text
+										</label>
+										<div
+											className={
+												styles.placeholder_text_container
+											}>
+											<input
+												className={`${styles.field_settings_placeholder_text}
 											${styles.input_boxes}`}
-											value={placeholderText}
-											onChange={(e) => {
-												setPlaceholderText(e.target.value);
-												updateFieldSettings(
-													e,
-													"placeholder"
-												);
-											}}
-											type="text"
-											maxlength="50"
-										/>
+												value={placeholderText}
+												onChange={(e) => {
+													setPlaceholderText(
+														e.target.value
+													);
+													updateFieldSettings(
+														e,
+														"placeholder"
+													);
+												}}
+												type="text"
+												maxlength="50"
+											/>
+										</div>
 									</div>
-								</div>}
+								)}
 								<label className={styles.field_settings_label}>
 									Instructions
 								</label>
@@ -794,7 +894,11 @@ export default function FormEngine() {
 										setActiveField(null);
 										setJsxContent((prevState) => {
 											const newState = [...prevState];
-											const deletionIndex = newState.findIndex(jsx => jsx[0] === active[0]);
+											const deletionIndex =
+												newState.findIndex(
+													(jsx) =>
+														jsx[0] === active[0]
+												);
 											newState.splice(deletionIndex, 1);
 											return newState;
 										});
@@ -873,11 +977,15 @@ export default function FormEngine() {
 											};
 										});
 									}}>
-									<option value="flex-start">Left Aligned</option>
+									<option value="flex-start">
+										Left Aligned
+									</option>
 									<option value="center">
 										Center Aligned
 									</option>
-									<option value="flex-end">Right Aligned</option>
+									<option value="flex-end">
+										Right Aligned
+									</option>
 								</select>
 							</div>
 							<label className={styles.form_settings_label}>
@@ -899,11 +1007,15 @@ export default function FormEngine() {
 											};
 										});
 									}}>
-									<option value="flex-start">Left Aligned</option>
+									<option value="flex-start">
+										Left Aligned
+									</option>
 									<option value="center">
 										Center Aligned
 									</option>
-									<option value="flex-end">Right Aligned</option>
+									<option value="flex-end">
+										Right Aligned
+									</option>
 								</select>
 							</div>
 							<label className={styles.form_settings_label}>
@@ -936,10 +1048,18 @@ export default function FormEngine() {
 			</div>
 			<div className={styles.form_preview}>
 				<div className={styles.form_preview_title}>
-					<div style={{'display': 'flex', 'justifyContent': formSettings.titleAlignment}}>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: formSettings.titleAlignment,
+						}}>
 						<div className={styles.actual_title}>{formTitle}</div>
 					</div>
-					<div style={{'display': 'flex', 'justifyContent': formSettings.descriptionAlignment}}>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: formSettings.descriptionAlignment,
+						}}>
 						<div className={styles.form_description}>
 							{formDescription}
 						</div>
@@ -962,7 +1082,9 @@ export default function FormEngine() {
 								setInstructions(jsxcontent[1].instructions);
 								setFieldChoices(jsxcontent[1].choices);
 								setMaxChar(jsxcontent[1].maxLength);
-								setIsCheckedRequired(toBool(jsxcontent[1].required));
+								setIsCheckedRequired(
+									toBool(jsxcontent[1].required)
+								);
 								setPlaceholderText(jsxcontent[1].placeholder);
 							}}>
 							{jsxcontent && jsxcontent[0]}
@@ -1002,4 +1124,4 @@ export default function FormEngine() {
 			</div>
 		</div>
 	);
-};
+}
