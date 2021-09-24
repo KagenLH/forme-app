@@ -581,31 +581,36 @@ li {
 .save_button {
 	padding: 4px 0 4px 34px;
 	position: relative;
-	bottom: 10px;
+	bottom: 15px;
+	left: 390px;
 	border: 1px solid #dad8d8;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%);
 	border-radius: 9px;
 	margin: 0 0.7em 0 1em;
-	background-color: #f8fafb;
-	color: green;
+	background-color: green;
+	color: #f8fafb;
 	cursor: pointer;
 	text-decoration: none;
 	line-height: 130%;
 	background-clip: padding-box;
-	width: 135px;
-	height: 26px;
+	width: 200px;
+	height: 35px;
 	display: inline-block;
 	font-size: 13px;
 	font-weight: 500;
 	letter-spacing: 2px;
 }
 
+.save_button:hover {
+	background-color: rgb(5, 144, 5);
+}
+
 .save_button_icon {
 	position: relative;
 	right: 20px;
-	color: green;
+	color: #f8fafb;
 }
 
 .save_button_text {
