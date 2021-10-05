@@ -92,7 +92,9 @@ export default function FormEngine() {
 	};
 
 	const onSave = async () => {
-		const fieldSettings = jsxContent.map((pair) => pair[1]);
+		const fieldSettings = jsxContent.map((pair) => {
+			return pair[1];
+		});
 		const formData = {
 			title: formTitle,
 			description: formDescription,
@@ -115,6 +117,7 @@ export default function FormEngine() {
 
 	const updateAllFields = (e, tag) => {
 		const currentJSX = activeField;
+
 		setJsxContent((prevState) => {
 			return prevState.map((jsx) => {
 				const oldSettings = jsx[1];
@@ -126,6 +129,7 @@ export default function FormEngine() {
 						newSettings
 					);
 					const newState = [newJsx, newSettings];
+
 					return newState;
 				} else if (newSettings.type === "textarea") {
 					const newJsx = createMultiLineText(
@@ -746,6 +750,7 @@ export default function FormEngine() {
 																			replacementIndex
 																		]
 																	);
+
 																	return newState;
 																}
 															}
@@ -1065,7 +1070,7 @@ export default function FormEngine() {
 						</div>
 					</div>
 				</div>
-				<div>
+				<div className={styles.from_preview_body}>
 					{jsxContent?.map((jsxcontent) => (
 						<div
 							className={styles.form_preview_field}
@@ -1082,6 +1087,7 @@ export default function FormEngine() {
 								setInstructions(jsxcontent[1].instructions);
 								setFieldChoices(jsxcontent[1].choices);
 								setMaxChar(jsxcontent[1].maxLength);
+
 								setIsCheckedRequired(
 									toBool(jsxcontent[1].required)
 								);

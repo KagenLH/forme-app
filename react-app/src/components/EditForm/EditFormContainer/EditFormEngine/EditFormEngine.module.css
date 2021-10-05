@@ -704,9 +704,10 @@ li {
 }
 
 .options_li {
-	display: inline-block;
+	display: hidden;
+	/* display: inline-block;
 	width: 164px;
-	margin-bottom: 7px;
+	margin-bottom: 7px; */
 }
 
 .range_li {
